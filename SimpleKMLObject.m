@@ -1,6 +1,5 @@
 //
 //  SimpleKMLObject.m
-//  MapBoxiPadDemo
 //
 //  Created by Justin R. Miller on 6/29/10.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.

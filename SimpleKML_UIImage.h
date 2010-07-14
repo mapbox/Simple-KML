@@ -1,6 +1,5 @@
 //
 //  SimpleKML_UIImage.h
-//  MapBoxiPadDemo
 //
 //  Created by Justin R. Miller on 7/1/10.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
