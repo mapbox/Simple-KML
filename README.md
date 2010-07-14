@@ -2,13 +2,13 @@
 
 Simple KML is a simple & lightweight parsing library for KML written in Objective-C for the iOS platform.
 
-# Requirements
+## Requirements
 
 Simple KML has been designed & built for iOS 3.2 (the iPad). There's no particular reason it couldn't run on another iOS version or be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
 
 Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXML), an Objective-C library for DOM-based XML parsing based on libxml2. 
 
-# Features
+## Features
 
 * Support for most of the base KML entities.
 
@@ -52,15 +52,15 @@ Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXM
     `SimpleKMLDocument *document = myPlacemark.document;`  
     `NSArray *documentFeatures = document.features;`  
 
-# Usage
+## Usage
 
 Include all of the Simple KML files in your Xcode project, as well as the files in the TouchXML subdirectory if you don't already use TouchXML in your project. Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on libxml2.
 
-# Plans, needs, bugs, etc.
+## Plans, needs, bugs, etc.
 
 If you find a bug or want to otherwise contribute, please fork the project on GitHub and contribute that way. In particular, I would like to start adding built-in testing with a library of accompanying KML test files to parse. 
 
-# License
+## License
 
 Copyright (c) 2010 Code Sorcery Workshop, LLC and Development Seed, Inc.
 
