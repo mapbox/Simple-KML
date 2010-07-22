@@ -49,9 +49,11 @@ enum SimpleKMLErrorCode {
 @interface SimpleKML : NSObject
 {
     SimpleKMLFeature *feature;
+    NSString *source;
 }
 
 @property (nonatomic, retain) SimpleKMLFeature *feature;
+@property (nonatomic, readonly, retain) NSString *source;
 
 + (SimpleKML *)KMLWithContentsofURL:(NSURL *)URL error:(NSError **)error;
 + (SimpleKML *)KMLWithContentsOfFile:(NSString *)path error:(NSError **)error;

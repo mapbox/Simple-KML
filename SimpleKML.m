@@ -48,6 +48,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 @implementation SimpleKML
 
 @synthesize feature;
+@synthesize source;
 
 + (SimpleKML *)KMLWithContentsofURL:(NSURL *)URL error:(NSError **)error
 {
@@ -66,12 +67,13 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     if (self != nil)
     {
         feature = nil;
+        source  = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL] retain];
         
         NSError *parseError = nil;
         
-        CXMLDocument *document = [[[CXMLDocument alloc] initWithContentsOfURL:URL
-                                                                      options:0
-                                                                        error:&parseError] autorelease];
+        CXMLDocument *document = [[[CXMLDocument alloc] initWithXMLString:source
+                                                                  options:0
+                                                                    error:&parseError] autorelease];
         
         // return nil if we can't properly parse this file
         //
@@ -147,6 +149,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 - (void)dealloc
 {
     [feature release];
+    [source release];
     
     [super dealloc];
 }
