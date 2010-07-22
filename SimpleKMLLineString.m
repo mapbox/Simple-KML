@@ -68,7 +68,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LineString coordinates have whitespace)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -82,7 +83,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LineString coordinates)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -97,7 +99,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid LineString coordinates values)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -117,7 +120,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LineString has less than two coordinates)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -129,7 +133,8 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LineString has no coordinates)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }

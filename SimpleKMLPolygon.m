@@ -66,7 +66,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LinearRings in Polygon boundary)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -84,7 +85,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LinearRings in Polygon boundary)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -107,7 +109,8 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Missing outer boundary in Polygon)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }

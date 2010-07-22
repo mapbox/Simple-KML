@@ -57,7 +57,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Point coordinates have whitespace)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -71,7 +72,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of Point coordinates)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -86,7 +88,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid Point coordinates values)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -100,7 +103,8 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Point has no coordinates)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }

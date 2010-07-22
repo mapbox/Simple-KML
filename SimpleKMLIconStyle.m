@@ -65,7 +65,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (no href specified for IconStyle Icon)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -86,7 +87,8 @@
                         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (invalid icon URL specified in IconStyle)" 
                                                                              forKey:NSLocalizedFailureReasonErrorKey];
                         
-                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                        if (error)
+                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                         
                         return nil;
                     }
@@ -104,7 +106,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (unable to retrieve icon specified for IconStyle)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -118,7 +121,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (invalid icon scale specified in IconStyle)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -132,7 +136,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (invalid icon heading specified in IconStyle)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }

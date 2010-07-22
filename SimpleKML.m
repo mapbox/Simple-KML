@@ -80,7 +80,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Unable to parse XML: %@", parseError]
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }
@@ -94,7 +95,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (root element has invalid child object count)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }
@@ -113,7 +115,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
             
             if (parseError)
             {
-                *error = parseError;
+                if (error)
+                    *error = parseError;
                 
                 return nil;
             }
@@ -125,7 +128,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Root element contains a child object unknown to this library" 
                                                                      forKey:NSLocalizedFailureReasonErrorKey];
                 
-                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLUnknownObject userInfo:userInfo];
+                if (error)
+                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLUnknownObject userInfo:userInfo];
                 
                 return nil;
             }

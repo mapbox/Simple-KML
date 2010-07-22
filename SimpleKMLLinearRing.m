@@ -68,7 +68,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LinearRing coordinates have whitespace)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -82,7 +83,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LinearRing coordinates)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -97,7 +99,8 @@
                             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid LinearRing coordinates values)" 
                                                                                  forKey:NSLocalizedFailureReasonErrorKey];
                             
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                            if (error)
+                                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                             
                             return nil;
                         }
@@ -117,7 +120,8 @@
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LinearRing has less than four coordinates)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
                     
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
                     
                     return nil;
                 }
@@ -129,7 +133,8 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LinearRing has no coordinates)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }
@@ -142,7 +147,8 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (LinearRing does not form complete path)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
             return nil;
         }
