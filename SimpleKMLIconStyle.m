@@ -95,8 +95,27 @@
                     
                     data = [NSData dataWithContentsOfURL:imageURL];
                     
+                    if ( ! data)
+                    {
+                        NSString *name = [[[[imageURL relativePath] lastPathComponent] componentsSeparatedByString:@"."] objectAtIndex:0];
+                        NSString *ext  = [[[[imageURL relativePath] lastPathComponent] componentsSeparatedByString:@"."] lastObject];
+                        
+                        data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:ext]];
+                    }
+                    
                     if (data)
                         [self setCacheObject:data forKey:[href stringValue]];
+                    
+                    else
+                    {
+                        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (invalid icon URL specified in IconStyle)" 
+                                                                             forKey:NSLocalizedFailureReasonErrorKey];
+                        
+                        if (error)
+                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                        
+                        return nil;
+                    }
                 }
                 
                 baseIcon = [UIImage imageWithData:data];
