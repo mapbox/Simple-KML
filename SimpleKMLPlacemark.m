@@ -47,9 +47,9 @@
 @synthesize lineString;
 @synthesize linearRing;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -65,7 +65,7 @@
                 
                 if (geometryClass)
                 {
-                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child error:NULL] autorelease];
+                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
                     
                     if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
                         geometry = [thisGeometry retain];

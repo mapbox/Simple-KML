@@ -40,16 +40,21 @@
 extern NSString *const SimpleKMLErrorDomain;
 
 enum SimpleKMLErrorCode {
-    SimpleKMLParseError    = 1000,
-    SimpleKMLUnknownObject = 1001,
+    SimpleKMLParseError      = 1000,
+    SimpleKMLUnknownObject   = 1001,
+    SimpleKMLUnknownFileType = 1002,
 };
 
 @class SimpleKMLFeature;
 
 @interface SimpleKML : NSObject
 {
-    SimpleKMLFeature *feature;
-    NSString *source;
+    @private
+        NSURL *sourceURL;
+    
+    @public
+        SimpleKMLFeature *feature;
+        NSString *source;
 }
 
 @property (nonatomic, retain) SimpleKMLFeature *feature;
@@ -60,5 +65,6 @@ enum SimpleKMLErrorCode {
 - (id)initWithContentsOfURL:(NSURL *)URL error:(NSError **)error;
 - (id)initWithContentsOfFile:(NSString *)path error:(NSError **)error;
 + (UIColor *)colorForString:(NSString *)colorString;
++ (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath;
 
 @end

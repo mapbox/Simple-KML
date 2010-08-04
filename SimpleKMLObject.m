@@ -46,15 +46,15 @@
 
 @synthesize objectID;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:(NSURL *)inSourceURL error:(NSError **)error
 {
     self = [super init];
     
     if (self != nil)
     {
-        source = [[NSString stringWithString:[node XMLString]] retain];
-        
-        objectID = [[[[((CXMLElement *)node) attributeForName:@"id"] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+        sourceURL = [inSourceURL retain];
+        source    = [[NSString stringWithString:[node XMLString]] retain];
+        objectID  = [[[[((CXMLElement *)node) attributeForName:@"id"] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
     }
     
 #pragma mark TODO: assert that abstract classes aren't being instantiated
@@ -64,6 +64,7 @@
 
 - (void)dealloc
 {
+    [sourceURL release];
     [source release];
     [objectID release];
     

@@ -45,9 +45,9 @@
 @synthesize polyStyle;
 @synthesize balloonStyle;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -62,7 +62,7 @@
             
             if (subStyleClass)
             {
-                id thisSubStyle = [[[subStyleClass alloc] initWithXMLNode:child error:NULL] autorelease];
+                id thisSubStyle = [[[subStyleClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
                 
                 if (thisSubStyle && [thisSubStyle isKindOfClass:[SimpleKMLSubStyle class]])
                 {

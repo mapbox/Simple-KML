@@ -40,9 +40,9 @@
 
 @synthesize sharedStyles;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -54,7 +54,7 @@
             
             if (childClass)
             {
-                id thisChild = [[[childClass alloc] initWithXMLNode:child error:NULL] autorelease];
+                id thisChild = [[[childClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
                 
                 if (thisChild && [thisChild isKindOfClass:[SimpleKMLStyle class]])
                     [parsedStyles addObject:thisChild];

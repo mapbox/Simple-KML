@@ -43,9 +43,9 @@
 
 @synthesize icon;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -73,7 +73,7 @@
                 
                 CXMLNode *href = [child childAtIndex:1];
                 
-                NSData *data;
+                NSData *data = nil;
                 
                 if ([self cacheObjectForKey:[href stringValue]])
                     data = [self cacheObjectForKey:[href stringValue]];
@@ -93,15 +93,11 @@
                         return nil;
                     }
                     
-                    data = [NSData dataWithContentsOfURL:imageURL];
+                    if ([imageURL scheme])
+                        data = [NSData dataWithContentsOfURL:imageURL];
                     
-                    if ( ! data)
-                    {
-                        NSString *name = [[[[imageURL relativePath] lastPathComponent] componentsSeparatedByString:@"."] objectAtIndex:0];
-                        NSString *ext  = [[[[imageURL relativePath] lastPathComponent] componentsSeparatedByString:@"."] lastObject];
-                        
-                        data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:ext]];
-                    }
+                    else
+                        data = [SimpleKML dataFromArchiveAtPath:[sourceURL relativePath] withFilePath:[imageURL relativePath]];
                     
                     if (data)
                         [self setCacheObject:data forKey:[href stringValue]];

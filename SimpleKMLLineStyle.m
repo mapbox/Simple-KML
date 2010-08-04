@@ -40,9 +40,9 @@
 
 @synthesize width;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {

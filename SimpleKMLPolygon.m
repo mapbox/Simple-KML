@@ -41,9 +41,9 @@
 @synthesize firstInnerBoundary;
 @synthesize innerBoundaries;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -72,7 +72,7 @@
                     return nil;
                 }
                 
-                outerBoundary = [[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] error:NULL];
+                outerBoundary = [[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] sourceURL:sourceURL error:NULL];
             }
             else if ([[child name] isEqualToString:@"innerBoundaryIs"])
             {
@@ -91,7 +91,7 @@
                     return nil;
                 }
                 
-                SimpleKMLLinearRing *thisBoundary = [[[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] error:NULL] autorelease];
+                SimpleKMLLinearRing *thisBoundary = [[[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] sourceURL:sourceURL error:NULL] autorelease];
                 
                 if ( ! firstInnerBoundary)
                     firstInnerBoundary = thisBoundary;

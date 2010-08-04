@@ -34,6 +34,9 @@
 
 #import "SimpleKML.h"
 #import "SimpleKMLFeature.h"
+#import "ZipFile.h"
+#import "FileInZipInfo.h"
+#import "ZipReadStream.h"
 
 NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
@@ -66,8 +69,38 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     
     if (self != nil)
     {
-        feature = nil;
-        source  = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL] retain];
+        sourceURL = [URL retain];
+        feature   = nil;
+        
+        if ([[[URL relativePath] pathExtension] isEqualToString:@"kml"])
+        {
+            source = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL] retain];
+        }
+        else if ([[[URL relativePath] pathExtension] isEqualToString:@"kmz"])
+        {
+            NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] withFilePath:@"doc.kml"]; // TODO: find first KML, not just doc.kml
+            
+            if (sourceData)
+                source = [[NSString alloc] initWithData:sourceData encoding:NSUTF8StringEncoding];
+            
+            else
+            {
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Unable to locate top-level KML file in KMZ archive" 
+                                                                     forKey:NSLocalizedFailureReasonErrorKey];
+                
+                if (error)
+                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                
+                return nil;
+            }
+        }
+        else 
+        {
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLUnknownFileType userInfo:nil];
+            
+            return nil;
+        }
         
         NSError *parseError = nil;
         
@@ -113,7 +146,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
             
             parseError = nil;
             
-            feature = [[featureClass alloc] initWithXMLNode:featureNode error:&parseError];
+            feature = [[featureClass alloc] initWithXMLNode:featureNode sourceURL:sourceURL error:&parseError];
             
             if (parseError)
             {
@@ -148,6 +181,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
 - (void)dealloc
 {
+    [sourceURL release];
     [feature release];
     [source release];
     
@@ -187,6 +221,36 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
                                      alpha:[[parts objectAtIndex:0] floatValue]];
     
     return color;
+}
+
++ (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
+{
+    ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
+    
+    NSString *archiveName = [archivePath lastPathComponent];
+    
+    archiveName = [archiveName substringWithRange:NSMakeRange(0, [archiveName length] - 4)];
+    
+    if ( ! [archive locateFileInZip:[NSString stringWithFormat:@"%@/%@", archiveName, filePath]])
+    {
+        [archive close];
+        
+        return nil;
+    }
+    
+    FileInZipInfo *info = [archive getCurrentFileInZipInfo];
+    
+    ZipReadStream *stream = [archive readCurrentFileInZip];
+    
+    NSMutableData *data = [NSMutableData dataWithLength:info.length];
+    
+    [stream readDataWithBuffer:data];
+    
+    [stream finishedReading];
+    
+    [archive close];
+    
+    return data;
 }
 
 @end

@@ -40,9 +40,9 @@
 
 @synthesize features;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -56,7 +56,7 @@
             {
                 NSError *parseError = nil;
                 
-                id feature = [[[featureClass alloc] initWithXMLNode:child error:&parseError] autorelease];
+                id feature = [[[featureClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&parseError] autorelease];
                 
                 // only add the feature if it's one we know how to handle
                 //

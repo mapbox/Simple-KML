@@ -47,9 +47,9 @@
 @synthesize container;
 @synthesize document;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    self = [super initWithXMLNode:node error:error];
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
     if (self != nil)
     {
@@ -62,7 +62,7 @@
                 featureDescription = [[[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
             
             else if ([[child name] isEqualToString:@"Style"])
-                inlineStyle = [[SimpleKMLStyle alloc] initWithXMLNode:child error:NULL];
+                inlineStyle = [[SimpleKMLStyle alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
             
 #pragma mark TODO: we really need case folding here
             else if ([[child name] isEqualToString:@"styleUrl"])

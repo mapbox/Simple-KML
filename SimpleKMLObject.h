@@ -38,6 +38,9 @@
 
 @interface SimpleKMLObject : NSObject
 {
+    @private
+        NSURL *sourceURL;
+
     @protected
         NSString *source;
     
@@ -47,7 +50,7 @@
 
 @property (nonatomic, retain) NSString *objectID;
 
-- (id)initWithXMLNode:(CXMLNode *)node error:(NSError **)error;
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:(NSURL *)inSourceURL error:(NSError **)error;
 - (void)setCacheObject:(id)object forKey:(NSString *)key;
 - (id)cacheObjectForKey:(NSString *)key;
 
