@@ -6,7 +6,7 @@ Simple KML is a simple & lightweight parsing library for KML written in Objectiv
 
 Simple KML has been designed & built for iOS 3.2 (the iPad). There's no particular reason it couldn't run on another iOS version or be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
 
-Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXML), an Objective-C library for DOM-based XML parsing based on libxml2. 
+Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXML), an Objective-C library for DOM-based XML parsing based on libxml2, and [Objective-Zip](http://code.google.com/p/objective-zip/), a library for working with archive files, both of which are included in the download.
 
 ## Features
 
@@ -19,7 +19,11 @@ Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXM
     `SimpleKML *myKML = [SimpleKML KMLWithContentsOfFile:@"/path/to/file.kml" error:&error]`  
     `SimpleKML *myKML = [SimpleKML KMLWithContentsOfURL:[NSURL URLWithString:@"http://example.com/file.kml"] error:&error]`  
 
-* Cocoa-native behavior
+* Support for KMZ archives. 
+
+    Currently searches for a top-level `doc.kml` and retrieves icon data for bundled IconStyle entities.
+
+* Cocoa-native behavior.
 
     Native types:
 
@@ -54,7 +58,9 @@ Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXM
 
 ## Usage
 
-Include all of the Simple KML files in your Xcode project, as well as the files in the TouchXML subdirectory if you don't already use TouchXML in your project. Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on libxml2.
+Include all of the Simple KML files in your Xcode project, as well as the files in the TouchXML and Objective-Zip subdirectories if you don't already use these in your project.
+
+Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on libxml2.
 
 ## Plans, needs, bugs, etc.
 
