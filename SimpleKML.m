@@ -227,9 +227,10 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 {
     ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
     
-    NSString *archiveName = [archivePath lastPathComponent];
+    NSString *archiveName      = [archivePath lastPathComponent];
+    NSString *archiveExtension = [archivePath pathExtension];
     
-    archiveName = [archiveName substringWithRange:NSMakeRange(0, [archiveName length] - 4)];
+    archiveName = [archiveName substringWithRange:NSMakeRange(0, [archiveName length] - ([archiveExtension length] + 1))];
     
     if ( ! [archive locateFileInZip:[NSString stringWithFormat:@"%@/%@", archiveName, filePath]])
     {
@@ -250,7 +251,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     
     [archive close];
     
-    return data;
+    return [NSData dataWithData:data];
 }
 
 @end
