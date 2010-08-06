@@ -96,7 +96,7 @@
                     if ([imageURL scheme])
                         data = [NSData dataWithContentsOfURL:imageURL];
                     
-                    else
+                    else if ([[sourceURL relativePath] hasSuffix:@".kmz"])
                         data = [SimpleKML dataFromArchiveAtPath:[sourceURL relativePath] withFilePath:[imageURL relativePath]];
                     
                     if (data)
