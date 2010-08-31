@@ -232,7 +232,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     
     archiveName = [archiveName substringWithRange:NSMakeRange(0, [archiveName length] - ([archiveExtension length] + 1))];
     
-    if ( ! [archive locateFileInZip:[NSString stringWithFormat:@"%@/%@", archiveName, filePath]])
+    if ( ! [archive locateFileInZip:[NSString stringWithFormat:@"%@/%@", archiveName, filePath]] &&
+         ! [archive locateFileInZip:filePath])
     {
         [archive close];
         
