@@ -62,6 +62,8 @@ Include all of the Simple KML files in your Xcode project, as well as the files 
 
 Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on libxml2.
 
+You'll also need to link against CoreLocation.framework for a couple of the classes since they make use of Core Location constructs.
+
 ## Plans, needs, bugs, etc.
 
 If you find a bug or want to otherwise contribute, please fork the project on GitHub and contribute that way. In particular, I would like to start adding built-in testing with a library of accompanying KML test files to parse. 
