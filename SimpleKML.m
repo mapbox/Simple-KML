@@ -53,7 +53,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 @synthesize feature;
 @synthesize source;
 
-+ (SimpleKML *)KMLWithContentsofURL:(NSURL *)URL error:(NSError **)error
++ (SimpleKML *)KMLWithContentsOfURL:(NSURL *)URL error:(NSError **)error
 {
     return [[[self alloc] initWithContentsOfURL:URL error:error] autorelease];
 }
