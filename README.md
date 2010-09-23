@@ -2,6 +2,10 @@
 
 Simple KML is a simple & lightweight parsing library for KML written in Objective-C for the iOS platform.
 
+It is not meant for *drawing*, but rather for *parsing*. That is, it is up to the developer to turn the data structures returned by Simple KML into drawing code, be it for annotations in MapKit, constructs in an external mapping library, drawing paths on a UIImage, or otherwise.
+
+Simple KML is basically an XML parser with smarts about KML. It presents a hierarchical view of KML data and can turn things like Simple KML color definitions into UIColor and text coordinates into CLLocation so that you don't have to.
+
 ## Requirements
 
 Simple KML has been designed & built for iOS 3.2 (the iPad). There's no particular reason it couldn't run on another iOS version or be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
