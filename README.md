@@ -1,4 +1,4 @@
-# Simple KML: Cocoa parsing library for Keynote Markup Language
+# Simple KML: Cocoa parsing library for Keyhole Markup Language
 
 Simple KML is a simple & lightweight parsing library for KML written in Objective-C for the iOS platform.
 
