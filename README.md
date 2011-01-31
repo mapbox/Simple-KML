@@ -8,7 +8,7 @@ Simple KML is basically an XML parser with smarts about KML. It presents a hiera
 
 ## Requirements
 
-Simple KML has been designed & built for iOS 3.2 (the iPad). There's no particular reason it couldn't run on another iOS version or be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
+Simple KML has been designed & built for iOS 3.2 and greater and is currently only tested on the iPad. There's no particular reason it couldn't run on another iOS version or be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
 
 Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXML), an Objective-C library for DOM-based XML parsing based on libxml2, and [Objective-Zip](http://code.google.com/p/objective-zip/), a library for working with archive files, both of which are included in the download.
 
@@ -25,7 +25,7 @@ Simple KML depends on [TouchXML](http://code.google.com/p/touchcode/wiki/TouchXM
 
 * Support for KMZ archives. 
 
-    Currently searches for a top-level `doc.kml` and retrieves icon data for bundled IconStyle entities.
+    Currently searches for a top-level KML file in the archive and retrieves icon data for bundled IconStyle entities.
 
 * Cocoa-native behavior.
 
@@ -74,6 +74,6 @@ If you find a bug or want to otherwise contribute, please fork the project on Gi
 
 ## License
 
-Copyright (c) 2010 Code Sorcery Workshop, LLC and Development Seed, Inc.
+Copyright (c) 2010-2011 Code Sorcery Workshop, LLC and Development Seed, Inc.
 
 The Simple KML library should be accompanied by a LICENSE file. This file contains the license relevant to this distribution. If no license exists, please contact Justin R. Miller at <[incanus@codesorcery.net](mailto:incanus@codesorcery.net)>.
