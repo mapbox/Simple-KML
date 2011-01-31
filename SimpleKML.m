@@ -43,6 +43,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 @interface SimpleKML (SimpleKMLPrivate)
 
 - (id)initWithContentsOfFile:(NSString *)path error:(NSError **)error;
++ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath;
 
 @end
 
@@ -78,7 +79,8 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         }
         else if ([[[URL relativePath] pathExtension] isEqualToString:@"kmz"])
         {
-            NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] withFilePath:@"doc.kml"]; // TODO: find first KML, not just doc.kml
+            NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] 
+                                                     withFilePath:[SimpleKML topLevelKMLFilePathInArchiveAtPath:[URL relativePath]]];
             
             if (sourceData)
                 source = [[NSString alloc] initWithData:sourceData encoding:NSUTF8StringEncoding];
@@ -223,17 +225,32 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     return color;
 }
 
++ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath
+{
+    ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
+    
+    NSArray *files = [archive listFileInZipInfos];
+    
+    for (FileInZipInfo *file in files)
+    {
+        // look for either "<archive name>/<file name>.kml" or just plain "<file name>.kml"
+        //
+        if ([[[file name] componentsSeparatedByString:@"/"] count] < 3 && [[[file name] pathExtension] isEqualToString:@"kml"])
+        {
+            [archive close];
+            
+            return [file name];
+        }
+    }
+    
+    return nil;
+}
+
 + (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
 {
     ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
     
-    NSString *archiveName      = [archivePath lastPathComponent];
-    NSString *archiveExtension = [archivePath pathExtension];
-    
-    archiveName = [archiveName substringWithRange:NSMakeRange(0, [archiveName length] - ([archiveExtension length] + 1))];
-    
-    if ( ! [archive locateFileInZip:[NSString stringWithFormat:@"%@/%@", archiveName, filePath]] &&
-         ! [archive locateFileInZip:filePath])
+    if ( ! [archive locateFileInZip:filePath])
     {
         [archive close];
         
