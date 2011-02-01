@@ -125,11 +125,22 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         
         CXMLElement *rootElement = [document rootElement];
         
-        // the root <kml> element should only have 0 or 1 children, plus the <kml> open & close
+        // find the first element node child of the root
         //
-        if ([rootElement childCount] < 2 || [rootElement childCount] > 3)
+        CXMLNode *featureNode = nil;
+        
+        for (CXMLNode *child in [rootElement children])
         {
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (root element has invalid child object count)" 
+            if ([child kind] == XML_ELEMENT_NODE)
+            {
+                featureNode = child;
+                break;
+            }
+        }
+        
+        if ( ! featureNode)
+        {
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (root element has no valid child node)" 
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
             if (error)
@@ -140,36 +151,31 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         
         // build up our Feature if we have one
         //
-        if ([rootElement childCount] == 3)
+        Class featureClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [featureNode name]]);
+        
+        parseError = nil;
+        
+        feature = [[featureClass alloc] initWithXMLNode:featureNode sourceURL:sourceURL error:&parseError];
+        
+        if (parseError)
         {
-            CXMLNode *featureNode = [rootElement childAtIndex:1];
+            if (error)
+                *error = parseError;
             
-            Class featureClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [featureNode name]]);
+            return nil;
+        }
+        
+        // we can only handle Feature for now
+        //
+        if ( ! featureClass || ! [feature isKindOfClass:[SimpleKMLFeature class]])
+        {
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Root element contains a child object unknown to this library" 
+                                                                 forKey:NSLocalizedFailureReasonErrorKey];
             
-            parseError = nil;
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLUnknownObject userInfo:userInfo];
             
-            feature = [[featureClass alloc] initWithXMLNode:featureNode sourceURL:sourceURL error:&parseError];
-            
-            if (parseError)
-            {
-                if (error)
-                    *error = parseError;
-                
-                return nil;
-            }
-            
-            // we can only handle Feature for now
-            //
-            if ( ! featureClass || ! [feature isKindOfClass:[SimpleKMLFeature class]])
-            {
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Root element contains a child object unknown to this library" 
-                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                
-                if (error)
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLUnknownObject userInfo:userInfo];
-                
-                return nil;
-            }
+            return nil;
         }
     }
     
