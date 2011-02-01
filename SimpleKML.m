@@ -131,7 +131,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         
         for (CXMLNode *child in [rootElement children])
         {
-            if ([child kind] == XML_ELEMENT_NODE)
+            if ([child kind] == CXMLElementKind)
             {
                 featureNode = child;
                 break;
