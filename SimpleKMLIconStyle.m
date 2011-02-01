@@ -60,7 +60,20 @@
 #pragma mark TODO: we should be case folding here
             if ([[child name] isEqualToString:@"Icon"])
             {
-                if ([child childCount] != 3)
+                // find the first element node child of the root
+                //
+                CXMLNode *href = nil;
+                
+                for (CXMLNode *grandchild in [child children])
+                {
+                    if ([grandchild kind] == CXMLElementKind)
+                    {
+                        href = grandchild;
+                        break;
+                    }
+                }
+                
+                if ( ! href)
                 {
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (no href specified for IconStyle Icon)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
@@ -70,9 +83,7 @@
                     
                     return nil;
                 }
-                
-                CXMLNode *href = [child childAtIndex:1];
-                
+
                 NSData *data = nil;
                 
                 if ([self cacheObjectForKey:[href stringValue]])

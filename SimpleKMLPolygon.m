@@ -57,11 +57,16 @@
         {
             if ([[child name] isEqualToString:@"outerBoundaryIs"])
             {
-                NSArray *boundaryChildren = [child children];
-                
-                // there should only be one child of this boundary
-                //
-                if ([boundaryChildren count] != 3)
+                for (CXMLNode *grandchild in [child children])
+                {
+                    if ([grandchild kind] == CXMLElementKind)
+                    {
+                        outerBoundary = [[SimpleKMLLinearRing alloc] initWithXMLNode:grandchild sourceURL:sourceURL error:NULL];
+                        break;
+                    }
+                }
+
+                if ( ! outerBoundary)
                 {
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LinearRings in Polygon boundary)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
@@ -71,16 +76,21 @@
                     
                     return nil;
                 }
-                
-                outerBoundary = [[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] sourceURL:sourceURL error:NULL];
             }
             else if ([[child name] isEqualToString:@"innerBoundaryIs"])
             {
-                NSArray *boundaryChildren = [child children];
+                SimpleKMLLinearRing *thisBoundary = nil;
                 
-                // there should only be one child of this boundary
-                //
-                if ([boundaryChildren count] != 3)
+                for (CXMLNode *grandchild in [child children])
+                {
+                    if ([grandchild kind] == CXMLElementKind)
+                    {
+                        thisBoundary = [[[SimpleKMLLinearRing alloc] initWithXMLNode:grandchild sourceURL:sourceURL error:NULL] autorelease];
+                        break;
+                    }
+                }
+                
+                if ( ! thisBoundary)
                 {
                     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of LinearRings in Polygon boundary)" 
                                                                          forKey:NSLocalizedFailureReasonErrorKey];
@@ -90,8 +100,6 @@
                     
                     return nil;
                 }
-                
-                SimpleKMLLinearRing *thisBoundary = [[[SimpleKMLLinearRing alloc] initWithXMLNode:[boundaryChildren objectAtIndex:1] sourceURL:sourceURL error:NULL] autorelease];
                 
                 if ( ! firstInnerBoundary)
                     firstInnerBoundary = thisBoundary;
