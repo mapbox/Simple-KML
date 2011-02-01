@@ -73,11 +73,11 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         sourceURL = [URL retain];
         feature   = nil;
         
-        if ([[[URL relativePath] pathExtension] isEqualToString:@"kml"])
+        if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kml"])
         {
             source = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL] retain];
         }
-        else if ([[[URL relativePath] pathExtension] isEqualToString:@"kmz"])
+        else if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kmz"])
         {
             NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] 
                                                      withFilePath:[SimpleKML topLevelKMLFilePathInArchiveAtPath:[URL relativePath]]];
