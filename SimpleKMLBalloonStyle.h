@@ -42,7 +42,7 @@
     UIColor *textColor;
 }
 
-@property (nonatomic, retain) UIColor *backgroundColor;
-@property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, retain, readonly) UIColor *backgroundColor;
+@property (nonatomic, retain, readonly) UIColor *textColor;
 
 @end

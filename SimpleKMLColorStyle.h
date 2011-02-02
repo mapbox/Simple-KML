@@ -41,6 +41,6 @@
     UIColor *color;
 }
 
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, retain, readonly) UIColor *color;
 
 @end

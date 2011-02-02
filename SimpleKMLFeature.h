@@ -52,12 +52,12 @@
     SimpleKMLDocument *document;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *featureDescription;
-@property (nonatomic, retain) NSString *sharedStyleID;
+@property (nonatomic, retain, readonly) NSString *name;
+@property (nonatomic, retain, readonly) NSString *featureDescription;
+@property (nonatomic, retain, readonly) NSString *sharedStyleID;
+@property (nonatomic, retain, readonly) SimpleKMLStyle *inlineStyle;
+@property (nonatomic, retain, readonly) SimpleKMLStyle *style;
 @property (nonatomic, assign) SimpleKMLStyle *sharedStyle;
-@property (nonatomic, retain) SimpleKMLStyle *inlineStyle;
-@property (nonatomic, retain) SimpleKMLStyle *style;
 @property (nonatomic, assign) SimpleKMLContainer *container;
 @property (nonatomic, assign) SimpleKMLDocument *document;
 

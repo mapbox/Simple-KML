@@ -47,10 +47,10 @@
     SimpleKMLGeometry *geometry;
 }
 
-@property (nonatomic, retain) SimpleKMLGeometry *geometry;
-@property (nonatomic, retain) SimpleKMLPoint *point;
-@property (nonatomic, retain) SimpleKMLPolygon *polygon;
-@property (nonatomic, retain) SimpleKMLLineString *lineString;
-@property (nonatomic, retain) SimpleKMLLinearRing *linearRing;
+@property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
+@property (nonatomic, retain, readonly) SimpleKMLPoint *point;
+@property (nonatomic, retain, readonly) SimpleKMLPolygon *polygon;
+@property (nonatomic, retain, readonly) SimpleKMLLineString *lineString;
+@property (nonatomic, retain, readonly) SimpleKMLLinearRing *linearRing;
 
 @end

@@ -41,6 +41,6 @@
     UIImage *icon;
 }
 
-@property (nonatomic, retain) UIImage *icon; // automatically gets scale, heading, and parent color applied
+@property (nonatomic, retain, readonly) UIImage *icon; // automatically gets scale, heading, and parent color applied
 
 @end

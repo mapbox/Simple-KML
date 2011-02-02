@@ -49,9 +49,9 @@
     SimpleKMLBalloonStyle *balloonStyle;
 }
 
-@property (nonatomic, retain) SimpleKMLIconStyle *iconStyle;
-@property (nonatomic, retain) SimpleKMLLineStyle *lineStyle;
-@property (nonatomic, retain) SimpleKMLPolyStyle *polyStyle;
-@property (nonatomic, retain) SimpleKMLBalloonStyle *balloonStyle;
+@property (nonatomic, retain, readonly) SimpleKMLIconStyle *iconStyle;
+@property (nonatomic, retain, readonly) SimpleKMLLineStyle *lineStyle;
+@property (nonatomic, retain, readonly) SimpleKMLPolyStyle *polyStyle;
+@property (nonatomic, retain, readonly) SimpleKMLBalloonStyle *balloonStyle;
 
 @end

@@ -48,7 +48,7 @@
         NSString *objectID;
 }
 
-@property (nonatomic, retain) NSString *objectID;
+@property (nonatomic, retain, readonly) NSString *objectID;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:(NSURL *)inSourceURL error:(NSError **)error;
 - (void)setCacheObject:(id)object forKey:(NSString *)key;

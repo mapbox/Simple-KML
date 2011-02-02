@@ -41,6 +41,6 @@
     NSArray *coordinates;
 }
 
-@property (nonatomic, retain) NSArray *coordinates;
+@property (nonatomic, retain, readonly) NSArray *coordinates;
 
 @end

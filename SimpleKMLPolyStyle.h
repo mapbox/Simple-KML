@@ -42,7 +42,7 @@
     BOOL outline;
 }
 
-@property (nonatomic, assign) BOOL fill;
-@property (nonatomic, assign) BOOL outline;
+@property (nonatomic, assign, readonly) BOOL fill;
+@property (nonatomic, assign, readonly) BOOL outline;
 
 @end

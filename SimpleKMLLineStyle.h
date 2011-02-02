@@ -41,6 +41,6 @@
     CGFloat width;
 }
 
-@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign, readonly) CGFloat width;
 
 @end
