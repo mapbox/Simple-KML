@@ -129,14 +129,24 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         //
         CXMLNode *featureNode = nil;
         
-        for (CXMLNode *child in [rootElement children])
+        // some KML documents seem to leave off the required top-level <kml> element
+        //
+        if ([[rootElement name] isEqualToString:@"kml"])
         {
-            if ([child kind] == CXMLElementKind)
+            for (CXMLNode *child in [rootElement children])
             {
-                featureNode = child;
-                break;
+                if ([child kind] == CXMLElementKind)
+                {
+                    featureNode = child;
+                    break;
+                }
             }
         }
+
+        // just support a top-level <Document> for now if <kml> is missing
+        //
+        else if ([[rootElement name] isEqualToString:@"Document"])
+            featureNode = rootElement;
         
         if ( ! featureNode)
         {
