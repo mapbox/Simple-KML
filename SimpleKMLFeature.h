@@ -37,7 +37,6 @@
 #import "SimpleKMLObject.h"
 
 @class SimpleKMLStyle;
-@class SimpleKMLContainer;
 @class SimpleKMLDocument;
 
 @interface SimpleKMLFeature : SimpleKMLObject
@@ -48,7 +47,6 @@
     SimpleKMLStyle *sharedStyle;
     SimpleKMLStyle *inlineStyle;
     SimpleKMLStyle *style;
-    SimpleKMLContainer *container;
     SimpleKMLDocument *document;
 }
 
@@ -58,7 +56,6 @@
 @property (nonatomic, retain, readonly) SimpleKMLStyle *inlineStyle;
 @property (nonatomic, retain, readonly) SimpleKMLStyle *style;
 @property (nonatomic, assign) SimpleKMLStyle *sharedStyle;
-@property (nonatomic, assign) SimpleKMLContainer *container;
 @property (nonatomic, assign) SimpleKMLDocument *document;
 
 @end

@@ -35,10 +35,12 @@
 #import "SimpleKMLContainer.h"
 #import "SimpleKMLFeature.h"
 #import "SimpleKMLDocument.h"
+#import "SimpleKMLPlacemark.h"
 
 @implementation SimpleKMLContainer
 
 @synthesize features;
+@synthesize flattenedPlacemarks;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
@@ -46,7 +48,13 @@
     
     if (self != nil)
     {
+        NSError *parseError;
+        
+        // find child features
+        //
         NSMutableArray *featuresArray = [NSMutableArray array];
+
+        NSMutableDictionary *alreadyParsedFeatures = [NSMutableDictionary dictionary];
         
         for (CXMLNode *child in [node children])
         {
@@ -54,7 +62,7 @@
             
             if (featureClass)
             {
-                NSError *parseError = nil;
+                parseError = nil;
                 
                 id feature = [[[featureClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&parseError] autorelease];
                 
@@ -62,17 +70,43 @@
                 //
                 if ( ! parseError && [feature isKindOfClass:[SimpleKMLFeature class]])
                 {
-                    ((SimpleKMLFeature *)feature).container = self;
-                    
                     if ([self isMemberOfClass:[SimpleKMLDocument class]])
                         ((SimpleKMLFeature *)feature).document = (SimpleKMLDocument *)self;
                     
                     [featuresArray addObject:feature];
+                    
+                    if ([feature isKindOfClass:[SimpleKMLPlacemark class]])
+                        [alreadyParsedFeatures setObject:feature forKey:child];
                 }
             }
         }
         
         features = [[NSArray arrayWithArray:featuresArray] retain];
+        
+        // find all Placemark features, regardless of hierarchy
+        //
+        NSMutableArray *flattenedPlacemarksArray = [NSMutableArray array];
+        
+        for (CXMLNode *featureNode in [node nodesForXPath:@"//kml:Placemark" 
+                                        namespaceMappings:[NSDictionary dictionaryWithObject:@"http://earth.google.com/kml/2.0" forKey:@"kml"]
+                                                    error:NULL])
+        {
+            
+            if ([alreadyParsedFeatures objectForKey:featureNode])
+                [flattenedPlacemarksArray addObject:[alreadyParsedFeatures objectForKey:featureNode]];
+
+            else
+            {
+                parseError = nil;
+                
+                SimpleKMLPlacemark *placemark = [[[SimpleKMLPlacemark alloc] initWithXMLNode:featureNode sourceURL:sourceURL error:&parseError] autorelease];
+                
+                if ( ! parseError)
+                    [flattenedPlacemarksArray addObject:placemark];
+            }
+        }
+        
+        flattenedPlacemarks = [[NSArray arrayWithArray:flattenedPlacemarksArray] retain];
     }
     
     return self;
@@ -81,6 +115,7 @@
 - (void)dealloc
 {
     [features release];
+    [flattenedPlacemarks release];
     
     [super dealloc];
 }

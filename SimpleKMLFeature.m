@@ -44,7 +44,6 @@
 @synthesize sharedStyle;
 @synthesize inlineStyle;
 @synthesize style;
-@synthesize container;
 @synthesize document;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
