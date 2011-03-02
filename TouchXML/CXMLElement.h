@@ -35,16 +35,16 @@
 }
 
 - (NSArray *)elementsForName:(NSString *)name;
-//- (NSArray *)elementsForLocalName:(NSString *)localName URI:(NSString *)URI;
+- (NSArray *)elementsForLocalName:(NSString *)localName URI:(NSString *)URI;
 
 - (NSArray *)attributes;
 - (CXMLNode *)attributeForName:(NSString *)name;
-//- (CXMLNode *)attributeForLocalName:(NSString *)localName URI:(NSString *)URI;
+- (CXMLNode *)attributeForLocalName:(NSString *)localName URI:(NSString *)URI;
 
-//- (NSArray *)namespaces; //primitive
-//- (CXMLNode *)namespaceForPrefix:(NSString *)name;
-//- (CXMLNode *)resolveNamespaceForName:(NSString *)name;
-//- (NSString *)resolvePrefixForNamespaceURI:(NSString *)namespaceURI;
+- (NSArray *)namespaces; //primitive
+- (CXMLNode *)namespaceForPrefix:(NSString *)name;
+- (CXMLNode *)resolveNamespaceForName:(NSString *)name;
+- (NSString *)resolvePrefixForNamespaceURI:(NSString *)namespaceURI;
 
 //- (NSString*)_XMLStringWithOptions:(NSUInteger)options appendingToString:(NSMutableString*)str;
 @end

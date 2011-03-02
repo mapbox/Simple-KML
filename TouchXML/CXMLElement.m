@@ -31,6 +31,8 @@
 
 #import "CXMLNode_PrivateExtensions.h"
 
+#import "CXMLNamespaceNode.h"
+
 @implementation CXMLElement
 
 - (NSArray *)elementsForName:(NSString *)name
@@ -86,11 +88,111 @@ while (theCurrentNode != NULL)
 return(NULL);
 }
 
-//- (CXMLNode *)attributeForLocalName:(NSString *)localName URI:(NSString *)URI;
-//- (NSArray *)namespaces
-//- (CXMLNode *)namespaceForPrefix:(NSString *)name;
-//- (CXMLNode *)resolveNamespaceForName:(NSString *)name;
-//- (NSString *)resolvePrefixForNamespaceURI:(NSString *)namespaceURI;
+- (CXMLNode *)attributeForLocalName:(NSString *)localName URI:(NSString *)URI
+{
+    if (URI == nil)
+        return [self attributeForName:localName];
+    
+    // TODO -- look for native libxml2 function for finding a named attribute (like xmlGetProp)
+    const xmlChar *theLocalName = (const xmlChar *)[localName UTF8String];
+    const xmlChar *theNamespaceName = (const xmlChar *)[URI UTF8String];
+    
+    xmlAttrPtr theCurrentNode = _node->properties;
+    while (theCurrentNode != NULL)
+    {
+        if (theCurrentNode->ns && theCurrentNode->ns->href &&
+            xmlStrcmp(theLocalName, theCurrentNode->name) == 0 &&
+            xmlStrcmp(theNamespaceName, theCurrentNode->ns->href) == 0)
+        {
+            CXMLNode *theAttribute = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
+            return(theAttribute);
+        }
+        theCurrentNode = theCurrentNode->next;
+    }
+    return(NULL);
+}
+
+- (NSArray *)namespaces
+{
+    NSMutableArray *theNamespaces = [[[NSMutableArray alloc] init] autorelease];
+    xmlNsPtr theCurrentNamespace = _node->nsDef;
+    
+    while (theCurrentNamespace != NULL)
+    {
+        NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
+        NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
+        CXMLNamespaceNode *theNode = [[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self];
+        [theNamespaces addObject:theNode];
+        [theNode release];              
+        
+        theCurrentNamespace = theCurrentNamespace->next;
+    }
+    
+    return theNamespaces;
+}
+
+- (CXMLNode *)namespaceForPrefix:(NSString *)name
+{
+    const xmlChar *thePrefix = (const xmlChar *)[name UTF8String];
+    xmlNsPtr theCurrentNamespace = _node->nsDef;
+    
+    while (theCurrentNamespace != NULL)
+    {
+        if (xmlStrcmp(theCurrentNamespace->prefix, thePrefix) == 0)
+        {
+            NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
+            NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
+            return [[[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self] autorelease];
+        }                       
+        theCurrentNamespace = theCurrentNamespace->next;
+    }
+    return nil;
+}
+
+- (CXMLNode *)resolveNamespaceForName:(NSString *)name
+{
+    NSRange split = [name rangeOfString:@":"];
+    
+    if (split.length > 0)
+        return [self namespaceForPrefix:[name substringToIndex:split.location]];
+    
+    xmlNsPtr theCurrentNamespace = _node->nsDef;
+    
+    while (theCurrentNamespace != NULL)
+    {
+        if (theCurrentNamespace->prefix == 0 
+            || (theCurrentNamespace->prefix)[0] == 0)
+        {
+            NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
+            NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
+            return [[[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self] autorelease];
+        }                       
+        theCurrentNamespace = theCurrentNamespace->next;
+    }
+    
+    return nil;
+}
+
+- (NSString *)resolvePrefixForNamespaceURI:(NSString *)namespaceURI
+{
+    const xmlChar *theXMLURI = (const xmlChar *)[namespaceURI UTF8String];
+    
+    xmlNsPtr theCurrentNamespace = _node->nsDef;
+    
+    while (theCurrentNamespace != NULL)
+    {
+        if (xmlStrcmp(theCurrentNamespace->href, theXMLURI) == 0)
+        {
+            if(theCurrentNamespace->prefix) 
+                return [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix];
+            
+            return @"";
+        }                       
+        theCurrentNamespace = theCurrentNamespace->next;
+    }
+    return nil;
+}
+
 
 //- (NSString*)_XMLStringWithOptions:(NSUInteger)options appendingToString:(NSMutableString*)str
 //{
