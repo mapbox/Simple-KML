@@ -159,6 +159,9 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
             return nil;
         }
         
+        // testing
+        NSString *tempName = [featureNode name];
+        
         // build up our Feature if we have one
         //
         Class featureClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [featureNode name]]);

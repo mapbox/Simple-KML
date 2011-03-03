@@ -35,6 +35,7 @@
 #import "SimpleKMLDocument.h"
 #import "SimpleKMLStyle.h"
 #import "SimpleKMLFeature.h"
+#import "SimpleKMLStyleSelector.h"
 
 @implementation SimpleKMLDocument
 
@@ -56,7 +57,8 @@
             {
                 id thisChild = [[[childClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
                 
-                if (thisChild && [thisChild isKindOfClass:[SimpleKMLStyle class]])
+                
+                if (thisChild && [thisChild isKindOfClass:[SimpleKMLStyleSelector class]])
                     [parsedStyles addObject:thisChild];
             }
         }
@@ -64,12 +66,17 @@
         sharedStyles = [[NSArray arrayWithArray:parsedStyles] retain];
 
         for (SimpleKMLFeature *feature in features)
-            if (feature.sharedStyleID && ! feature.sharedStyle)
-                feature.sharedStyle = [self sharedStyleWithID:feature.sharedStyleID];
+            if (feature.sharedStyleID && ! feature.sharedStyle){
+                // TODO:  Is it possible this could be a style map?  If so then SimpleKMLFeature.sharedStyle needs to be of type
+                // SimpleKMLStyleSelector
+                feature.sharedStyle = (SimpleKMLStyle*)[self sharedStyleWithID:feature.sharedStyleID];
+            }
+        
     }
     
     return self;
 }
+
 
 - (void)dealloc
 {
@@ -80,7 +87,8 @@
 
 #pragma mark -
 
-- (SimpleKMLStyle *)sharedStyleWithID:(NSString *)styleID
+// This can return a style or a stylemap
+- (SimpleKMLStyleSelector *)sharedStyleWithID:(NSString *)styleID
 {
     for (SimpleKMLStyle *theStyle in self.sharedStyles)
         if ([[theStyle objectID] isEqualToString:styleID])

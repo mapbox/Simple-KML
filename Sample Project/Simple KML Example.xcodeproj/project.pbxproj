@@ -15,8 +15,11 @@
 		2899E5220DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* Simple_KML_ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* Simple_KML_ExampleViewController.m */; };
-		D7874B8E131EF75000ADD2C4 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D7874B8D131EF75000ADD2C4 /* CXMLNamespaceNode.m */; };
 		D7874B91131EF99400ADD2C4 /* SimpleKMLStyleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D7874B90131EF99400ADD2C4 /* SimpleKMLStyleMap.m */; };
+		D7874B94131F0F3300ADD2C4 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D7874B93131F0F3200ADD2C4 /* CXMLNamespaceNode.m */; };
+		D7874B96131FCCA500ADD2C4 /* ChineseAviation.kmz in Resources */ = {isa = PBXBuildFile; fileRef = D7874B95131FCCA500ADD2C4 /* ChineseAviation.kmz */; };
+		D7BD33C0131FE1B900493240 /* NID_Demo.kmz in Resources */ = {isa = PBXBuildFile; fileRef = D7BD33BF131FE1B900493240 /* NID_Demo.kmz */; };
+		D7BD33CC1320339400493240 /* Simple_KML_Point_Placemark.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BD33CB1320339400493240 /* Simple_KML_Point_Placemark.m */; };
 		DD4CEFFB124AAC4800597565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CEFFA124AAC4800597565 /* MapKit.framework */; };
 		DD4CF546124AAF2B00597565 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D4124AAF2B00597565 /* ioapi.c */; };
 		DD4CF547124AAF2B00597565 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D6124AAF2B00597565 /* mztools.c */; };
@@ -89,10 +92,14 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Simple_KML_Example_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simple_KML_Example_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simple_KML_Example-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D7874B8C131EF75000ADD2C4 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNamespaceNode.h; sourceTree = "<group>"; };
-		D7874B8D131EF75000ADD2C4 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNamespaceNode.m; sourceTree = "<group>"; };
 		D7874B8F131EF99400ADD2C4 /* SimpleKMLStyleMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLStyleMap.h; path = ../SimpleKMLStyleMap.h; sourceTree = "<group>"; };
 		D7874B90131EF99400ADD2C4 /* SimpleKMLStyleMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLStyleMap.m; path = ../SimpleKMLStyleMap.m; sourceTree = "<group>"; };
+		D7874B92131F0F3200ADD2C4 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNamespaceNode.h; sourceTree = "<group>"; };
+		D7874B93131F0F3200ADD2C4 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNamespaceNode.m; sourceTree = "<group>"; };
+		D7874B95131FCCA500ADD2C4 /* ChineseAviation.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = ChineseAviation.kmz; sourceTree = "<group>"; };
+		D7BD33BF131FE1B900493240 /* NID_Demo.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; path = NID_Demo.kmz; sourceTree = "<group>"; };
+		D7BD33CA1320339400493240 /* Simple_KML_Point_Placemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simple_KML_Point_Placemark.h; sourceTree = "<group>"; };
+		D7BD33CB1320339400493240 /* Simple_KML_Point_Placemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simple_KML_Point_Placemark.m; sourceTree = "<group>"; };
 		DD4CEFFA124AAC4800597565 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD4CF00B124AACA900597565 /* example.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.kml; sourceTree = "<group>"; };
 		DD4CF4D1124AAF2B00597565 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -231,6 +238,8 @@
 				1D3623250D0F684500981E51 /* Simple_KML_ExampleAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* Simple_KML_ExampleViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* Simple_KML_ExampleViewController.m */,
+				D7BD33CA1320339400493240 /* Simple_KML_Point_Placemark.h */,
+				D7BD33CB1320339400493240 /* Simple_KML_Point_Placemark.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -271,6 +280,8 @@
 				2899E5210DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */,
+				D7BD33BF131FE1B900493240 /* NID_Demo.kmz */,
+				D7874B95131FCCA500ADD2C4 /* ChineseAviation.kmz */,
 				DD4CF00B124AACA900597565 /* example.kml */,
 			);
 			name = Resources;
@@ -297,23 +308,27 @@
 				DD4CF4D0124AAF2B00597565 /* Objective-Zip */,
 				DD4CF4FE124AAF2B00597565 /* SimpleKML.m */,
 				DD4CF501124AAF2B00597565 /* SimpleKML.h */,
+				DD4CF53F124AAF2B00597565 /* SimpleKMLContainer.h */,
 				DD4CF502124AAF2B00597565 /* SimpleKMLContainer.m */,
+				DD4CF539124AAF2B00597565 /* SimpleKMLIconStyle.h */,
 				DD4CF4FF124AAF2B00597565 /* SimpleKMLIconStyle.m */,
 				DD4CF503124AAF2B00597565 /* SimpleKMLStyle.m */,
+				DD4CF53E124AAF2B00597565 /* SimpleKMLDocument.h */,
 				DD4CF504124AAF2B00597565 /* SimpleKMLDocument.m */,
 				DD4CF505124AAF2B00597565 /* SimpleKMLPlacemark.m */,
 				DD4CF506124AAF2B00597565 /* SimpleKMLPolyStyle.m */,
 				DD4CF507124AAF2B00597565 /* SimpleKMLPolygon.m */,
+				DD4CF50F124AAF2B00597565 /* SimpleKMLObject.m */,
+				DD4CF510124AAF2B00597565 /* SimpleKMLObject.h */,
+				DD4CF511124AAF2B00597565 /* SimpleKMLFeature.h */,
 				DD4CF508124AAF2B00597565 /* SimpleKMLFeature.m */,
 				DD4CF509124AAF2B00597565 /* SimpleKMLLineString.m */,
 				DD4CF50A124AAF2B00597565 /* SimpleKMLLineStyle.m */,
 				DD4CF50B124AAF2B00597565 /* SimpleKMLLinearRing.m */,
+				DD4CF534124AAF2B00597565 /* SimpleKMLPoint.h */,
 				DD4CF50C124AAF2B00597565 /* SimpleKMLPoint.m */,
 				DD4CF50D124AAF2B00597565 /* SimpleKMLColorStyle.m */,
 				DD4CF50E124AAF2B00597565 /* SimpleKMLBalloonStyle.m */,
-				DD4CF50F124AAF2B00597565 /* SimpleKMLObject.m */,
-				DD4CF510124AAF2B00597565 /* SimpleKMLObject.h */,
-				DD4CF511124AAF2B00597565 /* SimpleKMLFeature.h */,
 				DD4CF512124AAF2B00597565 /* TouchXML */,
 				DD4CF52D124AAF2B00597565 /* SimpleKMLSubStyle.m */,
 				DD4CF52E124AAF2B00597565 /* SimpleKMLSubStyle.h */,
@@ -322,18 +337,14 @@
 				DD4CF531124AAF2B00597565 /* SimpleKMLStyle.h */,
 				DD4CF532124AAF2B00597565 /* SimpleKMLPolyStyle.h */,
 				DD4CF533124AAF2B00597565 /* SimpleKMLPolygon.h */,
-				DD4CF534124AAF2B00597565 /* SimpleKMLPoint.h */,
 				DD4CF535124AAF2B00597565 /* SimpleKMLPlacemark.h */,
 				DD4CF536124AAF2B00597565 /* SimpleKMLLineStyle.h */,
 				DD4CF537124AAF2B00597565 /* SimpleKMLLineString.h */,
 				DD4CF538124AAF2B00597565 /* SimpleKMLLinearRing.h */,
-				DD4CF539124AAF2B00597565 /* SimpleKMLIconStyle.h */,
 				DD4CF53A124AAF2B00597565 /* SimpleKMLGeometry.m */,
 				DD4CF53B124AAF2B00597565 /* SimpleKMLGeometry.h */,
 				DD4CF53C124AAF2B00597565 /* SimpleKMLFolder.m */,
 				DD4CF53D124AAF2B00597565 /* SimpleKMLFolder.h */,
-				DD4CF53E124AAF2B00597565 /* SimpleKMLDocument.h */,
-				DD4CF53F124AAF2B00597565 /* SimpleKMLContainer.h */,
 				DD4CF540124AAF2B00597565 /* SimpleKMLColorStyle.h */,
 				DD4CF541124AAF2B00597565 /* SimpleKMLBalloonStyle.h */,
 				DD4CF542124AAF2B00597565 /* SimpleKML_UIImage.m */,
@@ -420,8 +431,8 @@
 		DD4CF512124AAF2B00597565 /* TouchXML */ = {
 			isa = PBXGroup;
 			children = (
-				D7874B8C131EF75000ADD2C4 /* CXMLNamespaceNode.h */,
-				D7874B8D131EF75000ADD2C4 /* CXMLNamespaceNode.m */,
+				D7874B92131F0F3200ADD2C4 /* CXMLNamespaceNode.h */,
+				D7874B93131F0F3200ADD2C4 /* CXMLNamespaceNode.m */,
 				DD4CF513124AAF2B00597565 /* Creation */,
 				DD4CF518124AAF2B00597565 /* CXMLDocument.h */,
 				DD4CF519124AAF2B00597565 /* CXMLDocument.m */,
@@ -516,6 +527,8 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib in Resources */,
 				DD4CF59A124AB03400597565 /* example.kml in Resources */,
+				D7874B96131FCCA500ADD2C4 /* ChineseAviation.kmz in Resources */,
+				D7BD33C0131FE1B900493240 /* NID_Demo.kmz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,8 +595,9 @@
 				DD4CF57A124AAF2B00597565 /* SimpleKMLGeometry.m in Sources */,
 				DD4CF57B124AAF2B00597565 /* SimpleKMLFolder.m in Sources */,
 				DD4CF57C124AAF2B00597565 /* SimpleKML_UIImage.m in Sources */,
-				D7874B8E131EF75000ADD2C4 /* CXMLNamespaceNode.m in Sources */,
 				D7874B91131EF99400ADD2C4 /* SimpleKMLStyleMap.m in Sources */,
+				D7874B94131F0F3300ADD2C4 /* CXMLNamespaceNode.m in Sources */,
+				D7BD33CC1320339400493240 /* Simple_KML_Point_Placemark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

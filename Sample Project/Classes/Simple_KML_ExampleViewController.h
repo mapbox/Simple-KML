@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @class MKMapView;
+@class SimpleKML;
+@class SimpleKMLFeature;
+@class SimpleKMLStyle;
 
 @interface Simple_KML_ExampleViewController : UIViewController
 {
     IBOutlet MKMapView *mapView;
+    SimpleKML *kml;
+    int depth;
 }
+
+-(void) recursivelyDrawFeature:(SimpleKMLFeature*)parentFeature;
+-(SimpleKMLStyle*) getStyleforFeature:(SimpleKMLFeature*)feature;
 
 @end

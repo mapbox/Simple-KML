@@ -36,7 +36,7 @@
 #import "SimpleKMLFeature.h"
 #import "SimpleKMLDocument.h"
 #import "SimpleKMLPlacemark.h"
-#import "CXMLNamespaceNode.h"
+#import "TouchXML/CXMLNamespaceNode.h"
 
 @implementation SimpleKMLContainer
 
@@ -104,6 +104,12 @@
          * 
          */
         NSArray *namespaces = [NSArray array];
+        
+        // testing
+        id rootDocument = [node rootDocument];
+        id rootElement = [rootDocument rootElement];
+        //typeof(rootElement);
+        id temp_namespaces = [rootElement namespaces];
         
         // check <kml> first
         //

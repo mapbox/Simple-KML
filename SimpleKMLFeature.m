@@ -94,6 +94,9 @@
     else if (sharedStyle)
         return (SimpleKMLStyle *)sharedStyle;
     
+    else if(sharedStyleID)
+        return [document sharedStyleWithID:sharedStyleID];
+    
     return nil;
 }
 

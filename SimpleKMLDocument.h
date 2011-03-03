@@ -36,7 +36,7 @@
 
 #import "SimpleKMLContainer.h"
 
-@class SimpleKMLStyle;
+@class SimpleKMLStyleSelector;
 
 @interface SimpleKMLDocument : SimpleKMLContainer
 {
@@ -47,6 +47,6 @@
 
 @property (nonatomic, retain, readonly) NSArray *sharedStyles;
 
-- (SimpleKMLStyle *)sharedStyleWithID:(NSString *)styleID;
+- (SimpleKMLStyleSelector *)sharedStyleWithID:(NSString *)styleID;
 
 @end
