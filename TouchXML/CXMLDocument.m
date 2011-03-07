@@ -42,6 +42,7 @@
 
 - (id)initWithXMLString:(NSString *)inString options:(NSUInteger)inOptions error:(NSError **)outError
 {
+#pragma unused (inOptions)
 if ((self = [super init]) != NULL)
 	{
 	NSError *theError = NULL;
@@ -97,6 +98,7 @@ return(self);
 
 - (id)initWithData:(NSData *)inData encoding:(NSStringEncoding)encoding options:(NSUInteger)inOptions error:(NSError **)outError
 {
+#pragma unused (inOptions)
 if ((self = [super init]) != NULL)
 	{
 	NSError *theError = NULL;
@@ -123,14 +125,21 @@ if ((self = [super init]) != NULL)
 			theDoc = xmlReadMemory([inData bytes], [inData length], NULL, enc, XML_PARSE_RECOVER | XML_PARSE_NOWARNING);
 			}
 		
-		if (theDoc != NULL)
+		if (theDoc != NULL && xmlDocGetRootElement(theDoc) != NULL)
 			{
 			_node = (xmlNodePtr)theDoc;
 			_node->_private = self; // Note. NOT retained (TODO think more about _private usage)
 			}
 		else
 			{
-			theError = [NSError errorWithDomain:@"CXMLErrorDomain" code:-1 userInfo:NULL];
+			xmlErrorPtr	theLastErrorPtr = xmlGetLastError();
+			NSString* message = [NSString stringWithUTF8String:
+								 (theLastErrorPtr ? theLastErrorPtr->message : "Unknown error")];
+			NSDictionary *theUserInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+										 message, NSLocalizedDescriptionKey, NULL];
+			theError = [NSError errorWithDomain:@"CXMLErrorDomain" code:1 userInfo:theUserInfo];
+								 
+			xmlResetLastError();
 			}
 		}
 
@@ -208,6 +217,7 @@ return([self XMLDataWithOptions:0]);
 
 - (NSData *)XMLDataWithOptions:(NSUInteger)options
 {
+#pragma unused (options)
 xmlChar *theBuffer = NULL;
 int theBufferSize = 0;
 xmlDocDumpMemory((xmlDocPtr)self->_node, &theBuffer, &theBufferSize);
@@ -226,7 +236,7 @@ return(theData);
 {
 id root = [self rootElement];
 NSMutableString* xmlString = [NSMutableString string];
-[root _XMLStringWithOptions:options appendingToString:xmlString];
+[xmlString appendString:[root XMLStringWithOptions:options]];
 return xmlString;
 }
 
