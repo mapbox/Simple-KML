@@ -63,7 +63,7 @@
         
         sharedStyles = [[NSArray arrayWithArray:parsedStyles] retain];
 
-        for (SimpleKMLFeature *feature in features)
+        for (SimpleKMLFeature *feature in self.flattenedPlacemarks)
             if (feature.sharedStyleID && ! feature.sharedStyle)
                 feature.sharedStyle = [self sharedStyleWithID:feature.sharedStyleID];
     }
