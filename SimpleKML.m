@@ -227,7 +227,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         
         [[NSScanner scannerWithString:part] scanHexInt:&wholeValue];
         
-        if (wholeValue < 0 || wholeValue > 255)
+        if (wholeValue > 255)
             return nil;
         
         [parts addObject:[NSNumber numberWithFloat:((CGFloat)wholeValue / (CGFloat)255)]];
