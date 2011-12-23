@@ -37,10 +37,6 @@
 #import "SimpleKMLColorStyle.h"
 
 @interface SimpleKMLPolyStyle : SimpleKMLColorStyle
-{
-    BOOL fill;
-    BOOL outline;
-}
 
 @property (nonatomic, assign, readonly) BOOL fill;
 @property (nonatomic, assign, readonly) BOOL outline;

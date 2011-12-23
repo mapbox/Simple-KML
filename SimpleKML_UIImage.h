@@ -34,7 +34,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (SimpleKML_UIImage)
+@interface UIImage (SimpleKML)
 
 - (UIImage *)imageWithWidth:(CGFloat)width height:(CGFloat)height;
 - (UIImage *)imageWithAlphaComponent:(CGFloat)alpha;

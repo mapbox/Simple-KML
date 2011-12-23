@@ -37,8 +37,6 @@
 #import "SimpleKMLObject.h"
 
 @interface SimpleKMLGeometry : SimpleKMLObject
-{
-}
 
 // abstract class
 

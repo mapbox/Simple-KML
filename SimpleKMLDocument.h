@@ -39,13 +39,10 @@
 @class SimpleKMLStyle;
 
 @interface SimpleKMLDocument : SimpleKMLContainer
-{
-    NSArray *sharedStyles;
-}
 
 // abstract class
 
-@property (nonatomic, retain, readonly) NSArray *sharedStyles;
+@property (nonatomic, strong, readonly) NSArray *sharedStyles;
 
 - (SimpleKMLStyle *)sharedStyleWithID:(NSString *)styleID;
 

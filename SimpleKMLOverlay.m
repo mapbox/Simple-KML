@@ -54,7 +54,7 @@
             {
                 NSString *colorString = [child stringValue];
                 
-                color = [[SimpleKML colorForString:colorString] retain];
+                color = [SimpleKML colorForString:colorString];
             }
             else if ([[child name] isEqualToString:@"Icon"])
             {
@@ -121,7 +121,7 @@
                     }
                 }
                 
-                icon = [[UIImage imageWithData:data] retain];
+                icon = [UIImage imageWithData:data];
                 
                 if ( ! icon)
                 {
@@ -138,14 +138,6 @@
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [color release];
-    [icon release];
-    
-    [super dealloc];
 }
 
 @end

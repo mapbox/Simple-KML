@@ -37,12 +37,8 @@
 #import "SimpleKMLFeature.h"
 
 @interface SimpleKMLContainer : SimpleKMLFeature
-{
-    NSArray *features;            // top-level <Feature> elements
-    NSArray *flattenedPlacemarks; // <Placemark> elements at all depths, regardless of hierarchy
-}
 
-@property (nonatomic, retain, readonly) NSArray *features;
-@property (nonatomic, retain, readonly) NSArray *flattenedPlacemarks;
+@property (nonatomic, strong, readonly) NSArray *features;            // top-level <Feature> elements
+@property (nonatomic, strong, readonly) NSArray *flattenedPlacemarks; // <Placemark> elements at all depths, regardless of hierarchy
 
 @end

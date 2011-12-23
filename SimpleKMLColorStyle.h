@@ -37,10 +37,7 @@
 #import "SimpleKMLSubStyle.h"
 
 @interface SimpleKMLColorStyle : SimpleKMLSubStyle
-{
-    UIColor *color;
-}
 
-@property (nonatomic, retain, readonly) UIColor *color;
+@property (nonatomic, strong, readonly) UIColor *color;
 
 @end

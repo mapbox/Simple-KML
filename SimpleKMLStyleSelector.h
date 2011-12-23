@@ -37,8 +37,6 @@
 #import "SimpleKMLObject.h"
 
 @interface SimpleKMLStyleSelector : SimpleKMLObject
-{
-}
 
 // abstract class
 

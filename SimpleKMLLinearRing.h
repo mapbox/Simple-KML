@@ -37,10 +37,7 @@
 #import "SimpleKMLGeometry.h"
 
 @interface SimpleKMLLinearRing : SimpleKMLGeometry
-{
-    NSArray *coordinates;
-}
 
-@property (nonatomic, retain, readonly) NSArray *coordinates;
+@property (nonatomic, strong, readonly) NSArray *coordinates;
 
 @end

@@ -42,16 +42,10 @@
 @class SimpleKMLBalloonStyle;
 
 @interface SimpleKMLStyle : SimpleKMLStyleSelector
-{
-    SimpleKMLIconStyle *iconStyle;
-    SimpleKMLLineStyle *lineStyle;
-    SimpleKMLPolyStyle *polyStyle;
-    SimpleKMLBalloonStyle *balloonStyle;
-}
 
-@property (nonatomic, retain, readonly) SimpleKMLIconStyle *iconStyle;
-@property (nonatomic, retain, readonly) SimpleKMLLineStyle *lineStyle;
-@property (nonatomic, retain, readonly) SimpleKMLPolyStyle *polyStyle;
-@property (nonatomic, retain, readonly) SimpleKMLBalloonStyle *balloonStyle;
+@property (nonatomic, strong, readonly) SimpleKMLIconStyle *iconStyle;
+@property (nonatomic, strong, readonly) SimpleKMLLineStyle *lineStyle;
+@property (nonatomic, strong, readonly) SimpleKMLPolyStyle *polyStyle;
+@property (nonatomic, strong, readonly) SimpleKMLBalloonStyle *balloonStyle;
 
 @end

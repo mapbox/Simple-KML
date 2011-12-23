@@ -35,10 +35,7 @@
 #import "SimpleKMLGeometry.h"
 
 @interface SimpleKMLLineString : SimpleKMLGeometry
-{
-    NSArray *coordinates;
-}
 
-@property (nonatomic, retain, readonly) NSArray *coordinates;
+@property (nonatomic, strong, readonly) NSArray *coordinates;
 
 @end

@@ -45,8 +45,8 @@
     
     if (self != nil)
     {
-        backgroundColor = [[UIColor whiteColor] retain];
-        textColor       = [[UIColor blackColor] retain];
+        backgroundColor = [UIColor whiteColor];
+        textColor       = [UIColor blackColor];
         
         for (CXMLNode *child in [node children])
         {
@@ -54,28 +54,18 @@
             {
                 NSString *colorString = [child stringValue];
              
-                [backgroundColor release];
-                backgroundColor = [[SimpleKML colorForString:colorString] retain];
+                backgroundColor = [SimpleKML colorForString:colorString];
             }
             else if ([[child name] isEqualToString:@"textColor"])
             {
                 NSString *colorString = [child stringValue];
                 
-                [textColor release];
-                textColor = [[SimpleKML colorForString:colorString] retain];
+                textColor = [SimpleKML colorForString:colorString];
             }
         }
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [backgroundColor release];
-    [textColor release];
-    
-    [super dealloc];
 }
 
 @end

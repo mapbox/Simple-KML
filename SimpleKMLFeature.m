@@ -55,31 +55,21 @@
         for (CXMLNode *child in [node children])
         {
             if ([[child name] isEqualToString:@"name"])
-                name = [[[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+                name = [[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             else if ([[child name] isEqualToString:@"description"])
-                featureDescription = [[[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+                featureDescription = [[child stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
             else if ([[child name] isEqualToString:@"Style"])
                 inlineStyle = [[SimpleKMLStyle alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
             
 #pragma mark TODO: we really need case folding here
             else if ([[child name] isEqualToString:@"styleUrl"])
-                sharedStyleID = [[[child stringValue] stringByReplacingOccurrencesOfString:@"#" withString:@""] retain];
+                sharedStyleID = [[child stringValue] stringByReplacingOccurrencesOfString:@"#" withString:@""];
         }
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [name release];
-    [featureDescription release];
-    [sharedStyleID release];
-    [inlineStyle release];
-    
-    [super dealloc];
 }
 
 #pragma mark -

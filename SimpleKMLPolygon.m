@@ -85,7 +85,7 @@
                 {
                     if ([grandchild kind] == CXMLElementKind)
                     {
-                        thisBoundary = [[[SimpleKMLLinearRing alloc] initWithXMLNode:grandchild sourceURL:sourceURL error:NULL] autorelease];
+                        thisBoundary = [[SimpleKMLLinearRing alloc] initWithXMLNode:grandchild sourceURL:sourceURL error:NULL];
                         break;
                     }
                 }
@@ -108,7 +108,7 @@
             }
         }
         
-        innerBoundaries = [[NSArray arrayWithArray:parsedInnerBoundaries] retain];
+        innerBoundaries = [NSArray arrayWithArray:parsedInnerBoundaries];
 
         // there should be one outer boundary
         //
@@ -125,15 +125,6 @@
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [outerBoundary release];
-    [firstInnerBoundary release];
-    [innerBoundaries release];
-    
-    [super dealloc];
 }
 
 @end

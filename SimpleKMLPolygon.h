@@ -39,14 +39,9 @@
 @class SimpleKMLLinearRing;
 
 @interface SimpleKMLPolygon : SimpleKMLGeometry
-{
-    SimpleKMLLinearRing *outerBoundary;
-    SimpleKMLLinearRing *firstInnerBoundary;
-    NSArray *innerBoundaries;
-}
 
-@property (nonatomic, retain, readonly) SimpleKMLLinearRing *outerBoundary;
-@property (nonatomic, assign, readonly) SimpleKMLLinearRing *firstInnerBoundary;
-@property (nonatomic, retain, readonly) NSArray *innerBoundaries;
+@property (nonatomic, strong, readonly) SimpleKMLLinearRing *outerBoundary;
+@property (nonatomic, weak, readonly) SimpleKMLLinearRing *firstInnerBoundary;
+@property (nonatomic, strong, readonly) NSArray *innerBoundaries;
 
 @end

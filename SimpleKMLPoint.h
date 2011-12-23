@@ -38,10 +38,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface SimpleKMLPoint : SimpleKMLGeometry
-{
-    @private
-        CLLocation *location;
-}
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 

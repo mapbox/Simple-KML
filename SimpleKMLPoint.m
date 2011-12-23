@@ -34,7 +34,17 @@
 
 #import "SimpleKMLPoint.h"
 
+@interface SimpleKMLPoint ()
+
+@property (nonatomic, strong) CLLocation *location;
+
+@end
+
+#pragma mark -
+
 @implementation SimpleKMLPoint
+
+@synthesize location;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
@@ -113,18 +123,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [location release];
-    
-    [super dealloc];
-}
-
 #pragma mark -
 
 - (CLLocationCoordinate2D)coordinate
 {
-    return location.coordinate;
+    return self.location.coordinate;
 }
 
 @end

@@ -43,14 +43,11 @@
 @class SimpleKMLLinearRing;
 
 @interface SimpleKMLPlacemark : SimpleKMLFeature
-{
-    SimpleKMLGeometry *geometry;
-}
 
-@property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
-@property (nonatomic, retain, readonly) SimpleKMLPoint *point;
-@property (nonatomic, retain, readonly) SimpleKMLPolygon *polygon;
-@property (nonatomic, retain, readonly) SimpleKMLLineString *lineString;
-@property (nonatomic, retain, readonly) SimpleKMLLinearRing *linearRing;
+@property (nonatomic, strong, readonly) SimpleKMLGeometry *geometry;
+@property (nonatomic, strong, readonly) SimpleKMLPoint *point;
+@property (nonatomic, strong, readonly) SimpleKMLPolygon *polygon;
+@property (nonatomic, strong, readonly) SimpleKMLLineString *lineString;
+@property (nonatomic, strong, readonly) SimpleKMLLinearRing *linearRing;
 
 @end

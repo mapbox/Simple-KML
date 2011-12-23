@@ -37,9 +37,6 @@
 #import "SimpleKMLColorStyle.h"
 
 @interface SimpleKMLLineStyle : SimpleKMLColorStyle
-{
-    CGFloat width;
-}
 
 @property (nonatomic, assign, readonly) CGFloat width;
 

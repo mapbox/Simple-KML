@@ -40,7 +40,9 @@
 
 NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
-@interface SimpleKML (SimpleKMLPrivate)
+@interface SimpleKML ()
+
+@property (nonatomic, strong) NSURL *sourceURL;
 
 - (id)initWithContentsOfFile:(NSString *)path error:(NSError **)error;
 + (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath;
@@ -53,15 +55,16 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
 @synthesize feature;
 @synthesize source;
+@synthesize sourceURL;
 
 + (SimpleKML *)KMLWithContentsOfURL:(NSURL *)URL error:(NSError **)error
 {
-    return [[[self alloc] initWithContentsOfURL:URL error:error] autorelease];
+    return [[self alloc] initWithContentsOfURL:URL error:error];
 }
 
 + (SimpleKML *)KMLWithContentsOfFile:(NSString *)path error:(NSError **)error
 {
-    return [[[self alloc] initWithContentsOfFile:path error:error] autorelease];
+    return [[self alloc] initWithContentsOfFile:path error:error];
 }
 
 - (id)initWithContentsOfURL:(NSURL *)URL error:(NSError **)error
@@ -70,12 +73,12 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     
     if (self != nil)
     {
-        sourceURL = [URL retain];
+        sourceURL = URL;
         feature   = nil;
         
         if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kml"])
         {
-            source = [[NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL] retain];
+            source = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL];
         }
         else if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kmz"])
         {
@@ -106,9 +109,9 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
         
         NSError *parseError = nil;
         
-        CXMLDocument *document = [[[CXMLDocument alloc] initWithXMLString:source
-                                                                  options:0
-                                                                    error:&parseError] autorelease];
+        CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:source
+                                                                 options:0
+                                                                   error:&parseError];
         
         // return nil if we can't properly parse this file
         //
@@ -197,15 +200,6 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
     return [self initWithContentsOfURL:[NSURL fileURLWithPath:path] error:error];
 }
 
-- (void)dealloc
-{
-    [sourceURL release];
-    [feature release];
-    [source release];
-    
-    [super dealloc];
-}
-
 #pragma mark -
 
 + (UIColor *)colorForString:(NSString *)colorString;
@@ -243,7 +237,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
 + (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath
 {
-    ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
+    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
     
     NSArray *files = [archive listFileInZipInfos];
     
@@ -264,7 +258,7 @@ NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
 + (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
 {
-    ZipFile *archive = [[[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip] autorelease];
+    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
     
     if ( ! [archive locateFileInZip:filePath])
     {

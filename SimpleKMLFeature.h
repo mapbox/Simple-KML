@@ -40,22 +40,13 @@
 @class SimpleKMLDocument;
 
 @interface SimpleKMLFeature : SimpleKMLObject
-{
-    NSString *name;
-    NSString *featureDescription;
-    NSString *sharedStyleID;
-    SimpleKMLStyle *sharedStyle;
-    SimpleKMLStyle *inlineStyle;
-    SimpleKMLStyle *style;
-    SimpleKMLDocument *document;
-}
 
-@property (nonatomic, retain, readonly) NSString *name;
-@property (nonatomic, retain, readonly) NSString *featureDescription;
-@property (nonatomic, retain, readonly) NSString *sharedStyleID;
-@property (nonatomic, retain, readonly) SimpleKMLStyle *inlineStyle;
-@property (nonatomic, retain, readonly) SimpleKMLStyle *style;
-@property (nonatomic, assign) SimpleKMLStyle *sharedStyle;
-@property (nonatomic, assign) SimpleKMLDocument *document;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *featureDescription;
+@property (nonatomic, strong, readonly) NSString *sharedStyleID;
+@property (nonatomic, strong, readonly) SimpleKMLStyle *inlineStyle;
+@property (nonatomic, strong, readonly) SimpleKMLStyle *style;
+@property (nonatomic, weak) SimpleKMLStyle *sharedStyle;
+@property (nonatomic, weak) SimpleKMLDocument *document;
 
 @end

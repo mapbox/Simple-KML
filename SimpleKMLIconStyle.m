@@ -176,17 +176,10 @@
         CGFloat newWidth  = kSimpleKMLIconStyleBaseIconSize * baseScale;
         CGFloat newHeight = kSimpleKMLIconStyleBaseIconSize * baseScale;
         
-        icon = [[baseIcon imageWithWidth:newWidth height:newHeight] retain];
+        icon = [baseIcon imageWithWidth:newWidth height:newHeight];
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [icon release];
-    
-    [super dealloc];
 }
 
 @end

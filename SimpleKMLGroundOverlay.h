@@ -39,13 +39,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface SimpleKMLGroundOverlay : SimpleKMLOverlay
-{
-    CLLocationDegrees north;
-    CLLocationDegrees south;
-    CLLocationDegrees east;
-    CLLocationDegrees west;
-    CGFloat rotation;
-}
 
 @property (nonatomic, assign, readonly) CLLocationDegrees north;
 @property (nonatomic, assign, readonly) CLLocationDegrees south;

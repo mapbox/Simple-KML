@@ -52,19 +52,12 @@
             {
                 NSString *colorString = [child stringValue];
                 
-                color = [[SimpleKML colorForString:colorString] retain];
+                color = [SimpleKML colorForString:colorString];
             }
         }
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [color release];
-    
-    [super dealloc];
 }
 
 @end

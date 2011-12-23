@@ -34,7 +34,7 @@
 
 #import "SimpleKML_UIImage.h"
 
-@implementation UIImage (SimpleKML_UIImage)
+@implementation UIImage (SimpleKML)
 
 - (UIImage *)imageWithWidth:(CGFloat)width height:(CGFloat)height
 {

@@ -34,7 +34,10 @@
 
 #import "SimpleKMLObject.h"
 
-@interface SimpleKMLObject (SimpleKMLObjectPrivate)
+@interface SimpleKMLObject ()
+
+@property (nonatomic, strong) NSURL *sourceURL;
+@property (nonatomic, strong) NSString *source;
 
 - (NSString *)cachePath;
 
@@ -45,6 +48,8 @@
 @implementation SimpleKMLObject
 
 @synthesize objectID;
+@synthesize sourceURL;
+@synthesize source;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:(NSURL *)inSourceURL error:(NSError **)error
 {
@@ -52,23 +57,14 @@
     
     if (self != nil)
     {
-        sourceURL = [inSourceURL retain];
-        source    = [[NSString stringWithString:[node XMLString]] retain];
-        objectID  = [[[[((CXMLElement *)node) attributeForName:@"id"] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+        sourceURL = inSourceURL;
+        source    = [NSString stringWithString:[node XMLString]];
+        objectID  = [[[((CXMLElement *)node) attributeForName:@"id"] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     }
     
 #pragma mark TODO: assert that abstract classes aren't being instantiated
     
     return self;
-}
-
-- (void)dealloc
-{
-    [sourceURL release];
-    [source release];
-    [objectID release];
-    
-    [super dealloc];
 }
 
 #pragma mark -

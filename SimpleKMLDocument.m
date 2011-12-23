@@ -54,14 +54,14 @@
             
             if (childClass)
             {
-                id thisChild = [[[childClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
+                id thisChild = [[childClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
                 
                 if (thisChild && [thisChild isKindOfClass:[SimpleKMLStyle class]])
                     [parsedStyles addObject:thisChild];
             }
         }
         
-        sharedStyles = [[NSArray arrayWithArray:parsedStyles] retain];
+        sharedStyles = [NSArray arrayWithArray:parsedStyles];
 
         for (SimpleKMLFeature *feature in self.flattenedPlacemarks)
             if (feature.sharedStyleID && ! feature.sharedStyle)
@@ -69,13 +69,6 @@
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [sharedStyles release];
-    
-    [super dealloc];
 }
 
 #pragma mark -

@@ -55,7 +55,7 @@
                 
                 NSArray *coordinateStrings = [[child stringValue] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
-                for (NSString *coordinateString in coordinateStrings)
+                for (__strong NSString *coordinateString in coordinateStrings)
                 {
                     coordinateString = [coordinateString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -105,13 +105,13 @@
                             return nil;
                         }
                         
-                        CLLocation *coordinate = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
+                        CLLocation *coordinate = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
                         
                         [parsedCoordinates addObject:coordinate]; 
                     }
                 }
                 
-                coordinates = [[NSArray arrayWithArray:parsedCoordinates] retain];
+                coordinates = [NSArray arrayWithArray:parsedCoordinates];
                 
                 // there should be four or more coordinates
                 //
@@ -155,13 +155,6 @@
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [coordinates release];
-    
-    [super dealloc];
 }
 
 @end

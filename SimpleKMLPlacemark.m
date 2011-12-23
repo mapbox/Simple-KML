@@ -65,10 +65,10 @@
                 
                 if (geometryClass)
                 {
-                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
+                    id thisGeometry = [[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
                     
                     if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
-                        geometry = [thisGeometry retain];
+                        geometry = thisGeometry;
                 }
             }
         }
@@ -77,19 +77,12 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [geometry release];
-    
-    [super dealloc];
-}
-
 #pragma mark -
 
 - (SimpleKMLPoint *)point
 {
     if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPoint class]])
-        return (SimpleKMLPoint *)geometry;
+        return (SimpleKMLPoint *)self.geometry;
     
     return nil;
 }
@@ -97,7 +90,7 @@
 - (SimpleKMLPolygon *)polygon
 {
     if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPolygon class]])
-        return (SimpleKMLPolygon *)geometry;
+        return (SimpleKMLPolygon *)self.geometry;
     
     return nil;
 }
@@ -105,7 +98,7 @@
 - (SimpleKMLLineString *)lineString
 {
     if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLineString class]])
-        return (SimpleKMLLineString *)geometry;
+        return (SimpleKMLLineString *)self.geometry;
     
     return nil;
 }
@@ -113,7 +106,7 @@
 - (SimpleKMLLinearRing *)linearRing
 {
     if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLinearRing class]])
-        return (SimpleKMLLinearRing *)geometry;
+        return (SimpleKMLLinearRing *)self.geometry;
     
     return nil;
 }

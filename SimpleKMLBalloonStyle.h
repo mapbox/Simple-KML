@@ -37,12 +37,8 @@
 #import "SimpleKMLSubStyle.h"
 
 @interface SimpleKMLBalloonStyle : SimpleKMLSubStyle
-{
-    UIColor *backgroundColor;
-    UIColor *textColor;
-}
 
-@property (nonatomic, retain, readonly) UIColor *backgroundColor;
-@property (nonatomic, retain, readonly) UIColor *textColor;
+@property (nonatomic, strong, readonly) UIColor *backgroundColor;
+@property (nonatomic, strong, readonly) UIColor *textColor;
 
 @end

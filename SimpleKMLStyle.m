@@ -62,37 +62,27 @@
             
             if (subStyleClass)
             {
-                id thisSubStyle = [[[subStyleClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
+                id thisSubStyle = [[subStyleClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
                 
                 if (thisSubStyle && [thisSubStyle isKindOfClass:[SimpleKMLSubStyle class]])
                 {
                     if ([thisSubStyle isKindOfClass:[SimpleKMLIconStyle class]])
-                        iconStyle = [thisSubStyle retain];
+                        iconStyle = thisSubStyle;
                     
                     else if ([thisSubStyle isKindOfClass:[SimpleKMLLineStyle class]])
-                        lineStyle = [thisSubStyle retain];
+                        lineStyle = thisSubStyle;
 
                     else if ([thisSubStyle isKindOfClass:[SimpleKMLPolyStyle class]])
-                        polyStyle = [thisSubStyle retain];
+                        polyStyle = thisSubStyle;
 
                     else if ([thisSubStyle isKindOfClass:[SimpleKMLBalloonStyle class]])
-                        balloonStyle = [thisSubStyle retain];
+                        balloonStyle = thisSubStyle;
                 }
             }
         }
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [iconStyle release];
-    [lineStyle release];
-    [polyStyle release];
-    [balloonStyle release];
-    
-    [super dealloc];
 }
 
 @end

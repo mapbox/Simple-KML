@@ -65,7 +65,7 @@
             {
                 parseError = nil;
                 
-                id feature = [[[featureClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&parseError] autorelease];
+                id feature = [[featureClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&parseError];
                 
                 // only add the feature if it's one we know how to handle
                 //
@@ -82,7 +82,7 @@
             }
         }
         
-        features = [[NSArray arrayWithArray:featuresArray] retain];
+        features = [NSArray arrayWithArray:featuresArray];
         
         // find all Placemark features, regardless of hierarchy
         //
@@ -141,9 +141,9 @@
                 {
                     parseError = nil;
                     
-                    SimpleKMLPlacemark *placemark = [[[SimpleKMLPlacemark alloc] initWithXMLNode:featureNode 
-                                                                                       sourceURL:sourceURL 
-                                                                                           error:&parseError] autorelease];
+                    SimpleKMLPlacemark *placemark = [[SimpleKMLPlacemark alloc] initWithXMLNode:featureNode 
+                                                                                      sourceURL:sourceURL 
+                                                                                          error:&parseError];
                     
                     if ( ! parseError)
                         [flattenedPlacemarksArray addObject:placemark];
@@ -151,18 +151,10 @@
             }
         }
         
-        flattenedPlacemarks = [[NSArray arrayWithArray:flattenedPlacemarksArray] retain];
+        flattenedPlacemarks = [NSArray arrayWithArray:flattenedPlacemarksArray];
     }
     
     return self;
-}
-
-- (void)dealloc
-{
-    [features release];
-    [flattenedPlacemarks release];
-    
-    [super dealloc];
 }
 
 @end

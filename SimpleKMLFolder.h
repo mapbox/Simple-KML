@@ -37,7 +37,5 @@
 #import "SimpleKMLContainer.h"
 
 @interface SimpleKMLFolder : SimpleKMLContainer
-{
-}
 
 @end
