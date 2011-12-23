@@ -72,6 +72,8 @@ You'll also need to link against CoreLocation.framework for a couple of the clas
 
 If you find a bug or want to otherwise contribute, please fork the project on GitHub and contribute that way. In particular, I would like to start adding built-in testing with a library of accompanying KML test files to parse. 
 
+There is an ARC-compatible branch in the works at `dev-arc`. It will eventually become `master` over time. 
+
 ## License
 
 Copyright (c) 2010-2011 Code Sorcery Workshop, LLC and Development Seed, Inc.
