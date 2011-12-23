@@ -3,29 +3,31 @@
 //  TouchCode
 //
 //  Created by Jonathan Wight on 03/07/08.
-//  Copyright 2008 toxicsoftware.com. All rights reserved.
+//  Copyright 2011 toxicsoftware.com. All rights reserved.
 //
-//  Permission is hereby granted, free of charge, to any person
-//  obtaining a copy of this software and associated documentation
-//  files (the "Software"), to deal in the Software without
-//  restriction, including without limitation the rights to use,
-//  copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the
-//  Software is furnished to do so, subject to the following
-//  conditions:
+//  Redistribution and use in source and binary forms, with or without modification, are
+//  permitted provided that the following conditions are met:
 //
-//  The above copyright notice and this permission notice shall be
-//  included in all copies or substantial portions of the Software.
+//     1. Redistributions of source code must retain the above copyright notice, this list of
+//        conditions and the following disclaimer.
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-//  OTHER DEALINGS IN THE SOFTWARE.
+//     2. Redistributions in binary form must reproduce the above copyright notice, this list
+//        of conditions and the following disclaimer in the documentation and/or other materials
+//        provided with the distribution.
 //
+//  THIS SOFTWARE IS PROVIDED BY TOXICSOFTWARE.COM ``AS IS'' AND ANY EXPRESS OR IMPLIED
+//  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+//  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL TOXICSOFTWARE.COM OR
+//  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+//  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+//  ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+//  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//  The views and conclusions contained in the software and documentation are those of the
+//  authors and should not be interpreted as representing official policies, either expressed
+//  or implied, of toxicsoftware.com.
 
 #import "CXMLElement.h"
 
@@ -36,29 +38,31 @@
 @implementation CXMLElement
 
 - (NSArray *)elementsForName:(NSString *)name
-{
-NSMutableArray *theElements = [NSMutableArray array];
+    {
+    NSMutableArray *theElements = [NSMutableArray array];
 
-// TODO -- native xml api?
-const xmlChar *theName = (const xmlChar *)[name UTF8String];
+    // TODO -- native xml api?
+    const xmlChar *theName = (const xmlChar *)[name UTF8String];
 
-xmlNodePtr theCurrentNode = _node->children;
-while (theCurrentNode != NULL)
-	{
-	if (theCurrentNode->type == XML_ELEMENT_NODE && xmlStrcmp(theName, theCurrentNode->name) == 0)
-		{
-		CXMLNode *theNode = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
-		[theElements addObject:theNode];
-		}
-	theCurrentNode = theCurrentNode->next;
-	}
-return(theElements);
-}
+    xmlNodePtr theCurrentNode = _node->children;
+    while (theCurrentNode != NULL)
+        {
+        if (theCurrentNode->type == XML_ELEMENT_NODE && xmlStrcmp(theName, theCurrentNode->name) == 0)
+            {
+            CXMLNode *theNode = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
+            [theElements addObject:theNode];
+            }
+        theCurrentNode = theCurrentNode->next;
+        }
+    return(theElements);
+    }
 
 - (NSArray *)elementsForLocalName:(NSString *)localName URI:(NSString *)URI
-{
+    {
 	if (URI == nil || [URI length] == 0)
+        {
 		return [self elementsForName:localName];
+        }
 	
 	NSMutableArray *theElements = [NSMutableArray array];
 	const xmlChar *theLocalName = (const xmlChar *)[localName UTF8String];
@@ -66,36 +70,36 @@ return(theElements);
 	
 	xmlNodePtr theCurrentNode = _node->children;
 	while (theCurrentNode != NULL)
-	{
+        {
 		if (theCurrentNode->type == XML_ELEMENT_NODE 
 			&& xmlStrcmp(theLocalName, theCurrentNode->name) == 0
 			&& theCurrentNode->ns
 			&& xmlStrcmp(theNamespaceName, theCurrentNode->ns->href) == 0)
-		{
+            {
 			CXMLNode *theNode = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
 			[theElements addObject:theNode];
-		}
+            }
 		theCurrentNode = theCurrentNode->next;
-	}	
+        }	
 	
 	return theElements;
-}
+    }
 
 - (NSArray *)attributes
-{
-NSMutableArray *theAttributes = [NSMutableArray array];
-xmlAttrPtr theCurrentNode = _node->properties;
-while (theCurrentNode != NULL)
-	{
-	CXMLNode *theAttribute = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
-	[theAttributes addObject:theAttribute];
-	theCurrentNode = theCurrentNode->next;
-	}
-return(theAttributes);
-}
+    {
+    NSMutableArray *theAttributes = [NSMutableArray array];
+    xmlAttrPtr theCurrentNode = _node->properties;
+    while (theCurrentNode != NULL)
+        {
+        CXMLNode *theAttribute = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
+        [theAttributes addObject:theAttribute];
+        theCurrentNode = theCurrentNode->next;
+        }
+    return(theAttributes);
+    }
 
 - (CXMLNode *)attributeForName:(NSString *)name
-{
+    {
 	// TODO -- look for native libxml2 function for finding a named attribute (like xmlGetProp)
 	
 	NSRange split = [name rangeOfString:@":"];
@@ -104,37 +108,39 @@ return(theAttributes);
 	xmlChar *thePrefix = NULL;
 	
 	if (split.length > 0)
-	{
+        {
 		theLocalName = (xmlChar *)[[name substringFromIndex:split.location + 1] UTF8String];
 		thePrefix = (xmlChar *)[[name substringToIndex:split.location] UTF8String];
-	} 
+        } 
 	else 
-	{
+        {
 		theLocalName = (xmlChar *)[name UTF8String];
-	}
+        }
 	
 	xmlAttrPtr theCurrentNode = _node->properties;
 	while (theCurrentNode != NULL)
-	{
+        {
 		if (xmlStrcmp(theLocalName, theCurrentNode->name) == 0)
-		{
+            {
 			if (thePrefix == NULL || (theCurrentNode->ns 
-									  && theCurrentNode->ns->prefix 
-									  && xmlStrcmp(thePrefix, theCurrentNode->ns->prefix) == 0))
-			{
+                && theCurrentNode->ns->prefix 
+                && xmlStrcmp(thePrefix, theCurrentNode->ns->prefix) == 0))
+                {
 				CXMLNode *theAttribute = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
 				return(theAttribute);
-			}
-		}
+                }
+            }
 		theCurrentNode = theCurrentNode->next;
-	}
+        }
 	return(NULL);
-}
+    }
 
 - (CXMLNode *)attributeForLocalName:(NSString *)localName URI:(NSString *)URI
-{
+    {
 	if (URI == nil)
+        {
 		return [self attributeForName:localName];
+        }
 	
 	// TODO -- look for native libxml2 function for finding a named attribute (like xmlGetProp)
 	const xmlChar *theLocalName = (const xmlChar *)[localName UTF8String];
@@ -142,55 +148,54 @@ return(theAttributes);
 	
 	xmlAttrPtr theCurrentNode = _node->properties;
 	while (theCurrentNode != NULL)
-	{
+        {
 		if (theCurrentNode->ns && theCurrentNode->ns->href &&
 			xmlStrcmp(theLocalName, theCurrentNode->name) == 0 &&
 			xmlStrcmp(theNamespaceName, theCurrentNode->ns->href) == 0)
-		{
+            {
 			CXMLNode *theAttribute = [CXMLNode nodeWithLibXMLNode:(xmlNodePtr)theCurrentNode freeOnDealloc:NO];
 			return(theAttribute);
-		}
+            }
 		theCurrentNode = theCurrentNode->next;
-	}
+        }
 	return(NULL);
-}
+    }
 
 - (NSArray *)namespaces
-{
-	NSMutableArray *theNamespaces = [[[NSMutableArray alloc] init] autorelease];
+    {
+	NSMutableArray *theNamespaces = [[NSMutableArray alloc] init];
 	xmlNsPtr theCurrentNamespace = _node->nsDef;
 	
 	while (theCurrentNamespace != NULL)
-	{
+        {
 		NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
 		NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
 		CXMLNamespaceNode *theNode = [[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self];
 		[theNamespaces addObject:theNode];
-		[theNode release];		
 		
 		theCurrentNamespace = theCurrentNamespace->next;
-	}
+        }
 	
 	return theNamespaces;
-}
+    }
 
 - (CXMLNode *)namespaceForPrefix:(NSString *)name
-{
+    {
 	const xmlChar *thePrefix = (const xmlChar *)[name UTF8String];
 	xmlNsPtr theCurrentNamespace = _node->nsDef;
 	
 	while (theCurrentNamespace != NULL)
-	{
+        {
 		if (xmlStrcmp(theCurrentNamespace->prefix, thePrefix) == 0)
-		{
-			NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
+            {
+			NSString *thePrefixString = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
 			NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
-			return [[[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self] autorelease];
-		}			
+			return [[CXMLNamespaceNode alloc] initWithPrefix:thePrefixString URI:theURI parentElement:self];
+            }			
 		theCurrentNamespace = theCurrentNamespace->next;
-	}
+        }
 	return nil;
-}
+    }
 
 - (CXMLNode *)resolveNamespaceForName:(NSString *)name
 {
@@ -208,7 +213,7 @@ return(theAttributes);
 		{
 			NSString *thePrefix = theCurrentNamespace->prefix ? [NSString stringWithUTF8String:(const char *)theCurrentNamespace->prefix] : @"";
 			NSString *theURI = [NSString stringWithUTF8String:(const char *)theCurrentNamespace->href];
-			return [[[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self] autorelease];
+			return [[CXMLNamespaceNode alloc] initWithPrefix:thePrefix URI:theURI parentElement:self];
 		}			
 		theCurrentNamespace = theCurrentNamespace->next;
 	}

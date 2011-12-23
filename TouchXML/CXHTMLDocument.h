@@ -1,8 +1,8 @@
 //
-//  CXMLNode_XPathExtensions.h
+//  CXHTMLDocument.h
 //  TouchCode
 //
-//  Created by Jonathan Wight on 04/01/08.
+//  Created by Jonathan Wight on 03/07/08.
 //  Copyright 2011 toxicsoftware.com. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are
@@ -29,11 +29,14 @@
 //  authors and should not be interpreted as representing official policies, either expressed
 //  or implied, of toxicsoftware.com.
 
-#import "CXMLNode.h"
+#import "CXMLDocument.h"
 
-@interface CXMLNode (CXMLNode_XPathExtensions)
 
-- (NSArray *)nodesForXPath:(NSString *)xpath namespaceMappings:(NSDictionary *)inNamespaceMappings error:(NSError **)error;
-- (CXMLNode *)nodeForXPath:(NSString *)xpath error:(NSError **)outError;
+@interface CXHTMLDocument : CXMLDocument {
+
+}
+
+- (id)initWithXHTMLData:(NSData *)inData encoding:(NSStringEncoding)encoding options:(NSUInteger)inOptions error:(NSError **)outError;
+- (id)initWithXHTMLString:(NSString *)inString options:(NSUInteger)inOptions error:(NSError **)outError;
 
 @end
