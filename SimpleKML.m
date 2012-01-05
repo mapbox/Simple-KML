@@ -38,8 +38,6 @@
 #import "FileInZipInfo.h"
 #import "ZipReadStream.h"
 
-NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
-
 @interface SimpleKML ()
 
 @property (nonatomic, strong) NSURL *sourceURL;

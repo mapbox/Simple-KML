@@ -37,7 +37,7 @@
 #import <UIKit/UIKit.h>
 #import "TouchXML.h"
 
-extern NSString *const SimpleKMLErrorDomain;
+static NSString *const SimpleKMLErrorDomain = @"SimpleKMLErrorDomain";
 
 enum SimpleKMLErrorCode {
     SimpleKMLParseError      = 1000,
