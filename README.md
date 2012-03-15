@@ -78,4 +78,4 @@ There is an ARC-compatible branch in the works at `dev-arc`. It will eventually 
 
 Copyright (c) 2010-2012 Code Sorcery Workshop, LLC and Development Seed, Inc.
 
-The Simple KML library should be accompanied by a LICENSE file. This file contains the license relevant to this distribution. If no license exists, please contact Development Seed at http://developmentseed.org.
+The Simple KML library should be accompanied by a LICENSE file. This file contains the license relevant to this distribution. If no license exists, please contact [Development Seed](http://developmentseed.org).
