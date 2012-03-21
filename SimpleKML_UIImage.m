@@ -38,29 +38,15 @@
 
 - (UIImage *)imageWithWidth:(CGFloat)width height:(CGFloat)height
 {
-    CGImageRef imageRef = [self CGImage];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(round(width), round(height)), NO, 0);
     
-    CGImageAlphaInfo alphaInfo = kCGImageAlphaPremultipliedLast;
-	
-	CGContextRef bitmap = CGBitmapContextCreate(NULL, 
-                                                round(width), 
-                                                round(height), 
-                                                CGImageGetBitsPerComponent(imageRef), 
-                                                4 * round(width), 
-                                                CGImageGetColorSpace(imageRef), 
-                                                alphaInfo);
+    [self drawInRect:CGRectMake(0, 0, round(width), round(height))];
     
-	CGContextDrawImage(bitmap, CGRectMake(0, 0, round(width), round(height)), imageRef);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     
-	CGImageRef newImageRef = CGBitmapContextCreateImage(bitmap);
+    UIGraphicsEndImageContext();
     
-	UIImage *result = [UIImage imageWithCGImage:newImageRef];
-    
-	CGContextRelease(bitmap);
-	
-    CGImageRelease(newImageRef);
-    
-	return result;
+    return newImage;
 }
 
 - (UIImage *)imageWithAlphaComponent:(CGFloat)alpha
