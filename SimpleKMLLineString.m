@@ -53,7 +53,7 @@
             {
                 NSMutableArray *parsedCoordinates = [NSMutableArray array];
                 
-                NSArray *coordinateStrings = [[child stringValue] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                NSArray *coordinateStrings = [[child stringValue] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
                 for (__strong NSString *coordinateString in coordinateStrings)
                 {
