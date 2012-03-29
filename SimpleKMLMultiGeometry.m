@@ -1,7 +1,7 @@
 //
-//  SimpleKMLPlacemark.m
+//  SimpleKMLGeometry.h
 //
-//  Created by Justin R. Miller on 6/29/10.
+//  Created by Andrew Griffiths on 27/3/2012.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
 //  All rights reserved.
 //  
@@ -31,47 +31,39 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
+//  http://developers.google.com/kml/documentation/kmlreference#multigeometry
+// 
 
-#import "SimpleKMLPlacemark.h"
-#import "SimpleKMLGeometry.h"
 #import "SimpleKMLMultiGeometry.h"
-#import "SimpleKMLPoint.h"
-#import "SimpleKMLPolygon.h"
-#import "SimpleKMLLineString.h"
-#import "SimpleKMLLinearRing.h"
 
-@implementation SimpleKMLPlacemark
-
-@synthesize geometry;
-@synthesize point;
-@synthesize polygon;
-@synthesize lineString;
-@synthesize linearRing;
+@implementation SimpleKMLMultiGeometry
+@synthesize geometry=_geometry;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
     self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
     
-    if (self != nil)
+    if (self)
     {
         geometry = nil;
         
         for (CXMLNode *child in [node children])
         {
-            // there should only be zero or one geometries
-            //
-            if ( ! geometry)
+            // we only support parsing one geometry for now so skip if we have one
+            if ( ! self.geometry)
             {
-                Class geometryClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [child name]]);
+                // try to find class to parse the contained geometry element
+                NSString* className = [NSString stringWithFormat:@"SimpleKML%@", [child name]];
+                Class geometryClass = NSClassFromString(className);
                 
                 if (geometryClass)
                 {
-                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
+                    NSError* error = nil;
+                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&error] autorelease];
                     
-                    if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLMultiGeometry class]])
-                        geometry = [[thisGeometry geometry]retain];
-                    else if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
-                        geometry = [thisGeometry retain];
+                    if (!error && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]]) {
+                        geometry = [thisGeometry retain]; // found a geometry element we can use, store it
+                    }
                 }
             }
         }
@@ -83,42 +75,13 @@
 - (void)dealloc
 {
     [geometry release];
-    
     [super dealloc];
 }
 
-#pragma mark -
 
-- (SimpleKMLPoint *)point
-{
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPoint class]])
-        return (SimpleKMLPoint *)geometry;
-    
-    return nil;
+-(SimpleKMLGeometry*) geometry {
+    return geometry;
 }
 
-- (SimpleKMLPolygon *)polygon
-{
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPolygon class]])
-        return (SimpleKMLPolygon *)geometry;
-    
-    return nil;
-}
-
-- (SimpleKMLLineString *)lineString
-{
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLineString class]])
-        return (SimpleKMLLineString *)geometry;
-    
-    return nil;
-}
-
-- (SimpleKMLLinearRing *)linearRing
-{
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLinearRing class]])
-        return (SimpleKMLLinearRing *)geometry;
-    
-    return nil;
-}
 
 @end
