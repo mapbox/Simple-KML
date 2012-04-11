@@ -1,8 +1,3 @@
-## STOP: this is a fork of the main SimpleKML repo
-This fork adds support for **multigeometry** elements. 
-
-I've sent a pull request to get support merged into the original repo so you *probably* don't want to use this one unless you need support right now!
-
 # Simple KML: Cocoa parsing library for Keyhole Markup Language
 
 Simple KML is a simple & lightweight parsing library for KML written in Objective-C for the iOS platform.
