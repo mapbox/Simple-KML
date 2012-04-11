@@ -45,25 +45,21 @@
     
     if (self)
     {
-        geometry = nil;
+        geometry = [[NSMutableArray alloc] init];
         
         for (CXMLNode *child in [node children])
         {
-            // we only support parsing one geometry for now so skip if we have one
-            if ( ! self.geometry)
+            // find class to parse the contained geometry element
+            NSString* className = [NSString stringWithFormat:@"SimpleKML%@", [child name]];
+            Class geometryClass = NSClassFromString(className);
+            
+            if (geometryClass)
             {
-                // try to find class to parse the contained geometry element
-                NSString* className = [NSString stringWithFormat:@"SimpleKML%@", [child name]];
-                Class geometryClass = NSClassFromString(className);
+                NSError* error = nil;
+                id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&error] autorelease];
                 
-                if (geometryClass)
-                {
-                    NSError* error = nil;
-                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&error] autorelease];
-                    
-                    if (!error && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]]) {
-                        geometry = [thisGeometry retain]; // found a geometry element we can use, store it
-                    }
+                if (!error && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]]) {
+                    [geometry addObject:thisGeometry]; // found a geometry element we can use, store it
                 }
             }
         }
@@ -72,14 +68,22 @@
     return self;
 }
 
+- (SimpleKMLGeometry*) firstGeometry {
+    if (self.geometry.count > 0) {
+        return (SimpleKMLGeometry*)[self.geometry objectAtIndex:0];
+    }
+    return nil;
+}
+
 - (void)dealloc
 {
+    [geometry removeAllObjects];
     [geometry release];
     [super dealloc];
 }
 
 
--(SimpleKMLGeometry*) geometry {
+-(NSArray*) geometry {
     return geometry;
 }
 

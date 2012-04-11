@@ -48,6 +48,7 @@
 }
 
 @property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
+@property (nonatomic, retain, readonly) SimpleKMLGeometry *firstGeometry;
 @property (nonatomic, retain, readonly) SimpleKMLPoint *point;
 @property (nonatomic, retain, readonly) SimpleKMLPolygon *polygon;
 @property (nonatomic, retain, readonly) SimpleKMLLineString *lineString;

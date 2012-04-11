@@ -38,9 +38,10 @@
 #import "SimpleKMLGeometry.h"
 
 @interface SimpleKMLMultiGeometry : SimpleKMLGeometry {
-    SimpleKMLGeometry* geometry;
+    NSMutableArray* geometry;
 }
 
-@property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
+@property (nonatomic, retain, readonly) NSArray *geometry;
+@property (nonatomic, retain, readonly) SimpleKMLGeometry *firstGeometry;
 
 @end
