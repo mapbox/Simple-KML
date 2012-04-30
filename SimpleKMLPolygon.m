@@ -130,7 +130,6 @@
 - (void)dealloc
 {
     [outerBoundary release];
-    [firstInnerBoundary release];
     [innerBoundaries release];
     
     [super dealloc];
