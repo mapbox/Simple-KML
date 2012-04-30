@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* Simple_KML_ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* Simple_KML_ExampleViewController.m */; };
+		4902A885152412E600321C42 /* SimpleKMLMultiGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */; };
 		640B08A813A0077400DC40C3 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 640B08A713A0077400DC40C3 /* CXMLNamespaceNode.m */; };
 		DD4CEFFB124AAC4800597565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CEFFA124AAC4800597565 /* MapKit.framework */; };
 		DD4CF546124AAF2B00597565 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D4124AAF2B00597565 /* ioapi.c */; };
@@ -87,6 +88,8 @@
 		28D7ACF70DDB3853001CB0EB /* Simple_KML_ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simple_KML_ExampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Simple_KML_Example_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simple_KML_Example_Prefix.pch; sourceTree = "<group>"; };
+		4902A883152412E600321C42 /* SimpleKMLMultiGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLMultiGeometry.h; path = ../SimpleKMLMultiGeometry.h; sourceTree = "<group>"; };
+		4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLMultiGeometry.m; path = ../SimpleKMLMultiGeometry.m; sourceTree = "<group>"; };
 		640B08A613A0077400DC40C3 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNamespaceNode.h; sourceTree = "<group>"; };
 		640B08A713A0077400DC40C3 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNamespaceNode.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simple_KML_Example-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -325,6 +328,8 @@
 				DD4CF539124AAF2B00597565 /* SimpleKMLIconStyle.h */,
 				DD4CF53A124AAF2B00597565 /* SimpleKMLGeometry.m */,
 				DD4CF53B124AAF2B00597565 /* SimpleKMLGeometry.h */,
+				4902A883152412E600321C42 /* SimpleKMLMultiGeometry.h */,
+				4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */,
 				DD4CF53C124AAF2B00597565 /* SimpleKMLFolder.m */,
 				DD4CF53D124AAF2B00597565 /* SimpleKMLFolder.h */,
 				DD4CF53E124AAF2B00597565 /* SimpleKMLDocument.h */,
@@ -581,6 +586,7 @@
 				DD4CF57B124AAF2B00597565 /* SimpleKMLFolder.m in Sources */,
 				DD4CF57C124AAF2B00597565 /* SimpleKML_UIImage.m in Sources */,
 				640B08A813A0077400DC40C3 /* CXMLNamespaceNode.m in Sources */,
+				4902A885152412E600321C42 /* SimpleKMLMultiGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

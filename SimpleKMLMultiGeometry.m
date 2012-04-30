@@ -1,7 +1,7 @@
 //
-//  SimpleKMLPlacemark.h
+//  SimpleKMLGeometry.h
 //
-//  Created by Justin R. Miller on 6/29/10.
+//  Created by Andrew Griffiths on 27/3/2012.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
 //  All rights reserved.
 //  
@@ -31,27 +31,61 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  http://code.google.com/apis/kml/documentation/kmlreference.html#placemark
-//
+//  http://developers.google.com/kml/documentation/kmlreference#multigeometry
+// 
 
-#import "SimpleKMLFeature.h"
+#import "SimpleKMLMultiGeometry.h"
 
-@class SimpleKMLGeometry;
-@class SimpleKMLPoint;
-@class SimpleKMLPolygon;
-@class SimpleKMLLineString;
-@class SimpleKMLLinearRing;
+@implementation SimpleKMLMultiGeometry
+@synthesize geometry=_geometry;
 
-@interface SimpleKMLPlacemark : SimpleKMLFeature
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
-    SimpleKMLGeometry *geometry;
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
+    
+    if (self)
+    {
+        geometry = [[NSMutableArray alloc] init];
+        
+        for (CXMLNode *child in [node children])
+        {
+            // find class to parse the contained geometry element
+            NSString* className = [NSString stringWithFormat:@"SimpleKML%@", [child name]];
+            Class geometryClass = NSClassFromString(className);
+            
+            if (geometryClass)
+            {
+                NSError* error = nil;
+                id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&error] autorelease];
+                
+                if (!error && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]]) {
+                    [geometry addObject:thisGeometry]; // found a geometry element we can use, store it
+                }
+            }
+        }
+    }
+    
+    return self;
 }
 
-@property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
-@property (nonatomic, retain, readonly) SimpleKMLGeometry *firstGeometry;
-@property (nonatomic, retain, readonly) SimpleKMLPoint *point;
-@property (nonatomic, retain, readonly) SimpleKMLPolygon *polygon;
-@property (nonatomic, retain, readonly) SimpleKMLLineString *lineString;
-@property (nonatomic, retain, readonly) SimpleKMLLinearRing *linearRing;
+- (SimpleKMLGeometry*) firstGeometry {
+    if (self.geometry.count > 0) {
+        return (SimpleKMLGeometry*)[self.geometry objectAtIndex:0];
+    }
+    return nil;
+}
+
+- (void)dealloc
+{
+    [geometry removeAllObjects];
+    [geometry release];
+    [super dealloc];
+}
+
+
+-(NSArray*) geometry {
+    return geometry;
+}
+
 
 @end
