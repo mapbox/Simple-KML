@@ -10,6 +10,8 @@ Simple KML is basically an XML parser with smarts about KML. It presents a hiera
 
 Simple KML has been designed & built for iOS 3.2 and greater. There's no particular reason it couldn't be adapted to Mac OS X; it just hasn't been done yet out of lack of necessity. 
 
+Simple KML is built for [ARC](http://clang.llvm.org/docs/AutomaticReferenceCounting.html). The `non-arc` branch is the old pre-ARC `master` and may be removed at any time in the future. 
+
 Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Objective-C library for DOM-based XML parsing based on `libxml2`, and [Objective-Zip](http://code.google.com/p/objective-zip/), a library for working with archive files, both of which are included in the download.
 
 ## Features
@@ -71,8 +73,6 @@ You'll also need to link against `CoreLocation.framework` for a couple of the cl
 ## Plans, needs, bugs, etc.
 
 If you find a bug or want to otherwise contribute, please fork the project on GitHub and contribute that way. In particular, I would like to start adding built-in testing with a library of accompanying KML test files to parse. 
-
-There is an ARC-compatible branch in the works at `dev-arc`. It will eventually become `master` over time. 
 
 ## License
 
