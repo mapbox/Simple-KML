@@ -34,6 +34,7 @@
 
 #import "SimpleKMLPlacemark.h"
 #import "SimpleKMLGeometry.h"
+#import "SimpleKMLMultiGeometry.h"
 #import "SimpleKMLPoint.h"
 #import "SimpleKMLPolygon.h"
 #import "SimpleKMLLineString.h"
@@ -85,35 +86,43 @@
 }
 
 #pragma mark -
+- (SimpleKMLGeometry *)firstGeometry {
+    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLMultiGeometry class]]) {
+        return ((SimpleKMLMultiGeometry*)self.geometry).firstGeometry;
+    } else if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLGeometry class]]) {
+        return (SimpleKMLGeometry *)geometry;
+    }
+    return nil;
+}
 
 - (SimpleKMLPoint *)point
 {
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPoint class]])
-        return (SimpleKMLPoint *)geometry;
+    if (self.firstGeometry && [self.firstGeometry isKindOfClass:[SimpleKMLPoint class]])
+        return (SimpleKMLPoint *)self.firstGeometry;
     
     return nil;
 }
 
 - (SimpleKMLPolygon *)polygon
 {
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLPolygon class]])
-        return (SimpleKMLPolygon *)geometry;
+    if (self.firstGeometry && [self.firstGeometry isKindOfClass:[SimpleKMLPolygon class]])
+        return (SimpleKMLPolygon *)self.firstGeometry;
     
     return nil;
 }
 
 - (SimpleKMLLineString *)lineString
 {
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLineString class]])
-        return (SimpleKMLLineString *)geometry;
+    if (self.firstGeometry && [self.firstGeometry isKindOfClass:[SimpleKMLLineString class]])
+        return (SimpleKMLLineString *)self.firstGeometry;
     
     return nil;
 }
 
 - (SimpleKMLLinearRing *)linearRing
 {
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLLinearRing class]])
-        return (SimpleKMLLinearRing *)geometry;
+    if (self.firstGeometry && [self.firstGeometry isKindOfClass:[SimpleKMLLinearRing class]])
+        return (SimpleKMLLinearRing *)self.firstGeometry;
     
     return nil;
 }

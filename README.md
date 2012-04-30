@@ -42,7 +42,7 @@ Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Obje
     `SimpleKMLStyle *sharedStyle = myPlacemark.sharedStyle; // common to <Document>; no need to reference <StyleUrl>`  
     `SimpleKMLStyle *activeStyle = myPlacemark.style; // the inline style overrides the shared style`  
 
-    `SimpleKMLGeometry *geometry = myPlacemark.geometry; // <Point>, <Polygon>, <LineString>, etc.`  
+    `SimpleKMLGeometry *geometry = myPlacemark.geometry; // <Point>, <Polygon>, <LineString>, <MultiGeometry> etc.`  
     `SimpleKMLPoint *point = myPlacemark.point; // shortcut if <Point> exists for <Placemark>`  
 
     Smart error handling:

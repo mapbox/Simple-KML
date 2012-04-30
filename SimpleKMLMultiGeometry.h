@@ -1,7 +1,7 @@
 //
-//  SimpleKMLPlacemark.h
+//  SimpleKMLGeometry.h
 //
-//  Created by Justin R. Miller on 6/29/10.
+//  Created by Andrew Griffiths on 27/3/2012.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
 //  All rights reserved.
 //  
@@ -31,27 +31,17 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  http://code.google.com/apis/kml/documentation/kmlreference.html#placemark
-//
+//  http://developers.google.com/kml/documentation/kmlreference#multigeometry
+// 
 
-#import "SimpleKMLFeature.h"
 
-@class SimpleKMLGeometry;
-@class SimpleKMLPoint;
-@class SimpleKMLPolygon;
-@class SimpleKMLLineString;
-@class SimpleKMLLinearRing;
+#import "SimpleKMLGeometry.h"
 
-@interface SimpleKMLPlacemark : SimpleKMLFeature
-{
-    SimpleKMLGeometry *geometry;
+@interface SimpleKMLMultiGeometry : SimpleKMLGeometry {
+    NSMutableArray* geometry;
 }
 
-@property (nonatomic, retain, readonly) SimpleKMLGeometry *geometry;
+@property (nonatomic, retain, readonly) NSArray *geometry;
 @property (nonatomic, retain, readonly) SimpleKMLGeometry *firstGeometry;
-@property (nonatomic, retain, readonly) SimpleKMLPoint *point;
-@property (nonatomic, retain, readonly) SimpleKMLPolygon *polygon;
-@property (nonatomic, retain, readonly) SimpleKMLLineString *lineString;
-@property (nonatomic, retain, readonly) SimpleKMLLinearRing *linearRing;
 
 @end
