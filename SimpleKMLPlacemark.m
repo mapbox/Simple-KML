@@ -42,6 +42,7 @@
 @implementation SimpleKMLPlacemark
 
 @synthesize geometry;
+@synthesize multiGeometry;
 @synthesize point;
 @synthesize polygon;
 @synthesize lineString;
@@ -54,22 +55,48 @@
     if (self != nil)
     {
         geometry = nil;
+		multiGeometry = nil;
         
         for (CXMLNode *child in [node children])
         {
             // there should only be zero or one geometries
             //
-            if ( ! geometry)
+            if ( ! geometry && ! multiGeometry)
             {
-                Class geometryClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [child name]]);
-                
-                if (geometryClass)
-                {
-                    id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
-                    
-                    if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
-                        geometry = [thisGeometry retain];
-                }
+				if ([[child name] isEqualToString:@"MultiGeometry"]) {
+					NSMutableArray *multiGeometryArray = [[NSMutableArray alloc] init];
+					
+					for (CXMLNode *multiGeometryChild in [child children])
+					{
+						Class geometryClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [multiGeometryChild name]]);
+						
+						if (geometryClass)
+						{
+							id thisGeometry = [[[geometryClass alloc] initWithXMLNode:multiGeometryChild sourceURL:sourceURL error:NULL] autorelease];
+							
+							if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
+								[multiGeometryArray addObject:thisGeometry];
+						}
+					}
+					
+					if ([multiGeometryArray count] > 0) {
+						multiGeometry = [multiGeometryArray retain];
+					}
+					
+					[multiGeometryArray release];
+					
+				}
+				else {
+					Class geometryClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [child name]]);
+					
+					if (geometryClass)
+					{
+						id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL] autorelease];
+						
+						if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
+							geometry = [thisGeometry retain];
+					}
+				}
             }
         }
     }
@@ -80,6 +107,7 @@
 - (void)dealloc
 {
     [geometry release];
+	[multiGeometry release];
     
     [super dealloc];
 }
