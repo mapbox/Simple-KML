@@ -1,5 +1,5 @@
 //
-//  SimpleKMLGeometry.h
+//  SimpleKMLMultiGeometry.h
 //
 //  Created by Andrew Griffiths on 27/3/2012.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
@@ -30,14 +30,11 @@
 //  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//  http://developers.google.com/kml/documentation/kmlreference#multigeometry
 // 
 
 #import "SimpleKMLMultiGeometry.h"
 
 @implementation SimpleKMLMultiGeometry
-@synthesize geometry=_geometry;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
@@ -49,18 +46,15 @@
         
         for (CXMLNode *child in [node children])
         {
-            // find class to parse the contained geometry element
-            NSString* className = [NSString stringWithFormat:@"SimpleKML%@", [child name]];
-            Class geometryClass = NSClassFromString(className);
+            Class geometryClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [child name]]);
             
             if (geometryClass)
             {
                 NSError* error = nil;
                 id thisGeometry = [[[geometryClass alloc] initWithXMLNode:child sourceURL:sourceURL error:&error] autorelease];
                 
-                if (!error && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]]) {
-                    [geometry addObject:thisGeometry]; // found a geometry element we can use, store it
-                }
+                if (thisGeometry && [thisGeometry isKindOfClass:[SimpleKMLGeometry class]])
+                    [geometry addObject:thisGeometry];
             }
         }
     }
@@ -68,24 +62,26 @@
     return self;
 }
 
-- (SimpleKMLGeometry*) firstGeometry {
-    if (self.geometry.count > 0) {
-        return (SimpleKMLGeometry*)[self.geometry objectAtIndex:0];
-    }
-    return nil;
-}
-
 - (void)dealloc
 {
-    [geometry removeAllObjects];
     [geometry release];
+    
     [super dealloc];
 }
 
+#pragma mark -
 
--(NSArray*) geometry {
-    return geometry;
+- (SimpleKMLGeometry *)firstGeometry
+{
+    if ([self.geometry count])
+        return (SimpleKMLGeometry *)[self.geometry objectAtIndex:0];
+
+    return nil;
 }
 
+-(NSArray *)geometry
+{
+    return [NSArray arrayWithArray:geometry];
+}
 
 @end

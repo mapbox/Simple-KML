@@ -86,12 +86,15 @@
 }
 
 #pragma mark -
-- (SimpleKMLGeometry *)firstGeometry {
-    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLMultiGeometry class]]) {
-        return ((SimpleKMLMultiGeometry*)self.geometry).firstGeometry;
-    } else if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLGeometry class]]) {
-        return (SimpleKMLGeometry *)geometry;
-    }
+
+- (SimpleKMLGeometry *)firstGeometry
+{
+    if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLMultiGeometry class]])
+        return ((SimpleKMLMultiGeometry *)self.geometry).firstGeometry;
+    
+    else if (self.geometry && [self.geometry isKindOfClass:[SimpleKMLGeometry class]])
+        return self.geometry;
+    
     return nil;
 }
 

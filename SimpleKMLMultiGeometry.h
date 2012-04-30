@@ -1,5 +1,5 @@
 //
-//  SimpleKMLGeometry.h
+//  SimpleKMLMultiGeometry.h
 //
 //  Created by Andrew Griffiths on 27/3/2012.
 //  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
@@ -34,11 +34,11 @@
 //  http://developers.google.com/kml/documentation/kmlreference#multigeometry
 // 
 
-
 #import "SimpleKMLGeometry.h"
 
-@interface SimpleKMLMultiGeometry : SimpleKMLGeometry {
-    NSMutableArray* geometry;
+@interface SimpleKMLMultiGeometry : SimpleKMLGeometry
+{
+    NSMutableArray *geometry;
 }
 
 @property (nonatomic, retain, readonly) NSArray *geometry;
