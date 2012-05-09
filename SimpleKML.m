@@ -162,8 +162,14 @@
         
         // build up our Feature if we have one
         //
-        Class featureClass = NSClassFromString([NSString stringWithFormat:@"SimpleKML%@", [featureNode name]]);
+
+        NSString *className = [NSString stringWithFormat:@"SimpleKML%@", [featureNode name]];
+        Class featureClass = NSClassFromString(className);
         
+        if (featureClass == nil)
+        {
+            NSLog(@"Error: class %@ not implemented.", className);
+        }        
         parseError = nil;
         
         feature = [[featureClass alloc] initWithXMLNode:featureNode sourceURL:sourceURL error:&parseError];
