@@ -21,6 +21,8 @@
 		CDE5E3E7155BFD7D00A9E467 /* SimpleKMLOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3E5155BFD7D00A9E467 /* SimpleKMLOverlay.m */; };
 		CDE5E3EB155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3EA155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m */; };
 		CDE5E3ED155C0C2500A9E467 /* statue-of-liberty.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CDE5E3EC155C0C2500A9E467 /* statue-of-liberty.kmz */; };
+		CDE5E3F0155C148800A9E467 /* SimpleKMLAbstractView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */; };
+		CDE5E3F4155C14B700A9E467 /* SimpleKMLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */; };
 		DD4CEFFB124AAC4800597565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CEFFA124AAC4800597565 /* MapKit.framework */; };
 		DD4CF546124AAF2B00597565 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D4124AAF2B00597565 /* ioapi.c */; };
 		DD4CF547124AAF2B00597565 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D6124AAF2B00597565 /* mztools.c */; };
@@ -104,6 +106,10 @@
 		CDE5E3E9155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLPhotoOverlay.h; path = ../SimpleKMLPhotoOverlay.h; sourceTree = "<group>"; };
 		CDE5E3EA155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLPhotoOverlay.m; path = ../SimpleKMLPhotoOverlay.m; sourceTree = "<group>"; };
 		CDE5E3EC155C0C2500A9E467 /* statue-of-liberty.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "statue-of-liberty.kmz"; path = "../../../thirdparty/Simple-KML/Sample Project/statue-of-liberty.kmz"; sourceTree = "<group>"; };
+		CDE5E3EE155C148400A9E467 /* SimpleKMLAbstractView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLAbstractView.h; path = ../SimpleKMLAbstractView.h; sourceTree = "<group>"; };
+		CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLAbstractView.m; path = ../SimpleKMLAbstractView.m; sourceTree = "<group>"; };
+		CDE5E3F2155C14B700A9E467 /* SimpleKMLCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLCamera.h; path = ../SimpleKMLCamera.h; sourceTree = "<group>"; };
+		CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLCamera.m; path = ../SimpleKMLCamera.m; sourceTree = "<group>"; };
 		DD4CEFFA124AAC4800597565 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD4CF00B124AACA900597565 /* example.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.kml; sourceTree = "<group>"; };
 		DD4CF4D1124AAF2B00597565 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -330,6 +336,9 @@
 				DD4CF52E124AAF2B00597565 /* SimpleKMLSubStyle.h */,
 				DD4CF52D124AAF2B00597565 /* SimpleKMLSubStyle.m */,
 				CDE5E3E0155BFCD600A9E467 /* Substyles */,
+				CDE5E3EE155C148400A9E467 /* SimpleKMLAbstractView.h */,
+				CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */,
+				CDE5E3F1155C148F00A9E467 /* SimpleKMLAbstractView */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -405,6 +414,15 @@
 				CDE5E3E3155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m */,
 			);
 			name = Overlays;
+			sourceTree = "<group>";
+		};
+		CDE5E3F1155C148F00A9E467 /* SimpleKMLAbstractView */ = {
+			isa = PBXGroup;
+			children = (
+				CDE5E3F2155C14B700A9E467 /* SimpleKMLCamera.h */,
+				CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */,
+			);
+			name = SimpleKMLAbstractView;
 			sourceTree = "<group>";
 		};
 		DD4CF4CF124AAF1D00597565 /* Simple KML */ = {
@@ -673,6 +691,8 @@
 				CDE5E3E6155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m in Sources */,
 				CDE5E3E7155BFD7D00A9E467 /* SimpleKMLOverlay.m in Sources */,
 				CDE5E3EB155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m in Sources */,
+				CDE5E3F0155C148800A9E467 /* SimpleKMLAbstractView.m in Sources */,
+				CDE5E3F4155C14B700A9E467 /* SimpleKMLCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
