@@ -1,8 +1,8 @@
 //
-//  SimpleKMLGroundOverlay.h
+//  SimpleKMLPhotoOverlay.h
 //
 //  Created by Andrea Cremaschi on 5/10/12
-//  Copyright 2012, redcluster
+//  Copyright 2012, redcluster.eu
 //  All rights reserved.
 //  
 //  Redistribution and use in source and binary forms, with or without
