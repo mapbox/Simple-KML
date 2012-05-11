@@ -25,9 +25,12 @@
 {
     [super viewDidLoad];
     
+    // read the kmz file in the bundle and then drop it (just to test the parser..)
+    SimpleKML *kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"statue-of-liberty" ofType:@"kmz"] error:NULL];
+
     // grab the example KML file (which we know will have no errors, but you should ordinarily check)
     //
-    SimpleKML *kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"kml"] error:NULL];
+    kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"kml"] error:NULL];
     
     // look for a document feature in it per the KML spec
     //
