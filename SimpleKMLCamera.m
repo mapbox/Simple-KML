@@ -75,7 +75,7 @@ NSString *kKMLAltitudeModeAbsolute = @"absolute";
         if (difference != 0)
         {
             
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat: @"Improperly formed KML (%@ are required for PhotoOverlay ViewVolume)", requiredKeys]
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat: @"Improperly formed KML (%@ are required for Camera)", requiredKeys]
                                                                  forKey:NSLocalizedFailureReasonErrorKey];
             
             if (error)
@@ -90,24 +90,22 @@ NSString *kKMLAltitudeModeAbsolute = @"absolute";
         heading     = [[[parsedElements objectForKey: @"heading"] stringValue] doubleValue];
         tilt        = [[[parsedElements objectForKey: @"tilt"] stringValue] doubleValue];
         roll     = [[[parsedElements objectForKey: @"roll"] stringValue] doubleValue];
-        altitudeMode     = [[parsedElements objectForKey: @"altitudeMode"] stringValue] ;
+        altitudeMode     = [[parsedElements objectForKey: @"altitudeMode"] stringValue];
             
-        // TODO: check values
-        /*    viewVolume.near     = [[nearNode     stringValue] doubleValue];
+        if (coordinate.longitude < -180  || coordinate.longitude > 180  ||
+            coordinate.latitude < -90  || coordinate.latitude > 90  ||
+            roll < -180  || roll > 180  ||
+            tilt < 0 || tilt > 180 ||
+            ![[NSArray arrayWithObjects: kKMLAltitudeModeAbsolute, kKMLAltitudeModeClampToGround, kKMLAltitudeModeRelativeToGround, nil] containsObject: altitudeMode])
+        {
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (out-of-range longitude, latitude, altitude, heading, tilt, roll or altitudeMode specified for Camera element)" 
+                                                                 forKey:NSLocalizedFailureReasonErrorKey];
             
-            if (viewVolume.leftFov < -180  || viewVolume.leftFov > 180  ||
-                viewVolume.rightFov < -180  || viewVolume.rightFov > 180  ||
-                viewVolume.bottomFov < -90  || viewVolume.bottomFov > 90  ||
-                viewVolume.topFov < -90  || viewVolume.topFov > 90)
-            {
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (out-of-range leftFov, rightFov, bottomFov, or topFov specified for PhotoOverlay ViewVolume)" 
-                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                
-                if (error)
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                
-                return nil;
-            }*/
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            
+            return nil;
+        }
             
         
     }
