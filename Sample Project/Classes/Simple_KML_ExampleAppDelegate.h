@@ -15,8 +15,8 @@
     Simple_KML_ExampleViewController *viewController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet Simple_KML_ExampleViewController *viewController;
+@property (nonatomic) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet Simple_KML_ExampleViewController *viewController;
 
 @end
 

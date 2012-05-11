@@ -33,11 +33,13 @@
 //
 
 #import "SimpleKMLOverlay.h"
+#import "SimpleKMLCamera.h"
 
 @implementation SimpleKMLOverlay
 
 @synthesize color;
 @synthesize icon;
+@synthesize view;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
@@ -133,6 +135,20 @@
                     
                     return nil;
                 }
+            }
+            else if ([[child name] isEqualToString:@"Camera"] || [[child name] isEqualToString:@"LookAt"])
+            {
+                NSString *className = [NSString stringWithFormat: @"SimpleKML%@", [child name]];
+                Class featureClass = NSClassFromString(className);
+                
+                if (featureClass == nil)
+                {
+                    NSLog(@"Error: class %@ not implemented.", className);
+                }        
+                else {
+                    view = [[featureClass alloc] initWithXMLNode: child sourceURL:sourceURL error:error];
+                }
+                
             }
         }
     }
