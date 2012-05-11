@@ -36,6 +36,7 @@
 #import "SimpleKMLOverlay.h"
 #import <CoreLocation/CoreLocation.h>
 
+@class SimpleKMLPoint;
 typedef struct
 {
     double leftFov;  // Angle, in degrees, between the camera's viewing direction and the left side of the view volume.
@@ -71,7 +72,7 @@ extern NSString *kKMLPhotoOverlayShapeSphere;
 @property (nonatomic, readonly) double rotation;
 @property (nonatomic, readonly) KMLViewVolume viewVolume;
 @property (nonatomic, readonly) KMLImagePyramid imagePyramid;
-@property (nonatomic, assign, readonly) NSArray* coordinates;
+@property (nonatomic, strong, readonly) SimpleKMLPoint *point;
 @property (nonatomic, strong, readonly) NSString *shape;
 
 @end

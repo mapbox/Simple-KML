@@ -34,6 +34,7 @@
 //
 
 #import "SimpleKMLPhotoOverlay.h"
+#import "SimpleKMLPoint.h"
 
 NSString *kKMLPhotoOverlayShapeRectangle = @"rectangle";
 NSString *kKMLPhotoOverlayShapeCylinder = @"cylinder";
@@ -45,7 +46,7 @@ NSString *kKMLPhotoOverlayShapeSphere = @"sphere";
 @synthesize viewVolume;
 @synthesize imagePyramid;
 @synthesize shape;
-@synthesize coordinates;
+@synthesize point;
 
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
@@ -136,85 +137,23 @@ NSString *kKMLPhotoOverlayShapeSphere = @"sphere";
 
             else if ([[child name] isEqualToString:@"Point"])
             {
-                CXMLNode *coordinatesNode    = [[child children] lastObject];
+                id thisPoint = [[SimpleKMLPoint alloc] initWithXMLNode:child 
+                                                             sourceURL:sourceURL 
+                                                                 error:NULL];
+                
+                if (thisPoint)
+                    point = thisPoint;
+                else {
+                    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML: wrong Point syntax in PhotoOverlay element" 
+                                                                         forKey:NSLocalizedFailureReasonErrorKey];
+                    
+                    if (error)
+                        *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+                    
+                    return nil;
 
-                if ([[coordinatesNode name] isEqualToString:@"coordinates"])
-                {
-                    NSMutableArray *parsedCoordinates = [NSMutableArray array];
-                    
-                    NSArray *coordinateStrings = [[coordinatesNode stringValue] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    
-                    for (__strong NSString *coordinateString in coordinateStrings)
-                    {
-                        coordinateString = [coordinateString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                        
-                        if ([coordinateString length])
-                        {
-                            // coordinates should not have whitespace
-                            //
-                            if ([[coordinateString componentsSeparatedByString:@" "] count] > 1)
-                            {
-                                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (PhotoOverlay coordinates have whitespace)" 
-                                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                                
-                                if (error)
-                                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                                
-                                return nil;
-                            }
-                            
-                            NSArray *parts = [coordinateString componentsSeparatedByString:@","];
-                            
-                            // there should be longitude, latitude, and optionally, altitude
-                            //
-                            if ([parts count] < 2 || [parts count] > 3)
-                            {
-                                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid number of PhotoOverlay coordinates)" 
-                                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                                
-                                if (error)
-                                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                                
-                                return nil;
-                            }
-                            
-                            double longitude = [[parts objectAtIndex:0] doubleValue];
-                            double latitude  = [[parts objectAtIndex:1] doubleValue];
-                            
-                            // there should be valid values for latitude & longitude
-                            //
-                            if (longitude < -180 || longitude > 180 || latitude < -90 || latitude > 90)
-                            {
-                                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (Invalid PhotoOverlay coordinates values)" 
-                                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                                
-                                if (error)
-                                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                                
-                                return nil;
-                            }
-                            
-                            CLLocation *coordinate = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-                            
-                            [parsedCoordinates addObject:coordinate]; 
-                        }
-                    }
-                    
-                    coordinates = [NSArray arrayWithArray:parsedCoordinates];
-                    
-                    // there should be two or more coordinates
-                    //
-                    if ([coordinates count] < 2)
-                    {
-                        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Improperly formed KML (PhotoOverlay has less than two coordinates)" 
-                                                                             forKey:NSLocalizedFailureReasonErrorKey];
-                        
-                        if (error)
-                            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                        
-                        return nil;
-                    }
                 }
+            
             }
 
             else if ([[child name] isEqualToString:@"ImagePyramid"])
