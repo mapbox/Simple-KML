@@ -17,6 +17,12 @@
 		28D7ACF80DDB3853001CB0EB /* Simple_KML_ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* Simple_KML_ExampleViewController.m */; };
 		4902A885152412E600321C42 /* SimpleKMLMultiGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */; };
 		640B08A813A0077400DC40C3 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 640B08A713A0077400DC40C3 /* CXMLNamespaceNode.m */; };
+		CDE5E3E6155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3E3155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m */; };
+		CDE5E3E7155BFD7D00A9E467 /* SimpleKMLOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3E5155BFD7D00A9E467 /* SimpleKMLOverlay.m */; };
+		CDE5E3EB155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3EA155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m */; };
+		CDE5E3ED155C0C2500A9E467 /* statue-of-liberty.kmz in Resources */ = {isa = PBXBuildFile; fileRef = CDE5E3EC155C0C2500A9E467 /* statue-of-liberty.kmz */; };
+		CDE5E3F0155C148800A9E467 /* SimpleKMLAbstractView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */; };
+		CDE5E3F4155C14B700A9E467 /* SimpleKMLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */; };
 		DD4CEFFB124AAC4800597565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CEFFA124AAC4800597565 /* MapKit.framework */; };
 		DD4CF546124AAF2B00597565 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D4124AAF2B00597565 /* ioapi.c */; };
 		DD4CF547124AAF2B00597565 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D6124AAF2B00597565 /* mztools.c */; };
@@ -93,6 +99,17 @@
 		640B08A613A0077400DC40C3 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNamespaceNode.h; sourceTree = "<group>"; };
 		640B08A713A0077400DC40C3 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNamespaceNode.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simple_KML_Example-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CDE5E3E2155BFD7D00A9E467 /* SimpleKMLGroundOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLGroundOverlay.h; path = ../SimpleKMLGroundOverlay.h; sourceTree = "<group>"; };
+		CDE5E3E3155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLGroundOverlay.m; path = ../SimpleKMLGroundOverlay.m; sourceTree = "<group>"; };
+		CDE5E3E4155BFD7D00A9E467 /* SimpleKMLOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLOverlay.h; path = ../SimpleKMLOverlay.h; sourceTree = "<group>"; };
+		CDE5E3E5155BFD7D00A9E467 /* SimpleKMLOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLOverlay.m; path = ../SimpleKMLOverlay.m; sourceTree = "<group>"; };
+		CDE5E3E9155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLPhotoOverlay.h; path = ../SimpleKMLPhotoOverlay.h; sourceTree = "<group>"; };
+		CDE5E3EA155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLPhotoOverlay.m; path = ../SimpleKMLPhotoOverlay.m; sourceTree = "<group>"; };
+		CDE5E3EC155C0C2500A9E467 /* statue-of-liberty.kmz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "statue-of-liberty.kmz"; path = "../../../thirdparty/Simple-KML/Sample Project/statue-of-liberty.kmz"; sourceTree = "<group>"; };
+		CDE5E3EE155C148400A9E467 /* SimpleKMLAbstractView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLAbstractView.h; path = ../SimpleKMLAbstractView.h; sourceTree = "<group>"; };
+		CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLAbstractView.m; path = ../SimpleKMLAbstractView.m; sourceTree = "<group>"; };
+		CDE5E3F2155C14B700A9E467 /* SimpleKMLCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleKMLCamera.h; path = ../SimpleKMLCamera.h; sourceTree = "<group>"; };
+		CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleKMLCamera.m; path = ../SimpleKMLCamera.m; sourceTree = "<group>"; };
 		DD4CEFFA124AAC4800597565 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD4CF00B124AACA900597565 /* example.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.kml; sourceTree = "<group>"; };
 		DD4CF4D1124AAF2B00597565 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -271,6 +288,7 @@
 				2899E5210DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */,
+				CDE5E3EC155C0C2500A9E467 /* statue-of-liberty.kmz */,
 				DD4CF00B124AACA900597565 /* example.kml */,
 			);
 			name = Resources;
@@ -288,54 +306,136 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CDE5E3DB155BFC0B00A9E467 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CDE5E3E4155BFD7D00A9E467 /* SimpleKMLOverlay.h */,
+				CDE5E3E5155BFD7D00A9E467 /* SimpleKMLOverlay.m */,
+				CDE5E3E8155BFD9900A9E467 /* Overlays */,
+				DD4CF535124AAF2B00597565 /* SimpleKMLPlacemark.h */,
+				DD4CF505124AAF2B00597565 /* SimpleKMLPlacemark.m */,
+				DD4CF53F124AAF2B00597565 /* SimpleKMLContainer.h */,
+				DD4CF502124AAF2B00597565 /* SimpleKMLContainer.m */,
+				CDE5E3DD155BFC4200A9E467 /* Containers */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		CDE5E3DC155BFC2700A9E467 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF511124AAF2B00597565 /* SimpleKMLFeature.h */,
+				DD4CF508124AAF2B00597565 /* SimpleKMLFeature.m */,
+				CDE5E3DB155BFC0B00A9E467 /* Features */,
+				DD4CF53B124AAF2B00597565 /* SimpleKMLGeometry.h */,
+				DD4CF53A124AAF2B00597565 /* SimpleKMLGeometry.m */,
+				CDE5E3DF155BFCA700A9E467 /* Geometries */,
+				DD4CF530124AAF2B00597565 /* SimpleKMLStyleSelector.h */,
+				DD4CF52F124AAF2B00597565 /* SimpleKMLStyleSelector.m */,
+				CDE5E3DE155BFC5300A9E467 /* Style selectors */,
+				DD4CF52E124AAF2B00597565 /* SimpleKMLSubStyle.h */,
+				DD4CF52D124AAF2B00597565 /* SimpleKMLSubStyle.m */,
+				CDE5E3E0155BFCD600A9E467 /* Substyles */,
+				CDE5E3EE155C148400A9E467 /* SimpleKMLAbstractView.h */,
+				CDE5E3EF155C148600A9E467 /* SimpleKMLAbstractView.m */,
+				CDE5E3F1155C148F00A9E467 /* SimpleKMLAbstractView */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		CDE5E3DD155BFC4200A9E467 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF53D124AAF2B00597565 /* SimpleKMLFolder.h */,
+				DD4CF53C124AAF2B00597565 /* SimpleKMLFolder.m */,
+				DD4CF53E124AAF2B00597565 /* SimpleKMLDocument.h */,
+				DD4CF504124AAF2B00597565 /* SimpleKMLDocument.m */,
+			);
+			name = Containers;
+			sourceTree = "<group>";
+		};
+		CDE5E3DE155BFC5300A9E467 /* Style selectors */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF531124AAF2B00597565 /* SimpleKMLStyle.h */,
+				DD4CF503124AAF2B00597565 /* SimpleKMLStyle.m */,
+			);
+			name = "Style selectors";
+			sourceTree = "<group>";
+		};
+		CDE5E3DF155BFCA700A9E467 /* Geometries */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF534124AAF2B00597565 /* SimpleKMLPoint.h */,
+				DD4CF50C124AAF2B00597565 /* SimpleKMLPoint.m */,
+				DD4CF537124AAF2B00597565 /* SimpleKMLLineString.h */,
+				DD4CF509124AAF2B00597565 /* SimpleKMLLineString.m */,
+				DD4CF538124AAF2B00597565 /* SimpleKMLLinearRing.h */,
+				DD4CF50B124AAF2B00597565 /* SimpleKMLLinearRing.m */,
+				DD4CF533124AAF2B00597565 /* SimpleKMLPolygon.h */,
+				DD4CF507124AAF2B00597565 /* SimpleKMLPolygon.m */,
+				4902A883152412E600321C42 /* SimpleKMLMultiGeometry.h */,
+				4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */,
+			);
+			name = Geometries;
+			sourceTree = "<group>";
+		};
+		CDE5E3E0155BFCD600A9E467 /* Substyles */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF541124AAF2B00597565 /* SimpleKMLBalloonStyle.h */,
+				DD4CF50E124AAF2B00597565 /* SimpleKMLBalloonStyle.m */,
+				DD4CF536124AAF2B00597565 /* SimpleKMLLineStyle.h */,
+				DD4CF50A124AAF2B00597565 /* SimpleKMLLineStyle.m */,
+				DD4CF540124AAF2B00597565 /* SimpleKMLColorStyle.h */,
+				DD4CF50D124AAF2B00597565 /* SimpleKMLColorStyle.m */,
+				CDE5E3E1155BFCEE00A9E467 /* Colorstyles */,
+			);
+			name = Substyles;
+			sourceTree = "<group>";
+		};
+		CDE5E3E1155BFCEE00A9E467 /* Colorstyles */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CF532124AAF2B00597565 /* SimpleKMLPolyStyle.h */,
+				DD4CF506124AAF2B00597565 /* SimpleKMLPolyStyle.m */,
+				DD4CF539124AAF2B00597565 /* SimpleKMLIconStyle.h */,
+				DD4CF4FF124AAF2B00597565 /* SimpleKMLIconStyle.m */,
+			);
+			name = Colorstyles;
+			sourceTree = "<group>";
+		};
+		CDE5E3E8155BFD9900A9E467 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				CDE5E3E9155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.h */,
+				CDE5E3EA155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m */,
+				CDE5E3E2155BFD7D00A9E467 /* SimpleKMLGroundOverlay.h */,
+				CDE5E3E3155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m */,
+			);
+			name = Overlays;
+			sourceTree = "<group>";
+		};
+		CDE5E3F1155C148F00A9E467 /* SimpleKMLAbstractView */ = {
+			isa = PBXGroup;
+			children = (
+				CDE5E3F2155C14B700A9E467 /* SimpleKMLCamera.h */,
+				CDE5E3F3155C14B700A9E467 /* SimpleKMLCamera.m */,
+			);
+			name = SimpleKMLAbstractView;
+			sourceTree = "<group>";
+		};
 		DD4CF4CF124AAF1D00597565 /* Simple KML */ = {
 			isa = PBXGroup;
 			children = (
 				DD4CF4D0124AAF2B00597565 /* Objective-Zip */,
-				DD4CF4FE124AAF2B00597565 /* SimpleKML.m */,
-				DD4CF4FF124AAF2B00597565 /* SimpleKMLIconStyle.m */,
-				DD4CF500124AAF2B00597565 /* README.md */,
 				DD4CF501124AAF2B00597565 /* SimpleKML.h */,
-				DD4CF502124AAF2B00597565 /* SimpleKMLContainer.m */,
-				DD4CF503124AAF2B00597565 /* SimpleKMLStyle.m */,
-				DD4CF504124AAF2B00597565 /* SimpleKMLDocument.m */,
-				DD4CF505124AAF2B00597565 /* SimpleKMLPlacemark.m */,
-				DD4CF506124AAF2B00597565 /* SimpleKMLPolyStyle.m */,
-				DD4CF507124AAF2B00597565 /* SimpleKMLPolygon.m */,
-				DD4CF508124AAF2B00597565 /* SimpleKMLFeature.m */,
-				DD4CF509124AAF2B00597565 /* SimpleKMLLineString.m */,
-				DD4CF50A124AAF2B00597565 /* SimpleKMLLineStyle.m */,
-				DD4CF50B124AAF2B00597565 /* SimpleKMLLinearRing.m */,
-				DD4CF50C124AAF2B00597565 /* SimpleKMLPoint.m */,
-				DD4CF50D124AAF2B00597565 /* SimpleKMLColorStyle.m */,
-				DD4CF50E124AAF2B00597565 /* SimpleKMLBalloonStyle.m */,
-				DD4CF50F124AAF2B00597565 /* SimpleKMLObject.m */,
+				DD4CF4FE124AAF2B00597565 /* SimpleKML.m */,
+				DD4CF500124AAF2B00597565 /* README.md */,
 				DD4CF510124AAF2B00597565 /* SimpleKMLObject.h */,
-				DD4CF511124AAF2B00597565 /* SimpleKMLFeature.h */,
+				DD4CF50F124AAF2B00597565 /* SimpleKMLObject.m */,
+				CDE5E3DC155BFC2700A9E467 /* Objects */,
 				DD4CF512124AAF2B00597565 /* TouchXML */,
-				DD4CF52D124AAF2B00597565 /* SimpleKMLSubStyle.m */,
-				DD4CF52E124AAF2B00597565 /* SimpleKMLSubStyle.h */,
-				DD4CF52F124AAF2B00597565 /* SimpleKMLStyleSelector.m */,
-				DD4CF530124AAF2B00597565 /* SimpleKMLStyleSelector.h */,
-				DD4CF531124AAF2B00597565 /* SimpleKMLStyle.h */,
-				DD4CF532124AAF2B00597565 /* SimpleKMLPolyStyle.h */,
-				DD4CF533124AAF2B00597565 /* SimpleKMLPolygon.h */,
-				DD4CF534124AAF2B00597565 /* SimpleKMLPoint.h */,
-				DD4CF535124AAF2B00597565 /* SimpleKMLPlacemark.h */,
-				DD4CF536124AAF2B00597565 /* SimpleKMLLineStyle.h */,
-				DD4CF537124AAF2B00597565 /* SimpleKMLLineString.h */,
-				DD4CF538124AAF2B00597565 /* SimpleKMLLinearRing.h */,
-				DD4CF539124AAF2B00597565 /* SimpleKMLIconStyle.h */,
-				DD4CF53A124AAF2B00597565 /* SimpleKMLGeometry.m */,
-				DD4CF53B124AAF2B00597565 /* SimpleKMLGeometry.h */,
-				4902A883152412E600321C42 /* SimpleKMLMultiGeometry.h */,
-				4902A884152412E600321C42 /* SimpleKMLMultiGeometry.m */,
-				DD4CF53C124AAF2B00597565 /* SimpleKMLFolder.m */,
-				DD4CF53D124AAF2B00597565 /* SimpleKMLFolder.h */,
-				DD4CF53E124AAF2B00597565 /* SimpleKMLDocument.h */,
-				DD4CF53F124AAF2B00597565 /* SimpleKMLContainer.h */,
-				DD4CF540124AAF2B00597565 /* SimpleKMLColorStyle.h */,
-				DD4CF541124AAF2B00597565 /* SimpleKMLBalloonStyle.h */,
 				DD4CF542124AAF2B00597565 /* SimpleKML_UIImage.m */,
 				DD4CF543124AAF2B00597565 /* SimpleKML_UIImage.h */,
 				DD4CF544124AAF2B00597565 /* LICENSE.md */,
@@ -519,6 +619,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* Simple_KML_ExampleViewController.xib in Resources */,
 				DD4CF59A124AB03400597565 /* example.kml in Resources */,
+				CDE5E3ED155C0C2500A9E467 /* statue-of-liberty.kmz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +688,11 @@
 				DD4CF57C124AAF2B00597565 /* SimpleKML_UIImage.m in Sources */,
 				640B08A813A0077400DC40C3 /* CXMLNamespaceNode.m in Sources */,
 				4902A885152412E600321C42 /* SimpleKMLMultiGeometry.m in Sources */,
+				CDE5E3E6155BFD7D00A9E467 /* SimpleKMLGroundOverlay.m in Sources */,
+				CDE5E3E7155BFD7D00A9E467 /* SimpleKMLOverlay.m in Sources */,
+				CDE5E3EB155BFEFD00A9E467 /* SimpleKMLPhotoOverlay.m in Sources */,
+				CDE5E3F0155C148800A9E467 /* SimpleKMLAbstractView.m in Sources */,
+				CDE5E3F4155C14B700A9E467 /* SimpleKMLCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +703,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -615,6 +722,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Simple_KML_Example_Prefix.pch;

@@ -25,9 +25,12 @@
 {
     [super viewDidLoad];
     
+    // read the kmz file in the bundle and then drop it (just to test the parser..)
+    SimpleKML *kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"statue-of-liberty" ofType:@"kmz"] error:NULL];
+
     // grab the example KML file (which we know will have no errors, but you should ordinarily check)
     //
-    SimpleKML *kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"kml"] error:NULL];
+    kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"kml"] error:NULL];
     
     // look for a document feature in it per the KML spec
     //
@@ -45,7 +48,7 @@
                 
                 // create a normal point annotation for it
                 //
-                MKPointAnnotation *annotation = [[[MKPointAnnotation alloc] init] autorelease];
+                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 
                 annotation.coordinate = point.coordinate;
                 annotation.title      = feature.name;
@@ -87,7 +90,7 @@
 {
     // we get here in order to draw any polygon
     //
-    MKPolygonView *polygonView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon *)overlay] autorelease];
+    MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon *)overlay];
     
     // use some sensible defaults - normally, you'd probably look for LineStyle & PolyStyle in the KML
     //

@@ -1,8 +1,8 @@
 //
-//  SimpleKMLOverlay.h
+//  SimpleKMLAbstractView.m
 //
-//  Created by Justin R. Miller on 7/22/11
-//  Copyright 2011, Development Seed, Inc.
+//  Created by Andrea Cremaschi on 5/10/12
+//  Copyright 2012, redcluster.eu
 //  All rights reserved.
 //  
 //  Redistribution and use in source and binary forms, with or without
@@ -15,8 +15,7 @@
 //        notice, this list of conditions and the following disclaimer in the
 //        documentation and/or other materials provided with the distribution.
 //  
-//      * Neither the names of Code Sorcery Workshop, LLC or Development Seed,
-//        Inc., nor the names of its contributors may be used to endorse or
+//      * Neither the names of redcluster, nor the names of its contributors may be used to endorse or
 //        promote products derived from this software without specific prior
 //        written permission.
 //  
@@ -31,18 +30,10 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  http://code.google.com/apis/kml/documentation/kmlreference.html#overlay
+//  http://code.google.com/apis/kml/documentation/kmlreference.html#photooverlay
 //
-
-#import "SimpleKMLFeature.h"
 #import "SimpleKMLAbstractView.h"
 
-@interface SimpleKMLOverlay : SimpleKMLFeature
-
-@property (nonatomic, strong, readonly) UIColor *color;
-@property (nonatomic, strong, readonly) UIImage *icon;
-@property (nonatomic, strong, readonly) SimpleKMLAbstractView *view;
-
-// abstract class
+@implementation SimpleKMLAbstractView
 
 @end
