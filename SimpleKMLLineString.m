@@ -1,4 +1,3 @@
-//
 //  SimpleKMLLineString.m
 //
 //  Created by Justin R. Miller on 7/6/10.
@@ -91,6 +90,7 @@
                         
                         double longitude = [[parts objectAtIndex:0] doubleValue];
                         double latitude  = [[parts objectAtIndex:1] doubleValue];
+                        CLLocationDistance altitude  = [[parts objectAtIndex:2] doubleValue];
                         
                         // there should be valid values for latitude & longitude
                         //
@@ -105,7 +105,15 @@
                             return nil;
                         }
                         
-                        CLLocation *coordinate = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+                        CLLocationCoordinate2D coordinate2D;
+                        coordinate2D.latitude   =latitude;
+                        coordinate2D.longitude  =longitude;
+                        
+                        CLLocation* coordinate = [[CLLocation alloc] initWithCoordinate:coordinate2D 
+                                                                               altitude:altitude horizontalAccuracy:0 
+                                                                       verticalAccuracy:0 
+                                                                              timestamp:[NSDate date]];
+                        
                         
                         [parsedCoordinates addObject:coordinate]; 
                     }
