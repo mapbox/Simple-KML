@@ -22,11 +22,11 @@
 		DD4CF547124AAF2B00597565 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D6124AAF2B00597565 /* mztools.c */; };
 		DD4CF548124AAF2B00597565 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4D8124AAF2B00597565 /* unzip.c */; };
 		DD4CF549124AAF2B00597565 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4DA124AAF2B00597565 /* zip.c */; };
-		DD4CF54A124AAF2B00597565 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4DE124AAF2B00597565 /* FileInZipInfo.m */; };
-		DD4CF54B124AAF2B00597565 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E0124AAF2B00597565 /* ZipException.m */; };
-		DD4CF54C124AAF2B00597565 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E2124AAF2B00597565 /* ZipFile.m */; };
-		DD4CF54D124AAF2B00597565 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E4124AAF2B00597565 /* ZipReadStream.m */; };
-		DD4CF54E124AAF2B00597565 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E6124AAF2B00597565 /* ZipWriteStream.m */; };
+		DD4CF54A124AAF2B00597565 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4DE124AAF2B00597565 /* FileInZipInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD4CF54B124AAF2B00597565 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E0124AAF2B00597565 /* ZipException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD4CF54C124AAF2B00597565 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E2124AAF2B00597565 /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD4CF54D124AAF2B00597565 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E4124AAF2B00597565 /* ZipReadStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD4CF54E124AAF2B00597565 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E6124AAF2B00597565 /* ZipWriteStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD4CF54F124AAF2B00597565 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E8124AAF2B00597565 /* adler32.c */; };
 		DD4CF550124AAF2B00597565 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4E9124AAF2B00597565 /* compress.c */; };
 		DD4CF551124AAF2B00597565 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = DD4CF4EA124AAF2B00597565 /* crc32.c */; };
@@ -597,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -615,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Simple_KML_Example_Prefix.pch;
