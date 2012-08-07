@@ -1,4 +1,4 @@
-Copyright (c) 2010-2011, Code Sorcery Workshop, LLC and Development Seed, Inc.
+Copyright (c) 2010-2012, Code Sorcery Workshop, LLC and Development Seed, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
