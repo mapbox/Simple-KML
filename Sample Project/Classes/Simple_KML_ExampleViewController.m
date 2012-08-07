@@ -45,7 +45,7 @@
                 
                 // create a normal point annotation for it
                 //
-                MKPointAnnotation *annotation = [[[MKPointAnnotation alloc] init] autorelease];
+                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 
                 annotation.coordinate = point.coordinate;
                 annotation.title      = feature.name;
@@ -87,7 +87,7 @@
 {
     // we get here in order to draw any polygon
     //
-    MKPolygonView *polygonView = [[[MKPolygonView alloc] initWithPolygon:(MKPolygon *)overlay] autorelease];
+    MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon *)overlay];
     
     // use some sensible defaults - normally, you'd probably look for LineStyle & PolyStyle in the KML
     //
