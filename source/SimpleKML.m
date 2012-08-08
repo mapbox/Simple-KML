@@ -269,15 +269,13 @@
     
     ZipReadStream *stream = [archive readCurrentFileInZip];
     
-    NSMutableData *data = [NSMutableData dataWithLength:info.length];
-    
-    [stream readDataWithBuffer:data];
+    NSData *data = [stream readDataOfLength:info.length];
     
     [stream finishedReading];
     
     [archive close];
     
-    return [NSData dataWithData:data];
+    return data;
 }
 
 @end

@@ -64,11 +64,13 @@ Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Obje
 
 ## Usage
 
+Be sure to clone recursively (`git clone --recursive` or `git submodule update --init`) in order to grab the dependent submodules Objective-Zip and TouchXML. 
+
 Include all of the Simple KML files in your Xcode project, as well as the files in the TouchXML and Objective-Zip subdirectories if you don't already use these in your project.
 
 Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on `libxml2`.
 
-You'll also need to link against `CoreLocation.framework` for a couple of the classes since they make use of Core Location constructs.
+You'll also need to link against `CoreLocation.framework` and `libz.dylib`. 
 
 ## Plans, needs, bugs, etc.
 
