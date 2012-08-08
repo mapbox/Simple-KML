@@ -8,15 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class Simple_KML_ExampleViewController;
-
-@interface Simple_KML_ExampleAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    Simple_KML_ExampleViewController *viewController;
-}
-
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet Simple_KML_ExampleViewController *viewController;
+@interface Simple_KML_ExampleAppDelegate : NSObject <UIApplicationDelegate>
 
 @end
-

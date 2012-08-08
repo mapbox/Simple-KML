@@ -20,6 +20,9 @@
 #import "SimpleKMLLinearRing.h"
 
 @implementation Simple_KML_ExampleViewController
+{
+    IBOutlet MKMapView *mapView;
+}
 
 - (void)viewDidLoad
 {

@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class MKMapView;
-
 @interface Simple_KML_ExampleViewController : UIViewController
-{
-    IBOutlet MKMapView *mapView;
-}
 
 @end
