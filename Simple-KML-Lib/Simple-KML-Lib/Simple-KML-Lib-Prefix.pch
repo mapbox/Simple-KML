@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Simple-KML-Lib' target in the 'Simple-KML-Lib' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
