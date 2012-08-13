@@ -61,6 +61,8 @@
 		9BFE3E3215D9A3CB0041D8EE /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3B7615D9A3CA0041D8EE /* CXMLNode_XPathExtensions.m */; };
 		9BFE3E3315D9A3CB0041D8EE /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3B7915D9A3CA0041D8EE /* CTidy.m */; };
 		9BFE3E6C15D9A4940041D8EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */; };
+		9BFE3F7915D9A9220041D8EE /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F7215D9A8A50041D8EE /* libOCMock.a */; };
+		9BFE3F7C15D9AC550041D8EE /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9BFE3AB515D9A35E0041D8EE;
 			remoteInfo = "Simple-KML-Lib";
+		};
+		9BFE3F6D15D9A8A50041D8EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0A814632FD000B04273;
+			remoteInfo = OCMock;
+		};
+		9BFE3F6F15D9A8A50041D8EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0C014632FD000B04273;
+			remoteInfo = OCMockTests;
+		};
+		9BFE3F7115D9A8A50041D8EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 030EF0DC14632FF700B04273;
+			remoteInfo = OCMockLib;
+		};
+		9BFE3F7715D9A9170041D8EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 030EF0DB14632FF700B04273;
+			remoteInfo = OCMockLib;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -192,6 +222,8 @@
 		9BFE3B7915D9A3CA0041D8EE /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
 		9BFE3B7A15D9A3CA0041D8EE /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
 		9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../vendor/OCHamcrest/Source/build/Release/OCHamcrestIOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +240,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BFE3F7915D9A9220041D8EE /* libOCMock.a in Frameworks */,
 				9BFE3AC915D9A35E0041D8EE /* SenTestingKit.framework in Frameworks */,
+				9BFE3F7C15D9AC550041D8EE /* OCHamcrestIOS.framework in Frameworks */,
 				9BFE3ACB15D9A35E0041D8EE /* UIKit.framework in Frameworks */,
 				9BFE3ACC15D9A35E0041D8EE /* Foundation.framework in Frameworks */,
 				9BFE3ACF15D9A35E0041D8EE /* libSimple-KML-Lib.a in Frameworks */,
@@ -241,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */,
+				9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */,
 				9BFE3AB915D9A35E0041D8EE /* Foundation.framework */,
 				9BFE3AC815D9A35E0041D8EE /* SenTestingKit.framework */,
 				9BFE3ACA15D9A35E0041D8EE /* UIKit.framework */,
@@ -344,6 +379,8 @@
 		9BFE3B2A15D9A3CA0041D8EE /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9BFE3F7315D9A8B00041D8EE /* OCHamcrest */,
+				9BFE3F6315D9A8890041D8EE /* OCMock */,
 				9BFE3B2B15D9A3CA0041D8EE /* objective-zip */,
 				9BFE3B5215D9A3CA0041D8EE /* TouchXML */,
 			);
@@ -452,6 +489,31 @@
 			path = Tidy;
 			sourceTree = "<group>";
 		};
+		9BFE3F6315D9A8890041D8EE /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */,
+			);
+			name = OCMock;
+			sourceTree = "<group>";
+		};
+		9BFE3F6515D9A8A50041D8EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BFE3F6E15D9A8A50041D8EE /* OCMock.framework */,
+				9BFE3F7015D9A8A50041D8EE /* OCMockTests.octest */,
+				9BFE3F7215D9A8A50041D8EE /* libOCMock.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BFE3F7315D9A8B00041D8EE /* OCHamcrest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = OCHamcrest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -484,6 +546,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9BFE3F7815D9A9170041D8EE /* PBXTargetDependency */,
 				9BFE3ACE15D9A35E0041D8EE /* PBXTargetDependency */,
 			);
 			name = "Simple-KML-LibTests";
@@ -510,6 +573,12 @@
 			mainGroup = 9BFE3AAB15D9A35E0041D8EE;
 			productRefGroup = 9BFE3AB715D9A35E0041D8EE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9BFE3F6515D9A8A50041D8EE /* Products */;
+					ProjectRef = 9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9BFE3AB515D9A35E0041D8EE /* Simple-KML-Lib */,
@@ -517,6 +586,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9BFE3F6E15D9A8A50041D8EE /* OCMock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OCMock.framework;
+			remoteRef = 9BFE3F6D15D9A8A50041D8EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9BFE3F7015D9A8A50041D8EE /* OCMockTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OCMockTests.octest;
+			remoteRef = 9BFE3F6F15D9A8A50041D8EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9BFE3F7215D9A8A50041D8EE /* libOCMock.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOCMock.a;
+			remoteRef = 9BFE3F7115D9A8A50041D8EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9BFE3AC415D9A35E0041D8EE /* Resources */ = {
@@ -615,6 +708,11 @@
 			target = 9BFE3AB515D9A35E0041D8EE /* Simple-KML-Lib */;
 			targetProxy = 9BFE3ACD15D9A35E0041D8EE /* PBXContainerItemProxy */;
 		};
+		9BFE3F7815D9A9170041D8EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OCMockLib;
+			targetProxy = 9BFE3F7715D9A9170041D8EE /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -682,6 +780,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../vendor/ocmock/Examples/iOS5Example/usr/lib\"",
+					"\"$(SRCROOT)/../vendor/ocmock/Examples/iPhoneExample/Libraries\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -695,6 +798,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../vendor/ocmock/Examples/iOS5Example/usr/lib\"",
+					"\"$(SRCROOT)/../vendor/ocmock/Examples/iPhoneExample/Libraries\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -707,9 +815,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/../vendor/OCHamcrest/Source/build/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Simple-KML-LibTests/Simple-KML-LibTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -722,9 +832,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/../vendor/OCHamcrest/Source/build/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "Simple-KML-LibTests/Simple-KML-LibTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -750,6 +862,7 @@
 				9BFE3ADD15D9A35E0041D8EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9BFE3ADE15D9A35E0041D8EE /* Build configuration list for PBXNativeTarget "Simple-KML-LibTests" */ = {
 			isa = XCConfigurationList;
@@ -758,6 +871,7 @@
 				9BFE3AE015D9A35E0041D8EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

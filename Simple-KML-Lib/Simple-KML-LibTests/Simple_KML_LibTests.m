@@ -7,6 +7,10 @@
 //
 
 #import "Simple_KML_LibTests.h"
+#import <OCMock/OCMock.h>
+#define HC_SHORTHAND
+#import <OCHamcrestIOS/OCHamcrestIOS.h>
+
 
 @implementation Simple_KML_LibTests
 
