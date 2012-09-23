@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BB422D915F73290004A984E /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB422D815F73290004A984E /* libprofile_rt.dylib */; };
 		9BFE3ABA15D9A35E0041D8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3AB915D9A35E0041D8EE /* Foundation.framework */; };
 		9BFE3AC915D9A35E0041D8EE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3AC815D9A35E0041D8EE /* SenTestingKit.framework */; };
 		9BFE3ACB15D9A35E0041D8EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3ACA15D9A35E0041D8EE /* UIKit.framework */; };
 		9BFE3ACC15D9A35E0041D8EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3AB915D9A35E0041D8EE /* Foundation.framework */; };
 		9BFE3ACF15D9A35E0041D8EE /* libSimple-KML-Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3AB615D9A35E0041D8EE /* libSimple-KML-Lib.a */; };
 		9BFE3AD515D9A35E0041D8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BFE3AD315D9A35E0041D8EE /* InfoPlist.strings */; };
-		9BFE3AD815D9A35E0041D8EE /* Simple_KML_LibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3AD715D9A35E0041D8EE /* Simple_KML_LibTests.m */; };
 		9BFE3B1215D9A3B80041D8EE /* SimpleKML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3AE315D9A3B80041D8EE /* SimpleKML.m */; };
 		9BFE3B1315D9A3B80041D8EE /* SimpleKML_UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3AE515D9A3B80041D8EE /* SimpleKML_UIImage.m */; };
 		9BFE3B1415D9A3B80041D8EE /* SimpleKMLBalloonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3AE715D9A3B80041D8EE /* SimpleKMLBalloonStyle.m */; };
@@ -63,6 +63,10 @@
 		9BFE3E6C15D9A4940041D8EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */; };
 		9BFE3F7915D9A9220041D8EE /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F7215D9A8A50041D8EE /* libOCMock.a */; };
 		9BFE3F7C15D9AC550041D8EE /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */; };
+		9BFE3F7F15D9ADA50041D8EE /* SimpleKMLLineStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFE3F7E15D9ADA50041D8EE /* SimpleKMLLineStringTest.m */; };
+		9BFE3F8015D9AE0B0041D8EE /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */; };
+		9BFE3F8215D9AE160041D8EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F8115D9AE160041D8EE /* CoreLocation.framework */; };
+		9BFE3F8415D9AE6D0041D8EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFE3F8315D9AE6D0041D8EE /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9BB422D815F73290004A984E /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = ../../../Desktop/libprofile_rt.dylib; sourceTree = "<group>"; };
 		9BFE3AB615D9A35E0041D8EE /* libSimple-KML-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSimple-KML-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFE3AB915D9A35E0041D8EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9BFE3ABD15D9A35E0041D8EE /* Simple-KML-Lib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple-KML-Lib-Prefix.pch"; sourceTree = "<group>"; };
@@ -124,8 +129,6 @@
 		9BFE3ACA15D9A35E0041D8EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9BFE3AD215D9A35E0041D8EE /* Simple-KML-LibTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple-KML-LibTests-Info.plist"; sourceTree = "<group>"; };
 		9BFE3AD415D9A35E0041D8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9BFE3AD615D9A35E0041D8EE /* Simple_KML_LibTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simple_KML_LibTests.h; sourceTree = "<group>"; };
-		9BFE3AD715D9A35E0041D8EE /* Simple_KML_LibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple_KML_LibTests.m; sourceTree = "<group>"; };
 		9BFE3AE215D9A3B80041D8EE /* SimpleKML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKML.h; sourceTree = "<group>"; };
 		9BFE3AE315D9A3B80041D8EE /* SimpleKML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKML.m; sourceTree = "<group>"; };
 		9BFE3AE415D9A3B80041D8EE /* SimpleKML_UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKML_UIImage.h; sourceTree = "<group>"; };
@@ -224,6 +227,10 @@
 		9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		9BFE3F6415D9A8A50041D8EE /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../vendor/OCHamcrest/Source/build/Release/OCHamcrestIOS.framework; sourceTree = "<group>"; };
+		9BFE3F7D15D9ADA50041D8EE /* SimpleKMLLineStringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKMLLineStringTest.h; sourceTree = "<group>"; };
+		9BFE3F7E15D9ADA50041D8EE /* SimpleKMLLineStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKMLLineStringTest.m; sourceTree = "<group>"; };
+		9BFE3F8115D9AE160041D8EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9BFE3F8315D9AE6D0041D8EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +247,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB422D915F73290004A984E /* libprofile_rt.dylib in Frameworks */,
+				9BFE3F8415D9AE6D0041D8EE /* libz.dylib in Frameworks */,
+				9BFE3F8215D9AE160041D8EE /* CoreLocation.framework in Frameworks */,
+				9BFE3F8015D9AE0B0041D8EE /* libxml2.dylib in Frameworks */,
 				9BFE3F7915D9A9220041D8EE /* libOCMock.a in Frameworks */,
 				9BFE3AC915D9A35E0041D8EE /* SenTestingKit.framework in Frameworks */,
 				9BFE3F7C15D9AC550041D8EE /* OCHamcrestIOS.framework in Frameworks */,
@@ -274,7 +285,10 @@
 		9BFE3AB815D9A35E0041D8EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BB422D815F73290004A984E /* libprofile_rt.dylib */,
+				9BFE3F8315D9AE6D0041D8EE /* libz.dylib */,
 				9BFE3E6B15D9A4940041D8EE /* libxml2.dylib */,
+				9BFE3F8115D9AE160041D8EE /* CoreLocation.framework */,
 				9BFE3F7A15D9AC340041D8EE /* OCHamcrestIOS.framework */,
 				9BFE3AB915D9A35E0041D8EE /* Foundation.framework */,
 				9BFE3AC815D9A35E0041D8EE /* SenTestingKit.framework */,
@@ -304,8 +318,8 @@
 		9BFE3AD015D9A35E0041D8EE /* Simple-KML-LibTests */ = {
 			isa = PBXGroup;
 			children = (
-				9BFE3AD615D9A35E0041D8EE /* Simple_KML_LibTests.h */,
-				9BFE3AD715D9A35E0041D8EE /* Simple_KML_LibTests.m */,
+				9BFE3F7D15D9ADA50041D8EE /* SimpleKMLLineStringTest.h */,
+				9BFE3F7E15D9ADA50041D8EE /* SimpleKMLLineStringTest.m */,
 				9BFE3AD115D9A35E0041D8EE /* Supporting Files */,
 			);
 			path = "Simple-KML-LibTests";
@@ -696,7 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BFE3AD815D9A35E0041D8EE /* Simple_KML_LibTests.m in Sources */,
+				9BFE3F7F15D9ADA50041D8EE /* SimpleKMLLineStringTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +791,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Simple_KML_Lib.dst;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -795,6 +811,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/Simple_KML_Lib.dst;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -819,8 +836,22 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					/usr/include/libxml2,
+					"-ObjC",
+				);
 				INFOPLIST_FILE = "Simple-KML-LibTests/Simple-KML-LibTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Desktop\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libOCMock.a",
+					"-ObjC",
+					"-lprofile_rt",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -836,8 +867,21 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simple-KML-Lib/Simple-KML-Lib-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					/usr/include/libxml2,
+					"-ObjC",
+				);
 				INFOPLIST_FILE = "Simple-KML-LibTests/Simple-KML-LibTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Desktop\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libOCMock.a",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
