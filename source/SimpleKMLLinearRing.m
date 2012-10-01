@@ -105,7 +105,23 @@
                             return nil;
                         }
                         
-                        CLLocation *coordinate = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+                        // Altitude values are optional
+                        CLLocationDistance altitude = 0.0;
+                        if (parts.count == 3)
+                        {
+                            altitude = [[parts objectAtIndex:2] doubleValue];
+                        }
+                        
+                        
+                        CLLocationCoordinate2D coordinate2D;
+                        coordinate2D.latitude   =latitude;
+                        coordinate2D.longitude  =longitude;
+                        
+                        CLLocation* coordinate = [[CLLocation alloc] initWithCoordinate:coordinate2D
+                                                                               altitude:altitude horizontalAccuracy:0
+                                                                       verticalAccuracy:0
+                                                                              timestamp:[NSDate date]];
+                        
                         
                         [parsedCoordinates addObject:coordinate]; 
                     }

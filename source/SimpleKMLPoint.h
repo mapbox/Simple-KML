@@ -40,5 +40,6 @@
 @interface SimpleKMLPoint : SimpleKMLGeometry
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong)   CLLocation *location;
 
 @end

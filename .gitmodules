@@ -1,6 +1,12 @@
-[submodule "vendor/Objective-Zip"]
-	path = vendor/Objective-Zip
-	url = https://github.com/AgileBits/Objective-Zip.git
+[submodule "vendor/objective-zip"]
+	path = vendor/objective-zip
+	url = https://github.com/AgileBits/objective-zip.git
 [submodule "vendor/TouchXML"]
 	path = vendor/TouchXML
 	url = https://github.com/TouchCode/TouchXML
+[submodule "vendor/ocmock"]
+	path = vendor/ocmock
+	url = https://github.com/erikdoe/ocmock.git
+[submodule "vendor/OCHamcrest"]
+	path = vendor/OCHamcrest
+	url = https://github.com/hamcrest/OCHamcrest.git
