@@ -7,12 +7,9 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SimpleKML.h"
+#import "SimpleKMLObjectTest.h"
 
-@interface SimpleKMLLineStringTest : SenTestCase
+@interface SimpleKMLLineStringTest : SimpleKMLObjectTest
 
 
-@property SimpleKML*            kml;
-@property NSMutableArray*       coordinates;
-@property id                    xmlNodeMock;
 @end

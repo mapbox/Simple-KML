@@ -1,29 +1,36 @@
 //
-//  SimpleKMLLineString.m
-//  SimpleKML
+//  SimpleKMLLinearRing.m
+//  Simple-KML-Lib
 //
-//  Created by Markus on 09.08.12.
-//
+//  Created by Markus on 23.09.12.
+//  Copyright (c) 2012 jemm. All rights reserved.
 //
 
-#import "SimpleKMLLineStringTest.h"
 #import "SimpleKML.h"
 #import "SimpleKMLDocument.h"
 #import "SimpleKMLMultiGeometry.h"
 #import "SimpleKMLPlacemark.h"
-#import "SimpleKMLLineString.h"
+#import "SimpleKMLLinearRing.h"
+#import "SimpleKMLLinearRingTest.h"
+
+
 #import <CoreLocation/CoreLocation.h>
 #import <OCMock/OCMock.h>
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
 
-@implementation SimpleKMLLineStringTest
+@implementation SimpleKMLLinearRingTest
+
+
+
+
 
 
 - (void)setUp
 {
     [super setUp];
+    
 }
 
 - (void)tearDown
@@ -36,24 +43,24 @@
 - (void)testDefault
 {
     NSError* error;
-  
+    
     NSString* coordinateString = @"-122.681944,45.52000000,32.000000\n-43.1963890,-22.9083330,6.0000000\n28.97601800,41.01224000,32.000000\n-21.9333330,64.13333300,13.000000\n-122.681944,45.52000000,32.000000";
-
-
+    
+    
     id xmlChildMock = [OCMockObject mockForClass:[CXMLElement class]];
     [(CXMLNode*)[[xmlChildMock stub] andReturn:@"coordinates"] name];
     [(CXMLNode*)[[xmlChildMock stub] andReturn:coordinateString] stringValue];
-
+    
     [[[self.xmlNodeMock stub] andReturn:@[xmlChildMock]] children];
     [[[self.xmlNodeMock stub] andReturn:@"xmlString"] XMLString];
     [[[self.xmlNodeMock stub] andReturn:nil] attributeForName:@"id"];
-
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
-        
-    assertThat(lineString, notNilValue());
-    assertThat(lineString.coordinates, hasCountOf(5));
+    
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    
+    assertThat(linearRing, notNilValue());
+    assertThat(linearRing.coordinates, hasCountOf(5));
     
     CLLocationCoordinate2D location2D;
     location2D.latitude= 45.52000000;
@@ -61,10 +68,10 @@
     
     CLLocation* location = [[CLLocation alloc] initWithCoordinate:location2D altitude:32.000000 horizontalAccuracy:0 verticalAccuracy:0  timestamp:[NSDate date]];
     
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] altitude]], equalToDouble(location.altitude));
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] coordinate].latitude], equalToDouble(location.coordinate.latitude));
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] coordinate].longitude], equalToDouble(location.coordinate.longitude));
-
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] altitude]], equalToDouble(location.altitude));
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] coordinate].latitude], equalToDouble(location.coordinate.latitude));
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] coordinate].longitude], equalToDouble(location.coordinate.longitude));
+    
 }
 
 
@@ -72,7 +79,7 @@
 {
     NSError* error;
     
-    NSString* coordinateString = @"-122.681944,45.52000000\n-43.1963890,-22.9083330";
+    NSString* coordinateString = @"-122.365662,37.826988\n-122.365202,37.826302\n-122.364581,37.82655\n-122.365038,37.827237\n-122.365662,37.826988";
     
     
     id xmlChildMock = [OCMockObject mockForClass:[CXMLElement class]];
@@ -85,21 +92,23 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-    assertThat(lineString, notNilValue());
-    assertThat(lineString.coordinates, hasCountOf(2));
+    assertThat(linearRing, notNilValue());
+    assertThat(linearRing.coordinates, hasCountOf(5));
     
     CLLocationCoordinate2D location2D;
-    location2D.latitude= 45.52000000;
-    location2D.longitude=-122.681944;
+    location2D.latitude= 37.826988;
+    location2D.longitude=-122.365662;
     
     CLLocation* location = [[CLLocation alloc] initWithCoordinate:location2D altitude:0.000000 horizontalAccuracy:0 verticalAccuracy:0  timestamp:[NSDate date]];
     
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] altitude]], equalToDouble(location.altitude));
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] coordinate].latitude], equalToDouble(location.coordinate.latitude));
-    assertThat([NSNumber numberWithDouble:[[lineString.coordinates objectAtIndex:0] coordinate].longitude], equalToDouble(location.coordinate.longitude));
-
+    
+    
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] altitude]], equalToDouble(location.altitude));
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] coordinate].latitude], equalToDouble(location.coordinate.latitude));
+    assertThat([NSNumber numberWithDouble:[[linearRing.coordinates objectAtIndex:0] coordinate].longitude], equalToDouble(location.coordinate.longitude));
+    
     
 }
 
@@ -121,12 +130,12 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
-   
+    
     
     
 }
@@ -149,9 +158,9 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
     
@@ -177,9 +186,9 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
     
@@ -203,9 +212,9 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
     
@@ -217,8 +226,7 @@
 {
     NSError* error;
     
-    NSString* coordinateString = @"-122.681944, 45.52000000 -43.1963890,-22.9083330";
-    
+    NSString* coordinateString =    @"-122.681944, 45.52000000, 32.000000\n-43.1963890,-22.9083330,6.0000000\n28.97601800,41.01224000,32.000000\n-21.9333330,64.13333300,13.000000\n-122.681944,45.52000000,32.000000";
     
     id xmlChildMock = [OCMockObject mockForClass:[CXMLElement class]];
     [(CXMLNode*)[[xmlChildMock stub] andReturn:@"coordinates"] name];
@@ -230,8 +238,15 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
-    assertThat(lineString, nilValue());
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    
+    assertThat(linearRing, nilValue());
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -252,10 +267,10 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
-     
-    assertThat(lineString, nilValue());
+    
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
 }
@@ -278,13 +293,13 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
-
+    
 }
 
 - (void) testLatitudeToSmallException
@@ -304,10 +319,10 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
 }
@@ -330,13 +345,14 @@
     
     
     
-    SimpleKMLLineString* lineString = [[SimpleKMLLineString alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
+    SimpleKMLLinearRing* linearRing = [[SimpleKMLLinearRing alloc] initWithXMLNode:self.xmlNodeMock sourceURL:[NSURL URLWithString:@"Dummy"] error:&error];
     
     
-    assertThat(lineString, nilValue());
+    assertThat(linearRing, nilValue());
     
     NSLog(@"%@", error);
     
 }
-
 @end
+
+
