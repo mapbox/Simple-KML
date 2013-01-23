@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-int main (int argc, char *argv[])
+#import "SKExampleAppDelegate.h"
+
+int main(int argc, char *argv[])
 {
-    @autoreleasepool
-    {
-        return UIApplicationMain(argc, argv, nil, nil);
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SKExampleAppDelegate class]));
     }
 }

@@ -1,14 +1,12 @@
 //
-//  Simple_KML_ExampleViewController.m
+//  SKExampleViewController.m
 //  Simple KML Example
 //
 //  Created by Justin R. Miller on 9/22/10.
-//  Copyright Development Seed 2010-2012. All rights reserved.
+//  Copyright MapBox 2010-2013. All rights reserved.
 //
 
-#import "Simple_KML_ExampleViewController.h"
-
-#import <MapKit/MapKit.h>
+#import "SKExampleViewController.h"
 
 #import "SimpleKML.h"
 #import "SimpleKMLContainer.h"
@@ -19,15 +17,20 @@
 #import "SimpleKMLPolygon.h"
 #import "SimpleKMLLinearRing.h"
 
-@implementation Simple_KML_ExampleViewController
-{
-    IBOutlet MKMapView *mapView;
-}
+@implementation SKExampleViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    // setup the map view
+    //
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+
+    mapView.delegate = self;
+
+    [self.view addSubview:mapView];
+
     // grab the example KML file (which we know will have no errors, but you should ordinarily check)
     //
     SimpleKML *kml = [SimpleKML KMLWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"example" ofType:@"kml"] error:NULL];

@@ -78,6 +78,6 @@ If you find a bug or want to otherwise contribute, please fork the project on Gi
 
 ## License
 
-Copyright (c) 2010-2012 Code Sorcery Workshop, LLC and Development Seed, Inc.
+Copyright (c) 2010-2013 MapBox.
 
-The Simple KML library should be accompanied by a LICENSE file. This file contains the license relevant to this distribution. If no license exists, please contact [Development Seed](http://developmentseed.org).
+The Simple KML library should be accompanied by a LICENSE file. This file contains the license relevant to this distribution. If no license exists, please contact [MapBox](http://mapbox.com).
