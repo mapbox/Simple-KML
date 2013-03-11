@@ -27,6 +27,8 @@
     //
     MKMapView *mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     mapView.delegate = self;
 
     [self.view addSubview:mapView];
