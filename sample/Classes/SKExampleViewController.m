@@ -17,6 +17,8 @@
 #import "SimpleKMLPolygon.h"
 #import "SimpleKMLLinearRing.h"
 
+#import <MapBox/MapBox.h>
+
 @implementation SKExampleViewController
 
 - (void)viewDidLoad
@@ -25,11 +27,9 @@
 
     // setup the map view
     //
-    MKMapView *mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    RMMapView *mapView = [[RMMapView alloc] initWithFrame:self.view.bounds];
 
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    mapView.delegate = self;
 
     [self.view addSubview:mapView];
 
@@ -53,10 +53,7 @@
                 
                 // create a normal point annotation for it
                 //
-                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-                
-                annotation.coordinate = point.coordinate;
-                annotation.title      = feature.name;
+                RMPointAnnotation *annotation = [[RMPointAnnotation alloc] initWithMapView:mapView coordinate:point.coordinate andTitle:feature.name];
                 
                 [mapView addAnnotation:annotation];
             }
@@ -77,34 +74,16 @@
                 
                 // create a polygon annotation for it
                 //
-                MKPolygon *overlayPolygon = [MKPolygon polygonWithCoordinates:points count:[outerRing.coordinates count]];
-                
-                [mapView addOverlay:overlayPolygon];
+                RMPolygonAnnotation *overlayPolygon = [[RMPolygonAnnotation alloc] initWithMapView:mapView points:outerRing.coordinates interiorPolygons:nil];
+
+                [mapView addAnnotation:overlayPolygon];
                 
                 // zoom the map to the polygon bounds
                 //
-                [mapView setVisibleMapRect:overlayPolygon.boundingMapRect animated:YES];
+                [mapView setProjectedBounds:overlayPolygon.projectedBoundingBox animated:YES];
             }
         }
     }
-}
-
-#pragma mark -
-
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-    // we get here in order to draw any polygon
-    //
-    MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon *)overlay];
-    
-    // use some sensible defaults - normally, you'd probably look for LineStyle & PolyStyle in the KML
-    //
-    polygonView.fillColor   = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.25];
-    polygonView.strokeColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.75];
-    
-    polygonView.lineWidth = 2.0;
-    
-    return polygonView;
 }
 
 @end
