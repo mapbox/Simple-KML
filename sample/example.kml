@@ -18,12 +18,31 @@
       <Point>
         <coordinates>28.976018,41.01224,0</coordinates>
       </Point>
+      <ExtendedData>
+          <Data name="holeNumber">
+              <displayName>Bla</displayName>
+              <value>1</value>
+          </Data>
+          <Data name="holeYardage">
+              <value>234</value>
+          </Data>
+          <Data name="holePar">
+              <value>4</value>
+          </Data>
+      </ExtendedData>
     </Placemark>
     <Placemark>
       <name>Reykjavik</name>
       <Point>
         <coordinates>-21.933333,64.133333,0</coordinates>
       </Point>
+      <ExtendedData>
+          <SchemaData schemaUrl="#TrailHeadTypeId">
+              <SimpleData name="TrailHeadName">Pi in the sky</SimpleData>
+              <SimpleData name="TrailLength">3.14159</SimpleData>
+              <SimpleData name="ElevationGain">10</SimpleData>
+          </SchemaData>
+      </ExtendedData>
     </Placemark>
     <Placemark>
       <name>Simple Polygon</name>
