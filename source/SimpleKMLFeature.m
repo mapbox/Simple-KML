@@ -62,6 +62,9 @@
             else if ([[child name] isEqualToString:@"Style"])
                 inlineStyle = [[SimpleKMLStyle alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
             
+            else if ([[child name] isEqualToString:@"ExtendedData"])
+                inlineStyle = [[SimpleKMLExtendedData alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
+            
 #pragma mark TODO: we really need case folding here
             else if ([[child name] isEqualToString:@"styleUrl"])
                 sharedStyleID = [[child stringValue] stringByReplacingOccurrencesOfString:@"#" withString:@""];
