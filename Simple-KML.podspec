@@ -17,5 +17,6 @@ Pod::Spec.new do |s|
   
   s.ios.framework = "UIKit"
   s.library = 'xml2'
+  s.source_files = "source/*.{h,m}"
 
 end
