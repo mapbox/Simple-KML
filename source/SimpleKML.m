@@ -108,7 +108,8 @@
         {
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Empty file"
                                                              forKey:NSLocalizedFailureReasonErrorKey];
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if(error)
+              *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             return nil;
         }
       
