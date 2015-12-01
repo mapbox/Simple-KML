@@ -33,9 +33,7 @@
 
 #import "SimpleKML.h"
 #import "SimpleKMLFeature.h"
-#import "ZipFile.h"
-#import "FileInZipInfo.h"
-#import "ZipReadStream.h"
+#import <Objective-Zip.h>
 
 @interface SimpleKML ()
 
@@ -243,11 +241,11 @@
 
 + (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath
 {
-    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
-    
+    OZZipFile *archive = [[OZZipFile alloc] initWithFileName:archivePath mode:OZZipFileModeUnzip];
+  
     NSArray *files = [archive listFileInZipInfos];
     
-    for (FileInZipInfo *file in files)
+    for (OZFileInZipInfo *file in files)
     {
         // look for either "<archive name>/<file name>.kml" or just plain "<file name>.kml"
         //
@@ -264,7 +262,7 @@
 
 + (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
 {
-    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
+    OZZipFile *archive = [[OZZipFile alloc] initWithFileName:archivePath mode:OZZipFileModeUnzip];
     
     if ( ! [archive locateFileInZip:filePath])
     {
@@ -273,12 +271,13 @@
         return nil;
     }
     
-    FileInZipInfo *info = [archive getCurrentFileInZipInfo];
+    OZFileInZipInfo *info = [archive getCurrentFileInZipInfo];
+  
+    OZZipReadStream *stream = [archive readCurrentFileInZip];
     
-    ZipReadStream *stream = [archive readCurrentFileInZip];
-    
-    NSData *data = [stream readDataOfLength:info.length];
-    
+    NSMutableData *data = [[NSMutableData alloc] initWithLength:info.length];
+    [stream readDataWithBuffer:data];
+
     [stream finishedReading];
     
     [archive close];
