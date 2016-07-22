@@ -34,6 +34,7 @@
 #import "SimpleKMLFeature.h"
 #import "SimpleKMLDocument.h"
 #import "SimpleKMLStyle.h"
+#import "SimpleKMLExtendedData.h"
 
 @implementation SimpleKMLFeature
 
@@ -42,6 +43,7 @@
 @synthesize sharedStyleID;
 @synthesize sharedStyle;
 @synthesize inlineStyle;
+@synthesize extendedData;
 @synthesize style;
 @synthesize document;
 
@@ -65,6 +67,9 @@
 #pragma mark TODO: we really need case folding here
             else if ([[child name] isEqualToString:@"styleUrl"])
                 sharedStyleID = [[child stringValue] stringByReplacingOccurrencesOfString:@"#" withString:@""];
+            
+            else if ([[child name] isEqualToString:@"ExtendedData"])
+                extendedData = [[SimpleKMLExtendedData alloc] initWithXMLNode:child sourceURL:sourceURL error:NULL];
         }
     }
     

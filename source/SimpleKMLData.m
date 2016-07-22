@@ -1,24 +1,24 @@
 //
-//  SimpleKMLFeature.h
+//  SimpleKMLData.m
 //
-//  Created by Justin R. Miller on 6/29/10.
+//  Created by Thijs Scheepers on 22-10-13.
 //  Copyright MapBox 2010-2013.
 //  All rights reserved.
-//  
+//
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
-//  
+//
 //      * Redistributions of source code must retain the above copyright
 //        notice, this list of conditions and the following disclaimer.
-//  
+//
 //      * Redistributions in binary form must reproduce the above copyright
 //        notice, this list of conditions and the following disclaimer in the
 //        documentation and/or other materials provided with the distribution.
-//  
+//
 //      * Neither the name of MapBox, nor the names of its contributors may be
 //        used to endorse or promote products derived from this software
 //        without specific prior written permission.
-//  
+//
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 //  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 //  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -30,24 +30,36 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  http://code.google.com/apis/kml/documentation/kmlreference.html#feature
+//  https://developers.google.com/kml/documentation/kmlreference#data
 //
 
-#import "SimpleKMLObject.h"
+#import "SimpleKMLData.h"
 
-@class SimpleKMLStyle;
-@class SimpleKMLDocument;
-@class SimpleKMLExtendedData;
+@implementation SimpleKMLData
 
-@interface SimpleKMLFeature : SimpleKMLObject
+@synthesize value;
+@synthesize displayName;
+@synthesize name;
 
-@property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong, readonly) NSString *featureDescription;
-@property (nonatomic, strong, readonly) NSString *sharedStyleID;
-@property (nonatomic, strong, readonly) SimpleKMLStyle *inlineStyle;
-@property (nonatomic, strong, readonly) SimpleKMLStyle *style;
-@property (nonatomic, strong, readonly) SimpleKMLExtendedData *extendedData;
-@property (nonatomic, weak) SimpleKMLStyle *sharedStyle;
-@property (nonatomic, weak) SimpleKMLDocument *document;
+- (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
+{
+    self = [super initWithXMLNode:node sourceURL:sourceURL error:error];
+    
+    if (self != nil)
+    {
+        name = [[[((CXMLElement *)node) attributeForName:@"name"] stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        for (CXMLNode *child in [node children])
+        {
+            if ([[child name] isEqualToString:@"value"])
+                value = [child stringValue];
+            
+            if ([[child name] isEqualToString:@"displayName"])
+                displayName = [child stringValue];
+        }
+    }
+    
+    return self;
+}
 
 @end
