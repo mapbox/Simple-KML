@@ -103,7 +103,15 @@
             
             return nil;
         }
-        
+      
+        if (!source.length)
+        {
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Empty file"
+                                                             forKey:NSLocalizedFailureReasonErrorKey];
+            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            return nil;
+        }
+      
         NSError *parseError = nil;
         
         CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:source
