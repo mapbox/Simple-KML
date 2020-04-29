@@ -33,14 +33,12 @@
 
 #import "SimpleKML.h"
 #import "SimpleKMLFeature.h"
-#import <Objective-Zip.h>
 
 @interface SimpleKML ()
 
 @property (nonatomic, strong) NSURL *sourceURL;
 
 - (id)initWithContentsOfFile:(NSString *)path error:(NSError **)error;
-+ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath;
 
 @end
 
@@ -77,22 +75,13 @@
         }
         else if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kmz"])
         {
-            NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] 
-                                                     withFilePath:[SimpleKML topLevelKMLFilePathInArchiveAtPath:[URL relativePath]]];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"KMZ file not supported by SimpleKML"
+                                                                 forKey:NSLocalizedFailureReasonErrorKey];
             
-            if (sourceData)
-                source = [[NSString alloc] initWithData:sourceData encoding:NSUTF8StringEncoding];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
-            else
-            {
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Unable to locate top-level KML file in KMZ archive" 
-                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                
-                if (error)
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                
-                return nil;
-            }
+            return nil;
         }
         else 
         {
@@ -237,52 +226,6 @@
                                      alpha:[[parts objectAtIndex:0] floatValue]];
     
     return color;
-}
-
-+ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath
-{
-    OZZipFile *archive = [[OZZipFile alloc] initWithFileName:archivePath mode:OZZipFileModeUnzip];
-  
-    NSArray *files = [archive listFileInZipInfos];
-    
-    for (OZFileInZipInfo *file in files)
-    {
-        // look for either "<archive name>/<file name>.kml" or just plain "<file name>.kml"
-        //
-        if ([[[file name] componentsSeparatedByString:@"/"] count] < 3 && [[[file name] pathExtension] isEqualToString:@"kml"])
-        {
-            [archive close];
-            
-            return [file name];
-        }
-    }
-    
-    return nil;
-}
-
-+ (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
-{
-    OZZipFile *archive = [[OZZipFile alloc] initWithFileName:archivePath mode:OZZipFileModeUnzip];
-    
-    if ( ! [archive locateFileInZip:filePath])
-    {
-        [archive close];
-        
-        return nil;
-    }
-    
-    OZFileInZipInfo *info = [archive getCurrentFileInZipInfo];
-  
-    OZZipReadStream *stream = [archive readCurrentFileInZip];
-    
-    NSMutableData *data = [[NSMutableData alloc] initWithLength:info.length];
-    [stream readDataWithBuffer:data];
-
-    [stream finishedReading];
-    
-    [archive close];
-    
-    return data;
 }
 
 @end
