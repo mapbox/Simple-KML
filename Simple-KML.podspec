@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.xcconfig     = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
   s.dependency 'TouchXML'
-  s.dependency 'objective-zip'
   
   s.ios.framework = "UIKit"
   s.library = 'xml2'
