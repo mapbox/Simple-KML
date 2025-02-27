@@ -18,7 +18,7 @@ Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Obje
 
 * Support for most of the base KML entities.
 
-    Basic support for `Object`, `Feature`, `Placemark`, `Container`, `Document`, `Folder`, `Geometry`, `Point`, `LineString`, `LinearRing`, `Polygon`, `StyleSelector`, `Style`, `SubStyle`, `BalloonStyle`, `ColorStyle`, `LineStyle`, `PolyStyle`, and `IconStyle`.
+    Basic support for `Object`, `Feature`, `Placemark`, `Container`, `Document`, `Folder`, `Geometry`, `Point`, `LineString`, `LinearRing`, `Polygon`, `StyleSelector`, `Style`, `SubStyle`, `BalloonStyle`, `ColorStyle`, `LineStyle`, `PolyStyle`, `IconStyle` and `ExtendedData`.
 
 * Simple invocation.
 
