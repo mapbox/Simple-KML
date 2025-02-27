@@ -33,16 +33,12 @@
 
 #import "SimpleKML.h"
 #import "SimpleKMLFeature.h"
-#import "ZipFile.h"
-#import "FileInZipInfo.h"
-#import "ZipReadStream.h"
 
 @interface SimpleKML ()
 
 @property (nonatomic, strong) NSURL *sourceURL;
 
 - (id)initWithContentsOfFile:(NSString *)path error:(NSError **)error;
-+ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath;
 
 @end
 
@@ -79,22 +75,13 @@
         }
         else if ([[[[URL relativePath] pathExtension] lowercaseString] isEqualToString:@"kmz"])
         {
-            NSData *sourceData = [SimpleKML dataFromArchiveAtPath:[URL relativePath] 
-                                                     withFilePath:[SimpleKML topLevelKMLFilePathInArchiveAtPath:[URL relativePath]]];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"KMZ file not supported by SimpleKML"
+                                                                 forKey:NSLocalizedFailureReasonErrorKey];
             
-            if (sourceData)
-                source = [[NSString alloc] initWithData:sourceData encoding:NSUTF8StringEncoding];
+            if (error)
+                *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             
-            else
-            {
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Unable to locate top-level KML file in KMZ archive" 
-                                                                     forKey:NSLocalizedFailureReasonErrorKey];
-                
-                if (error)
-                    *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
-                
-                return nil;
-            }
+            return nil;
         }
         else 
         {
@@ -108,7 +95,8 @@
         {
             NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Empty file"
                                                              forKey:NSLocalizedFailureReasonErrorKey];
-            *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
+            if(error)
+              *error = [NSError errorWithDomain:SimpleKMLErrorDomain code:SimpleKMLParseError userInfo:userInfo];
             return nil;
         }
       
@@ -238,51 +226,6 @@
                                      alpha:[[parts objectAtIndex:0] floatValue]];
     
     return color;
-}
-
-+ (NSString *)topLevelKMLFilePathInArchiveAtPath:(NSString *)archivePath
-{
-    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
-    
-    NSArray *files = [archive listFileInZipInfos];
-    
-    for (FileInZipInfo *file in files)
-    {
-        // look for either "<archive name>/<file name>.kml" or just plain "<file name>.kml"
-        //
-        if ([[[file name] componentsSeparatedByString:@"/"] count] < 3 && [[[file name] pathExtension] isEqualToString:@"kml"])
-        {
-            [archive close];
-            
-            return [file name];
-        }
-    }
-    
-    return nil;
-}
-
-+ (NSData *)dataFromArchiveAtPath:(NSString *)archivePath withFilePath:(NSString *)filePath
-{
-    ZipFile *archive = [[ZipFile alloc] initWithFileName:archivePath mode:ZipFileModeUnzip];
-    
-    if ( ! [archive locateFileInZip:filePath])
-    {
-        [archive close];
-        
-        return nil;
-    }
-    
-    FileInZipInfo *info = [archive getCurrentFileInZipInfo];
-    
-    ZipReadStream *stream = [archive readCurrentFileInZip];
-    
-    NSData *data = [stream readDataOfLength:info.length];
-    
-    [stream finishedReading];
-    
-    [archive close];
-    
-    return data;
 }
 
 @end

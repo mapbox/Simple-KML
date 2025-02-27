@@ -40,7 +40,6 @@
 @implementation SimpleKMLContainer
 
 @synthesize features;
-@synthesize flattenedPlacemarks;
 
 - (id)initWithXMLNode:(CXMLNode *)node sourceURL:sourceURL error:(NSError **)error
 {
@@ -82,78 +81,22 @@
         }
         
         features = [NSArray arrayWithArray:featuresArray];
-        
-        // find all Placemark features, regardless of hierarchy
-        //
-        NSMutableArray *flattenedPlacemarksArray = [NSMutableArray array];
-        
-        NSMutableDictionary *namespaceMappings = [NSMutableDictionary dictionary];
-        
-        /**
-         * We need to look at document namespace(s) and ensure we have a default/"kml" one.
-         * 
-         * TouchXML can't do XPath without namespaces (@schwa says blame Apple for this).
-         * 
-         * Since we support namespace declaration in either <kml> and <Document> element,
-         * we need to check both until we have something.
-         *
-         * This should probably eventually go someplace more generic. For example, if a 
-         * given SimpleKMLObject subclass had a pointer to its SimpleKML object, it could 
-         * query that for the namespaces.
-         * 
-         */
-        NSArray *namespaces = [NSArray array];
-        
-        // check <kml> first
-        //
-        if ([[((CXMLElement *)[[node rootDocument] rootElement]) namespaces] count])
-            namespaces = [((CXMLElement *)[[node rootDocument] rootElement]) namespaces];
-        
-        // else find <kml>'s child <Document> and check that
-        //
-        else
-            for (CXMLNode *checkNode in [[[node rootDocument] rootElement] children])
-                if ([checkNode kind] == CXMLElementKind)
-                    namespaces = [((CXMLElement *)checkNode) namespaces];
-
-        // do the mappings - this feels dirty
-        //
-        for (CXMLNamespaceNode *namespace in namespaces)
-            [namespaceMappings setObject:[namespace valueForKeyPath:@"_uri"]
-                                  forKey:[namespace valueForKeyPath:@"_prefix"]];
-        
-        // make sure we have a "kml" prefix
-        //
-        if ( ! [namespaceMappings objectForKey:@"kml"] && [namespaceMappings objectForKey:@""])
-            [namespaceMappings setObject:[namespaceMappings objectForKey:@""] forKey:@"kml"];
-        
-        if ([namespaceMappings objectForKey:@"kml"])
-        {
-            for (CXMLNode *featureNode in [node nodesForXPath:@"//kml:Placemark" 
-                                            namespaceMappings:namespaceMappings
-                                                        error:NULL])
-            {
-                if ([alreadyParsedFeatures objectForKey:featureNode])
-                    [flattenedPlacemarksArray addObject:[alreadyParsedFeatures objectForKey:featureNode]];
-
-                else
-                {
-                    parseError = nil;
-                    
-                    SimpleKMLPlacemark *placemark = [[SimpleKMLPlacemark alloc] initWithXMLNode:featureNode 
-                                                                                      sourceURL:sourceURL 
-                                                                                          error:&parseError];
-                    
-                    if ( ! parseError)
-                        [flattenedPlacemarksArray addObject:placemark];
-                }
-            }
-        }
-        
-        flattenedPlacemarks = [NSArray arrayWithArray:flattenedPlacemarksArray];
     }
     
     return self;
+}
+
+
+- (NSArray*)flattenedPlacemarks {
+  NSMutableArray *flattened = [NSMutableArray array];
+  for(SimpleKMLFeature *f in self.features) {
+    if([f isKindOfClass:[SimpleKMLContainer class]]) {
+      [flattened addObjectsFromArray:[(SimpleKMLContainer*)f flattenedPlacemarks]];
+    } else {
+      [flattened addObject:f];
+    }
+  }
+  return flattened;
 }
 
 @end

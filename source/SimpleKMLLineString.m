@@ -44,6 +44,7 @@
     
     if (self != nil)
     {
+      @autoreleasepool {
         coordinates = nil;
         
         for (CXMLNode *child in [node children])
@@ -137,6 +138,7 @@
             
             return nil;
         }
+      }
     }
     
     return self;
