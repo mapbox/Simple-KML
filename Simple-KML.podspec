@@ -11,6 +11,8 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => 'https://github.com/mapbox/Simple-KML.git' }
   s.xcconfig     = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+
+  s.dependency 'TouchXML'
   
   s.ios.framework = "UIKit"
   s.library = 'xml2'
