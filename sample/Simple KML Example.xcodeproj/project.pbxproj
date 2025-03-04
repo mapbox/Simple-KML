@@ -13,10 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* SKExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* SKExampleViewController.m */; };
-		7686472F18167CCD004F5E01 /* SimpleKMLExtendedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7686472E18167CCD004F5E01 /* SimpleKMLExtendedData.m */; };
-		7686473218167D97004F5E01 /* SimpleKMLSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7686473118167D97004F5E01 /* SimpleKMLSubData.m */; };
-		7686473518167DB6004F5E01 /* SimpleKMLSchemaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7686473418167DB6004F5E01 /* SimpleKMLSchemaData.m */; };
-		7686473818167DD0004F5E01 /* SimpleKMLData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7686473718167DD0004F5E01 /* SimpleKMLData.m */; };
 		DD470A6616EE94E100DBDDAC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD470A6516EE94E100DBDDAC /* Default-568h@2x.png */; };
 		DD4CEFFB124AAC4800597565 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CEFFA124AAC4800597565 /* MapKit.framework */; };
 		DD4CF581124AAF5500597565 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4CF580124AAF5500597565 /* CoreLocation.framework */; };
@@ -72,14 +68,6 @@
 		28D7ACF70DDB3853001CB0EB /* SKExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKExampleViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Simple_KML_Example_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simple_KML_Example_Prefix.pch; sourceTree = "<group>"; };
-		7686472D18167CCD004F5E01 /* SimpleKMLExtendedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKMLExtendedData.h; sourceTree = "<group>"; };
-		7686472E18167CCD004F5E01 /* SimpleKMLExtendedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKMLExtendedData.m; sourceTree = "<group>"; };
-		7686473018167D97004F5E01 /* SimpleKMLSubData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKMLSubData.h; sourceTree = "<group>"; };
-		7686473118167D97004F5E01 /* SimpleKMLSubData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKMLSubData.m; sourceTree = "<group>"; };
-		7686473318167DB6004F5E01 /* SimpleKMLSchemaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKMLSchemaData.h; sourceTree = "<group>"; };
-		7686473418167DB6004F5E01 /* SimpleKMLSchemaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKMLSchemaData.m; sourceTree = "<group>"; };
-		7686473618167DD0004F5E01 /* SimpleKMLData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKMLData.h; sourceTree = "<group>"; };
-		7686473718167DD0004F5E01 /* SimpleKMLData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKMLData.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Simple_KML_Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simple_KML_Example-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DD470A6516EE94E100DBDDAC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DD4CEFFA124AAC4800597565 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -266,12 +254,8 @@
 				DDC524BC15D1E60C007F101D /* SimpleKMLColorStyle.m */,
 				DDC524BD15D1E60C007F101D /* SimpleKMLContainer.h */,
 				DDC524BE15D1E60C007F101D /* SimpleKMLContainer.m */,
-				7686473618167DD0004F5E01 /* SimpleKMLData.h */,
-				7686473718167DD0004F5E01 /* SimpleKMLData.m */,
 				DDC524BF15D1E60C007F101D /* SimpleKMLDocument.h */,
 				DDC524C015D1E60C007F101D /* SimpleKMLDocument.m */,
-				7686472D18167CCD004F5E01 /* SimpleKMLExtendedData.h */,
-				7686472E18167CCD004F5E01 /* SimpleKMLExtendedData.m */,
 				DDC524C115D1E60C007F101D /* SimpleKMLFeature.h */,
 				DDC524C215D1E60C007F101D /* SimpleKMLFeature.m */,
 				DDC524C315D1E60C007F101D /* SimpleKMLFolder.h */,
@@ -302,14 +286,10 @@
 				DDC524DC15D1E60C007F101D /* SimpleKMLPolygon.m */,
 				DDC524DD15D1E60C007F101D /* SimpleKMLPolyStyle.h */,
 				DDC524DE15D1E60C007F101D /* SimpleKMLPolyStyle.m */,
-				7686473318167DB6004F5E01 /* SimpleKMLSchemaData.h */,
-				7686473418167DB6004F5E01 /* SimpleKMLSchemaData.m */,
 				DDC524DF15D1E60C007F101D /* SimpleKMLStyle.h */,
 				DDC524E015D1E60C007F101D /* SimpleKMLStyle.m */,
 				DDC524E115D1E60C007F101D /* SimpleKMLStyleSelector.h */,
 				DDC524E215D1E60C007F101D /* SimpleKMLStyleSelector.m */,
-				7686473018167D97004F5E01 /* SimpleKMLSubData.h */,
-				7686473118167D97004F5E01 /* SimpleKMLSubData.m */,
 				DDC524E315D1E60C007F101D /* SimpleKMLSubStyle.h */,
 				DDC524E415D1E60C007F101D /* SimpleKMLSubStyle.m */,
 			);
@@ -453,7 +433,6 @@
 				DDC524EC15D1E60C007F101D /* SimpleKMLFolder.m in Sources */,
 				DDC524ED15D1E60C007F101D /* SimpleKMLGeometry.m in Sources */,
 				DDC524EE15D1E60C007F101D /* SimpleKMLGroundOverlay.m in Sources */,
-				7686473818167DD0004F5E01 /* SimpleKMLData.m in Sources */,
 				DDC524EF15D1E60C007F101D /* SimpleKMLIconStyle.m in Sources */,
 				DDC524F015D1E60C007F101D /* SimpleKMLLinearRing.m in Sources */,
 				DDC524F115D1E60C007F101D /* SimpleKMLLineString.m in Sources */,
@@ -466,7 +445,6 @@
 				DDC524F815D1E60C007F101D /* SimpleKMLPolygon.m in Sources */,
 				DDC524F915D1E60C007F101D /* SimpleKMLPolyStyle.m in Sources */,
 				DDC524FA15D1E60C007F101D /* SimpleKMLStyle.m in Sources */,
-				7686473518167DB6004F5E01 /* SimpleKMLSchemaData.m in Sources */,
 				DDC524FB15D1E60C007F101D /* SimpleKMLStyleSelector.m in Sources */,
 				DDC524FC15D1E60C007F101D /* SimpleKMLSubStyle.m in Sources */,
 				DDC52AF815D1E899007F101D /* CXMLDocument_CreationExtensions.m in Sources */,
@@ -474,7 +452,6 @@
 				DDC52AFA15D1E899007F101D /* CXHTMLDocument.m in Sources */,
 				DDC52AFB15D1E899007F101D /* CXMLDocument_PrivateExtensions.m in Sources */,
 				DDC52AFC15D1E899007F101D /* CXMLDocument.m in Sources */,
-				7686472F18167CCD004F5E01 /* SimpleKMLExtendedData.m in Sources */,
 				DDC52AFD15D1E899007F101D /* CXMLElement_CreationExtensions.m in Sources */,
 				DDC52AFE15D1E899007F101D /* CXMLElement_ElementTreeExtensions.m in Sources */,
 				DDC52AFF15D1E899007F101D /* CXMLElement.m in Sources */,
@@ -482,7 +459,6 @@
 				DDC52B0115D1E899007F101D /* CXMLNode_PrivateExtensions.m in Sources */,
 				DDC52B0215D1E899007F101D /* CXMLNode_XPathExtensions.m in Sources */,
 				DDC52B0315D1E899007F101D /* CXMLNode.m in Sources */,
-				7686473218167D97004F5E01 /* SimpleKMLSubData.m in Sources */,
 				DDC52B0415D1E899007F101D /* CTidy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
