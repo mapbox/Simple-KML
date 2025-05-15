@@ -12,7 +12,7 @@ Simple KML has been designed & built for iOS 5.0 and greater. There's no particu
 
 Simple KML is built for [ARC](http://clang.llvm.org/docs/AutomaticReferenceCounting.html). 
 
-Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Objective-C library for DOM-based XML parsing based on `libxml2`, and [Objective-Zip](http://code.google.com/p/objective-zip/), a library for working with archive files, both of which are included in the download.
+Simple KML previously depended on external XML parsing and zip libraries. These have been removed.
 
 ## Features
 
@@ -64,11 +64,11 @@ Simple KML depends on [TouchXML](https://github.com/TouchCode/TouchXML), an Obje
 
 ## Usage
 
-Be sure to clone recursively (`git clone --recursive` or `git submodule update --init`) in order to grab the dependent submodules Objective-Zip and TouchXML. 
+Be sure to clone the repository and include all of the required source files in your Xcode project.
 
-Include all of the Simple KML files in your Xcode project, as well as the files in the TouchXML and Objective-Zip subdirectories if you don't already use these in your project.
+Include all of the Simple KML files in your Xcode project. You may need to add any required supporting libraries depending on your use case.
 
-Per TouchXML's [installation guide](http://foobarpig.com/iphone/touchxml-installation-guide.html), add `/usr/include/libxml2` to your "Header Search Paths" and `-lxml2` to your "Other Linker Flags" since TouchXML depends on `libxml2`.
+If using libxml2 directly, add /usr/include/libxml2 to your “Header Search Paths” and -lxml2 to your “Other Linker Flags`.
 
 You'll also need to link against `CoreLocation.framework` and `libz.dylib`. 
 
